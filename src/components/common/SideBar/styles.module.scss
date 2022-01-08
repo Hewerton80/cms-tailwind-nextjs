@@ -1,0 +1,17 @@
+.root {
+  @apply flex w-60 ml-2 pt-8 pb-14 h-auto;
+  nav,
+  ul {
+    @apply flex flex-col w-full;
+    li {
+      @apply flex w-full hover:bg-gray-lighter;
+      a {
+        @apply flex items-center w-full h-full text-secondary text-sm;
+        padding: 13.92px 14px 13.92px 9.6px;
+        p {
+          @apply ml-3;
+        }
+      }
+    }
+  }
+}

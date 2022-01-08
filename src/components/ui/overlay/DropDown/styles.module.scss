@@ -1,0 +1,14 @@
+.root {
+  @apply absolute w-40 bg-white shadow-md;
+  border: 1px solid #f3f3f3;
+  top: calc(100% + 4px);
+  ul {
+    @apply flex flex-col w-full py-2;
+    li {
+      @apply flex w-full items-center py-1 px-6 hover:bg-gray-light duration-300;
+      & > span {
+        @apply flex items-center w-full h-full text-black;
+      }
+    }
+  }
+}
