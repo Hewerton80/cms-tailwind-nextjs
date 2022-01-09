@@ -4,6 +4,9 @@ import Avatar from '../../components/ui/media/Avatar'
 import { getRandomIntInclusive } from '../../utils/getRamdomInt'
 import { DateTime } from 'luxon'
 import Link from 'next/link'
+import IconButton from '../../components/ui/forms/IconButton'
+import { FaPen, FaRegEye, FaTrash } from 'react-icons/fa'
+import Button from '../../components/ui/forms/Button'
 
 function Customers() {
   return (
@@ -16,8 +19,10 @@ function Customers() {
               <th>User</th>
               <th>id</th>
               <th>Nome</th>
+              <th>Email</th>
               <th>N° de Posts lidos</th>
               <th>Cadastrado em:</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -36,6 +41,7 @@ function Customers() {
                   </Link>
                 </td>
                 <td>Fulano</td>
+                <td>Fulano@email.com.br</td>
                 <td>
                   <Link href="#">
                     <a className="hover:underline">{getRandomIntInclusive(3, 20)}</a>
@@ -45,6 +51,13 @@ function Customers() {
                   {DateTime.now()
                     .plus({ days: -1 * getRandomIntInclusive(0, 365) })
                     .toFormat('ff')}
+                </td>
+                <td>
+                  <div className="flex items-center justify-end">
+                    <IconButton icon={<FaPen />} />
+                    <IconButton className="ml-2" icon={<FaRegEye />} />
+                    <IconButton variant="danger" className="ml-2" icon={<FaTrash />} />
+                  </div>
                 </td>
               </tr>
             ))}

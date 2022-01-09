@@ -1,0 +1,21 @@
+.root {
+  @apply text-xs py-1.5 px-2 rounded;
+  &.primary {
+    @apply bg-primary text-white;
+  }
+  &.success {
+    @apply bg-success text-white;
+  }
+  &.secondary {
+    @apply bg-secondary text-white;
+  }
+  &.danger {
+    @apply bg-danger text-white;
+  }
+  &.warning {
+    @apply bg-warning text-dark;
+  }
+  &.info {
+    @apply bg-info text-white;
+  }
+}

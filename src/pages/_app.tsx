@@ -1,12 +1,15 @@
-import '../styles/globals.css'
+import '../styles/globals.scss'
 import type { AppProps } from 'next/app'
 import MainTemplate from '../components/templates/MainTemplate'
+import Providers from '../contexts'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <MainTemplate>
-      <Component {...pageProps} />
-    </MainTemplate>
+    <Providers>
+      <MainTemplate>
+        <Component {...pageProps} />
+      </MainTemplate>
+    </Providers>
   )
 }
 

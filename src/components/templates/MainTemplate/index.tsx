@@ -24,7 +24,7 @@ function MainTemplate({ children, ...rest }: MainTemplateProps) {
         style={{ paddingTop: 106 }}
       >
         <SideBar />
-        <div className="flex flex-1 px-7">{children}</div>
+        <div className="flex flex-col flex-1 px-7">{children}</div>
       </div>
     </div>
   )

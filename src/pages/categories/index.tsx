@@ -12,30 +12,28 @@ import Badge from '../../components/ui/dataDisplay/Badge'
 import { Fragment } from 'react'
 import Button from '../../components/ui/forms/Button'
 import IconButton from '../../components/ui/forms/IconButton'
-import { FaPen, FaRegEye, FaTrash } from 'react-icons/fa'
+import { FaPen, FaRegEye } from 'react-icons/fa'
 
-function Posts() {
+function Categories() {
   const categories = ['html', 'javascript', 'css']
   return (
     <Card className="w-full">
-      <CardTitle>Posts</CardTitle>
+      <CardTitle>Categorias</CardTitle>
       <CardBody>
         <div className="flex flex-col">
           <div className="flex">
             <Button className="ml-auto" variant="info">
-              Criar post
+              Criar categoria
             </Button>
           </div>
           <Table>
             <thead>
               <tr>
                 <th>id</th>
-                <th>Título</th>
-                <th>Categoria(s)</th>
-                <th>Autor</th>
-                <th>(Vizualizações / Likes / Favoritos)</th>
-                <th>Situação</th>
-                <th>Publicado em:</th>
+                <th>Nome</th>
+                <th>Subcategoria(s)</th>
+                <th>Exibir no menu</th>
+                <th>Criado em:</th>
                 <th></th>
               </tr>
             </thead>
@@ -52,13 +50,7 @@ function Posts() {
                         </a>
                       </Link>
                     </td>
-                    <td>
-                      <Link href="#">
-                        <a className="hover:underline">
-                          Como centralizar um elemento com html e css
-                        </a>
-                      </Link>
-                    </td>
+                    <td>{categories[getRandomIntInclusive(0, categories.length - 1)]}</td>
                     <td>
                       {categories
                         .map((cat, i) => (
@@ -75,21 +67,11 @@ function Posts() {
                     </td>
 
                     <td>
-                      <Link href="#">
-                        <a className="hover:underline">Fulano@email.com.br</a>
-                      </Link>
-                    </td>
-                    <td>
-                      {String(getRandomIntInclusive(3, 150)).padStart(2, '0')}
-                      {' / '}
-                      {String(getRandomIntInclusive(3, 20)).padStart(2, '0')}
-                      {' / '}
-                      {String(getRandomIntInclusive(3, 20)).padStart(2, '0')}
-                    </td>
-                    <td>
-                      <Badge variant={PostStatusVariantEnum[status]}>
-                        {PostStatusPtBrEnum[status]}
-                      </Badge>
+                      {getRandomIntInclusive(0, 1) ? (
+                        <Badge variant="info">Sim</Badge>
+                      ) : (
+                        <Badge variant="secondary">Não</Badge>
+                      )}
                     </td>
                     <td>
                       {DateTime.now()
@@ -100,11 +82,6 @@ function Posts() {
                       <div className="flex items-center justify-end">
                         <IconButton icon={<FaPen />} />
                         <IconButton className="ml-2" icon={<FaRegEye />} />
-                        <IconButton
-                          variant="danger"
-                          className="ml-2"
-                          icon={<FaTrash />}
-                        />
                       </div>
                     </td>
                   </tr>
@@ -113,12 +90,9 @@ function Posts() {
             </tbody>
           </Table>
         </div>
-        <Card>
-          <CardBody>dasdasdasdas</CardBody>
-        </Card>
       </CardBody>
     </Card>
   )
 }
 
-export default Posts
+export default Categories
