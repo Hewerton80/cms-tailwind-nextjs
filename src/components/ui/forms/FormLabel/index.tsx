@@ -1,12 +1,15 @@
 import cn from 'classnames'
 import { LabelHTMLAttributes } from 'react'
 
-interface FormLabelProps extends LabelHTMLAttributes<HTMLLabelElement> {}
+interface FormLabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
+  required?: boolean
+}
 
-function FormLabel({ children, className, ...rest }: FormLabelProps) {
+function FormLabel({ children, className, required, ...rest }: FormLabelProps) {
   return (
     <label className={cn('text-sm text-black mb-2', className)} {...rest}>
       {children}
+      {required && <span className="text-danger">*</span>}
     </label>
   )
 }

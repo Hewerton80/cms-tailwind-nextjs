@@ -1,0 +1,14 @@
+.root {
+  @apply text-sm outline-none rounded-sm duration-300;
+  border: 1px solid #f3f3f3;
+  color: #495057;
+  height: 46px;
+  padding: 0px 22px;
+  transition: 0.3s ease all;
+  &:not(:disabled) {
+    cursor: pointer;
+  }
+  &:focus {
+    @apply border-info;
+  }
+}
