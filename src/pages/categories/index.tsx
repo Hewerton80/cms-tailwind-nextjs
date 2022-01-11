@@ -3,11 +3,6 @@ import { Card, CardBody, CardTitle } from '../../components/ui/layout/Card'
 import { getRandomIntInclusive } from '../../utils/getRamdomInt'
 import { DateTime } from 'luxon'
 import Link from 'next/link'
-import {
-  PostStatusEnum,
-  PostStatusPtBrEnum,
-  PostStatusVariantEnum,
-} from '../../types/Post'
 import Badge from '../../components/ui/dataDisplay/Badge'
 import { Fragment, useContext, useEffect } from 'react'
 import Button from '../../components/ui/forms/Button'
@@ -15,6 +10,7 @@ import IconButton from '../../components/ui/forms/IconButton'
 import { FaPen, FaRegEye } from 'react-icons/fa'
 import { BreadcrumbsContext } from '../../contexts/breadcrumbsContext'
 import { RouteEnum } from '../../utils/routes'
+import { getRange } from '../../utils/getRange'
 
 function Categories() {
   const { handleSetBreadcrumbs } = useContext(BreadcrumbsContext)
@@ -31,9 +27,11 @@ function Categories() {
       <CardBody>
         <div className="flex flex-col">
           <div className="flex">
-            <Button className="ml-auto" variant="primary">
-              Criar categoria
-            </Button>
+            <Link href={RouteEnum.CreateCategories}>
+              <a className="ml-auto">
+                <Button variant="primary">Criar Categoria</Button>
+              </a>
+            </Link>
           </div>
           <Table>
             <thead>
@@ -47,9 +45,7 @@ function Categories() {
               </tr>
             </thead>
             <tbody>
-              {Array.from(Array(5).keys()).map((i) => {
-                const status = Object.values(PostStatusEnum)[getRandomIntInclusive(0, 2)]
-
+              {getRange(5).map((i) => {
                 return (
                   <tr key={i}>
                     <td>

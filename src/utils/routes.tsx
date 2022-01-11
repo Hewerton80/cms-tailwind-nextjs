@@ -14,6 +14,7 @@ export enum RouteEnum {
   Customers = '/customers',
   Posts = '/posts',
   Categories = '/categories',
+  CreateCategories = '/categories/create',
   Tags = '/tags',
 }
 
