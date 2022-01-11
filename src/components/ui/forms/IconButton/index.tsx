@@ -7,7 +7,7 @@ interface IconButtonProps extends ButtonProps {
 
 function IconButton({ icon, className, ...rest }: IconButtonProps) {
   return (
-    <Button className={cn('h-10 w-10 rounded-1/2 p-0.5', className)} {...rest}>
+    <Button className={cn('h-10 w-10 rounded-full p-0.5', className)} {...rest}>
       {icon}
     </Button>
   )

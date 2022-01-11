@@ -1,13 +1,16 @@
-import { HTMLAttributes } from 'react'
+import { HTMLAttributes, useContext } from 'react'
 import cn from 'classnames'
 import Header from '../../common/Header'
 import SideBar from '../../common/SideBar'
 import { Settings } from 'luxon'
+import { BreadcrumbsContext } from '../../../contexts/breadcrumbsContext'
+import Breadcrumbs from '../../ui/navigation/Breadcrumbs'
 Settings.defaultLocale = 'pt-br'
 
 interface MainTemplateProps extends HTMLAttributes<HTMLDivElement> {}
 
 function MainTemplate({ children, ...rest }: MainTemplateProps) {
+  const { breadcrumbs } = useContext(BreadcrumbsContext)
   return (
     <div
       className={cn(
@@ -18,13 +21,21 @@ function MainTemplate({ children, ...rest }: MainTemplateProps) {
       )}
       {...rest}
     >
-      <Header />
+      <Header className="z-20" />
       <div
-        className={cn('flex', 'min-h-screen w-full', 'overflow-x-hidden')}
-        style={{ paddingTop: 106 }}
+        className={cn(
+          'flex',
+          'min-h-screen w-full pt-[115px]',
+          'overflow-x-hidden relative',
+          'z-10'
+        )}
       >
         <SideBar />
-        <div className="flex flex-col flex-1 px-7">{children}</div>
+        <Breadcrumbs
+          className="absolute top-[113px] right-7 -translate-y-full"
+          links={breadcrumbs}
+        />
+        <div className="flex flex-col flex-1 px-7 overflow-auto ">{children}</div>
       </div>
     </div>
   )

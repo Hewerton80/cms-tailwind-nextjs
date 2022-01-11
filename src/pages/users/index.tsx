@@ -10,8 +10,17 @@ import { FaPen, FaRegEye, FaTrash } from 'react-icons/fa'
 import Button from '../../components/ui/forms/Button'
 import Badge from '../../components/ui/dataDisplay/Badge'
 import { RouteEnum } from '../../utils/routes'
+import { useContext, useEffect } from 'react'
+import { BreadcrumbsContext } from '../../contexts/breadcrumbsContext'
 
 const Users: NextPage = () => {
+  const { handleSetBreadcrumbs } = useContext(BreadcrumbsContext)
+
+  useEffect(() => {
+    handleSetBreadcrumbs([{ path: RouteEnum.Home, text: 'Administradores' }])
+    return () => handleSetBreadcrumbs([])
+  }, [handleSetBreadcrumbs])
+
   return (
     <Card className="w-full">
       <CardTitle>Administradores</CardTitle>
@@ -20,7 +29,7 @@ const Users: NextPage = () => {
           <div className="flex">
             <Link href={RouteEnum.CreateUser}>
               <a className="ml-auto">
-                <Button variant="info">Adicionar usuário</Button>
+                <Button variant="primary">Adicionar usuário</Button>
               </a>
             </Link>
           </div>

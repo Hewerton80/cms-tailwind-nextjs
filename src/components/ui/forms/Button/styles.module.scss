@@ -13,8 +13,11 @@
 
     &:not(:disabled) {
       &:hover {
-        box-shadow: 0 2px 2px 0 rgb(132 79 193 / 14%),
-          0 3px 1px -2px rgb(132 79 193 / 20%), 0 1px 5px 0 rgb(132 79 193 / 12%);
+        background-color: #6b3aa3;
+        border-color: #65369a;
+        box-shadow: 0 2px 2px 0 theme('colors.primary') / 14,
+          0 3px 1px -2px theme('colors.primary') / 20,
+          0 1px 5px 0 theme('colors.primary') / 12;
       }
       &:active {
         background-color: #6b3aa3;
@@ -22,7 +25,7 @@
       }
       &:focus,
       &:active {
-        box-shadow: 0 0 0 0.2rem rgb(150 105 202 / 50%);
+        @apply ring-4 ring-primary/50;
       }
     }
   }
@@ -31,8 +34,11 @@
     @apply bg-success text-white;
     &:not(:disabled) {
       &:hover {
-        box-shadow: 0 2px 2px 0 rgb(33 191 6 / 14%), 0 3px 1px -2px rgb(33 191 6 / 20%),
-          0 1px 5px 0 rgb(33 191 6 / 12%);
+        background-color: #188e04;
+        border-color: #168104;
+        box-shadow: 0 2px 2px 0 theme('colors.success') / 14,
+          0 3px 1px -2px theme('colors.success') / 20,
+          0 1px 5px 0 theme('colors.success') / 12;
       }
       &:active {
         background-color: #188e04;
@@ -40,7 +46,7 @@
       }
       &:focus,
       &:active {
-        box-shadow: 0 0 0 0.2rem rgb(66 201 43 / 50%);
+        @apply ring-4 ring-success/50;
       }
     }
   }
@@ -49,8 +55,11 @@
     @apply bg-secondary text-white;
     &:not(:disabled) {
       &:hover {
-        box-shadow: 0 2px 2px 0 rgb(108 114 147 / 14%),
-          0 3px 1px -2px rgb(108 114 147 / 20%), 0 1px 5px 0 rgb(108 114 147 / 12%);
+        background-color: #565b76;
+        border-color: #51566e;
+        box-shadow: 0 2px 2px 0 theme('colors.secondary') / 14,
+          0 3px 1px -2px theme('colors.secondary') / 20,
+          0 1px 5px 0 theme('colors.secondary') / 12;
       }
       &:active {
         background-color: #565b76;
@@ -58,7 +67,7 @@
       }
       &:focus,
       &:active {
-        box-shadow: 0 0 0 0.2rem rgb(130 135 163 / 50%);
+        @apply ring-4 ring-secondary/50;
       }
     }
   }
@@ -69,16 +78,17 @@
       &:hover {
         background-color: #bd2130;
         border-color: #b21f2d;
-        box-shadow: 0 2px 2px 0 rgb(220 53 69 / 14%), 0 3px 1px -2px rgb(220 53 69 / 20%),
-          0 1px 5px 0 rgb(220 53 69 / 12%);
+        box-shadow: 0 2px 2px 0 theme('colors.danger') / 14,
+          0 3px 1px -2px theme('colors.danger') / 20,
+          0 1px 5px 0 theme('colors.danger') / 12;
       }
       &:active {
-        background-color: #bd2130;
+        background-color: rgb(189, 33, 48);
         border-color: #b21f2d;
       }
       &:focus,
       &:active {
-        box-shadow: 0 0 0 0.2rem rgb(225 83 97 / 50%);
+        @apply ring-4 ring-danger/50;
       }
     }
   }
@@ -89,8 +99,9 @@
       &:hover {
         background-color: #cb7d0a;
         border-color: #be750a;
-        box-shadow: 0 2px 2px 0 rgb(243 153 21 / 14%),
-          0 3px 1px -2px rgb(243 153 21 / 20%), 0 1px 5px 0 rgb(243 153 21 / 12%);
+        box-shadow: 0 2px 2px 0 theme('colors.warning') / 14,
+          0 3px 1px -2px theme('colors.warning') / 20,
+          0 1px 5px 0 theme('colors.warning') / 12;
       }
       &:active {
         background-color: #cb7d0a;
@@ -98,8 +109,7 @@
       }
       &:focus,
       &:active {
-        @apply text-white;
-        box-shadow: 0 0 0 0.2rem rgb(212 136 24 / 50%);
+        @apply text-white ring-4 ring-warning/50;
       }
     }
   }
@@ -110,8 +120,8 @@
       &:hover {
         background-color: #296db0;
         border-color: #2766a5;
-        box-shadow: 0 2px 2px 0 rgb(59 134 209 / 14%),
-          0 3px 1px -2px rgb(59 134 209 / 20%), 0 1px 5px 0 rgb(59 134 209 / 12%);
+        box-shadow: 0 2px 2px 0 theme('colors.info') / 14,
+          0 3px 1px -2px theme('colors.info') / 20, 0 1px 5px 0 theme('colors.info') / 12;
       }
       &:active {
         background-color: #296db0;
@@ -119,8 +129,7 @@
       }
       &:focus,
       &:active {
-        @apply text-white;
-        box-shadow: 0 0 0 0.2rem rgb(88 152 216 / 50%);
+        @apply text-white ring-4 ring-info/50;
       }
     }
   }

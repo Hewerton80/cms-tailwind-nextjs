@@ -9,12 +9,21 @@ import {
   PostStatusVariantEnum,
 } from '../../types/Post'
 import Badge from '../../components/ui/dataDisplay/Badge'
-import { Fragment } from 'react'
+import { Fragment, useContext, useEffect } from 'react'
 import Button from '../../components/ui/forms/Button'
 import IconButton from '../../components/ui/forms/IconButton'
 import { FaPen, FaRegEye, FaTrash } from 'react-icons/fa'
+import { BreadcrumbsContext } from '../../contexts/breadcrumbsContext'
+import { RouteEnum } from '../../utils/routes'
 
 function Posts() {
+  const { handleSetBreadcrumbs } = useContext(BreadcrumbsContext)
+
+  useEffect(() => {
+    handleSetBreadcrumbs([{ path: RouteEnum.Posts, text: 'Posts' }])
+    return () => handleSetBreadcrumbs([])
+  }, [handleSetBreadcrumbs])
+
   const categories = ['html', 'javascript', 'css']
   return (
     <Card className="w-full">
@@ -22,7 +31,7 @@ function Posts() {
       <CardBody>
         <div className="flex flex-col">
           <div className="flex">
-            <Button className="ml-auto" variant="info">
+            <Button className="ml-auto" variant="primary">
               Criar post
             </Button>
           </div>
@@ -113,9 +122,6 @@ function Posts() {
             </tbody>
           </Table>
         </div>
-        <Card>
-          <CardBody>dasdasdasdas</CardBody>
-        </Card>
       </CardBody>
     </Card>
   )

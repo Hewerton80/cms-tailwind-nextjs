@@ -1,14 +1,14 @@
-import { TableHTMLAttributes } from 'react'
+import { HTMLAttributes } from 'react'
 import cn from 'classnames'
 import styles from './styles.module.scss'
 
-interface TableProps extends TableHTMLAttributes<HTMLTableElement> {}
+interface TableProps extends HTMLAttributes<HTMLDivElement> {}
 
 export function Table({ children, className, ...rest }: TableProps) {
   return (
-    <table className={cn(styles.root, className)} {...rest}>
-      {children}
-    </table>
+    <div className={cn(styles.root, className)} {...rest}>
+      <table>{children}</table>
+    </div>
   )
 }
 

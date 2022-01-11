@@ -1,0 +1,9 @@
+.root {
+  @apply flex;
+  & > p {
+    @apply text-xs text-gray;
+    & > span {
+      @apply mx-1.5;
+    }
+  }
+}

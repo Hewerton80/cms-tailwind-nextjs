@@ -6,9 +6,18 @@ import { DateTime } from 'luxon'
 import Link from 'next/link'
 import IconButton from '../../components/ui/forms/IconButton'
 import { FaPen, FaRegEye, FaTrash } from 'react-icons/fa'
-import Button from '../../components/ui/forms/Button'
+import { useContext, useEffect } from 'react'
+import { RouteEnum } from '../../utils/routes'
+import { BreadcrumbsContext } from '../../contexts/breadcrumbsContext'
 
 function Customers() {
+  const { handleSetBreadcrumbs } = useContext(BreadcrumbsContext)
+
+  useEffect(() => {
+    handleSetBreadcrumbs([{ path: RouteEnum.Customers, text: 'Leitores' }])
+    return () => handleSetBreadcrumbs([])
+  }, [handleSetBreadcrumbs])
+
   return (
     <Card className="w-full">
       <CardTitle>Leitores</CardTitle>

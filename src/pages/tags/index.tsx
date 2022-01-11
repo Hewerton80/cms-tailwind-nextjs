@@ -7,8 +7,18 @@ import { PostStatusEnum } from '../../types/Post'
 import Button from '../../components/ui/forms/Button'
 import IconButton from '../../components/ui/forms/IconButton'
 import { FaPen, FaRegEye } from 'react-icons/fa'
+import { useContext, useEffect } from 'react'
+import { BreadcrumbsContext } from '../../contexts/breadcrumbsContext'
+import { RouteEnum } from '../../utils/routes'
 
 function Tags() {
+  const { handleSetBreadcrumbs } = useContext(BreadcrumbsContext)
+
+  useEffect(() => {
+    handleSetBreadcrumbs([{ path: RouteEnum.Tags, text: 'Tags' }])
+    return () => handleSetBreadcrumbs([])
+  }, [handleSetBreadcrumbs])
+
   const tags = ['html', 'javascript', 'css']
   return (
     <Card className="w-full">
@@ -16,7 +26,7 @@ function Tags() {
       <CardBody>
         <div className="flex flex-col">
           <div className="flex">
-            <Button className="ml-auto" variant="info">
+            <Button className="ml-auto" variant="primary">
               Criar tag
             </Button>
           </div>

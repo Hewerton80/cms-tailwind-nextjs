@@ -7,12 +7,12 @@ import DropDown from '../../ui/overlay/DropDown'
 
 interface HeaderProps extends HTMLAttributes<HTMLElement> {}
 
-function Header({ ...rest }: HeaderProps) {
+function Header({ className, ...rest }: HeaderProps) {
   const [showDropDown, setShowDropDown] = useState(false)
 
   return (
     <header
-      className={cn('fixed', 'flex', 'h-20 w-full', 'px-7', 'bg-primary')}
+      className={cn('fixed', 'flex', 'h-20 w-full', 'px-7', 'bg-primary', className)}
       {...rest}
     >
       <div className="flex items-center justify-between w-full h-full">
