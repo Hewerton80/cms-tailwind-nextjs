@@ -2,15 +2,15 @@ import { InputHTMLAttributes } from 'react'
 import cn from 'classnames'
 import styles from './styles.module.scss'
 
-interface SwitchProps extends InputHTMLAttributes<HTMLInputElement> {
+interface InputRadioProps extends InputHTMLAttributes<HTMLInputElement> {
   text?: string
 }
 
-function Switch({ text, className, ...rest }: SwitchProps) {
+function InputRadio({ text, className, ...rest }: InputRadioProps) {
   return (
     <label htmlFor={rest?.id} className={cn('flex items-center', className)}>
       <span className={cn(styles.root)}>
-        <input type="checkbox" {...rest} />
+        <input type="radio" {...rest} />
         <span />
       </span>
       {text && <p>{text}</p>}
@@ -18,4 +18,4 @@ function Switch({ text, className, ...rest }: SwitchProps) {
   )
 }
 
-export default Switch
+export default InputRadio

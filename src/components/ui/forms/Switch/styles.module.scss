@@ -20,4 +20,7 @@
       }
     }
   }
+  & + p {
+    @apply text-sm text-dark ml-7;
+  }
 }

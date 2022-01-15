@@ -1,0 +1,10 @@
+.root {
+  @apply flex flex-col w-full;
+  & > li {
+    @apply p-1.5 cursor-pointer text-sm text-black 
+  hover:text-white leading-[1.8];
+    &:hover {
+      background-color: theme('colors.primary') !important;
+    }
+  }
+}

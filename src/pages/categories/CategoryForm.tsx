@@ -3,8 +3,11 @@ import Button from '../../components/ui/forms/Button'
 import Form from '../../components/ui/forms/Form'
 import FormGroup from '../../components/ui/forms/FormGroup'
 import FormLabel from '../../components/ui/forms/FormLabel'
+import InputRadio from '../../components/ui/forms/InputRadio'
 import InputText from '../../components/ui/forms/InputText'
+import MultSelectBox from '../../components/ui/forms/MultSelectBox'
 import Select from '../../components/ui/forms/Select'
+import SelectBox, { ISelectBoxOptions } from '../../components/ui/forms/SelectBox'
 import Switch from '../../components/ui/forms/Switch'
 import TextArea from '../../components/ui/forms/TextArea'
 import { Card, CardBody, CardTitle } from '../../components/ui/layout/Card'
@@ -17,15 +20,25 @@ interface CategoryFormProps {
 function CategoryForm({ isEdit }: CategoryFormProps) {
   const [name, setName] = useState('')
   const [isSubCategory, setIsSubCategory] = useState(false)
-  const [hasChangedSlug, setHasChangedSlug] = useState(false)
+  const [category, setCategory] = useState<ISelectBoxOptions>({ text: '', value: '' })
+  const [subCategories, setSubCategories] = useState<ISelectBoxOptions[]>([])
 
   const categories = ['html', 'javascript', 'css']
+
+  const handleChangeRadioSubcategory = useCallback((checked: boolean) => {
+    setIsSubCategory(checked)
+    if (checked) {
+      setCategory({ text: '', value: '' })
+    } else {
+      setSubCategories([])
+    }
+  }, [])
 
   return (
     <div className="flex space-x-6">
       <Card className="flex-1">
         <CardBody>
-          <Form onSubmit={(e) => e.preventDefault()}>
+          <Form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
             <div className="grid grid-cols-12 gap-6">
               <div className="col-span-12">
                 <FormGroup>
@@ -40,35 +53,54 @@ function CategoryForm({ isEdit }: CategoryFormProps) {
                 </FormGroup>
               </div>
               <div className="col-span-12">
-                <FormGroup>
-                  <Switch
-                    id="is-sub"
+                <FormGroup className="space-y-2">
+                  <InputRadio
+                    id="has-subcategories"
                     checked={isSubCategory}
-                    onChange={(e) => setIsSubCategory(e.target.checked)}
+                    onChange={(e) => handleChangeRadioSubcategory(e.target.checked)}
+                    text="Ter subcategorias"
+                  />
+                  <InputRadio
+                    id="is-subcategories"
+                    checked={!isSubCategory}
+                    onChange={(e) => handleChangeRadioSubcategory(!e.target.checked)}
                     text="Ser subcategoria"
                   />
                 </FormGroup>
               </div>
-              {isSubCategory && (
-                <div className="col-span-12">
-                  <FormGroup>
-                    <FormLabel required>Sub Categoria de:</FormLabel>
-                    <InputText
-                      id="sub-category"
-                      required
-                      placeholder="Sub-categoria..."
-                      list="categories"
-                    />
-                    <datalist id="categories">
-                      {categories.map((category) => (
-                        <option key={category} value={category}>
-                          {category}
-                        </option>
-                      ))}
-                    </datalist>
-                  </FormGroup>
-                </div>
-              )}
+              <div className="col-span-6">
+                <FormGroup>
+                  {isSubCategory ? (
+                    <>
+                      <FormLabel required>Subcategorias:</FormLabel>
+                      <MultSelectBox
+                        options={categories.map((opt) => ({ value: opt, text: opt }))}
+                        placeholder="Subcategorias..."
+                        selectedOptions={subCategories}
+                        onChange={(values) => setSubCategories(values)}
+                      />
+                    </>
+                  ) : (
+                    <>
+                      <FormLabel required>Subcategoria de:</FormLabel>
+                      <SelectBox
+                        options={categories.map((opt) => ({ value: opt, text: opt }))}
+                        placeholder="Categoria..."
+                        selectedOption={category}
+                        onChange={(value) => setCategory(value)}
+                      />
+                    </>
+                  )}
+                </FormGroup>
+              </div>
+            </div>
+            <div className="flex justify-end">
+              <Button type="submit" variant="primary">
+                Criar
+              </Button>
+              <Button type="button" variant="light" className="ml-2">
+                Cancelar
+              </Button>
             </div>
           </Form>
         </CardBody>

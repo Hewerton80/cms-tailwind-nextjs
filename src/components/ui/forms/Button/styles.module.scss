@@ -118,18 +118,38 @@
     @apply bg-info text-white;
     &:not(:disabled) {
       &:hover {
-        background-color: #296db0;
+        background-color: #2766a5;
         border-color: #2766a5;
         box-shadow: 0 2px 2px 0 theme('colors.info') / 14,
           0 3px 1px -2px theme('colors.info') / 20, 0 1px 5px 0 theme('colors.info') / 12;
       }
       &:active {
-        background-color: #296db0;
+        background-color: #2766a5;
         border-color: #2766a5;
       }
       &:focus,
       &:active {
         @apply text-white ring-4 ring-info/50;
+      }
+    }
+  }
+  &.light {
+    @apply bg-light text-dark;
+    &:not(:disabled) {
+      &:hover {
+        background-color: #e2e6ea;
+        border-color: #e2e6ea;
+        box-shadow: 0 2px 2px 0 theme('colors.light') / 14,
+          0 3px 1px -2px theme('colors.light') / 20,
+          0 1px 5px 0 theme('colors.light') / 12;
+      }
+      &:active {
+        background-color: #e2e6ea;
+        border-color: #e2e6ea;
+      }
+      &:focus,
+      &:active {
+        @apply ring-4 ring-light/50;
       }
     }
   }
