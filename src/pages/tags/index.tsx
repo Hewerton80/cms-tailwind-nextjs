@@ -76,7 +76,7 @@ function Tags() {
           </div>
         </CardBody>
       </Card>
-      <Modal show={true}>
+      <Modal show={false}>
         <h1>Teste</h1>
       </Modal>
     </>

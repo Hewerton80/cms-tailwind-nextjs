@@ -36,7 +36,7 @@ export const menu: IMenu[] = [
     icon: <VscOrganization className="text-xl" />,
   },
   {
-    title: 'Leitores',
+    title: 'Assinantes',
     url: RouteEnum.Customers,
     icon: <VscPerson className="text-xl" />,
   },

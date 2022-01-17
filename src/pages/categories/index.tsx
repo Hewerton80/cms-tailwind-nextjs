@@ -1,16 +1,15 @@
 import Table from '../../components/ui/dataDisplay/Table'
 import { Card, CardBody, CardTitle } from '../../components/ui/layout/Card'
 import { getRandomIntInclusive } from '../../utils/getRamdomInt'
-import { DateTime } from 'luxon'
 import Link from 'next/link'
-import Badge from '../../components/ui/dataDisplay/Badge'
 import { Fragment, useContext, useEffect } from 'react'
-import Button from '../../components/ui/forms/Button'
 import IconButton from '../../components/ui/forms/IconButton'
-import { FaPen, FaRegEye } from 'react-icons/fa'
+import { FaCheck, FaEye, FaEyeSlash, FaPen, FaRegEye, FaTimes } from 'react-icons/fa'
 import { BreadcrumbsContext } from '../../contexts/breadcrumbsContext'
 import { RouteEnum } from '../../utils/routes'
 import { getRange } from '../../utils/getRange'
+import CategoryForm from './CategoryForm'
+import cn from 'classnames'
 
 function Categories() {
   const { handleSetBreadcrumbs } = useContext(BreadcrumbsContext)
@@ -20,73 +19,68 @@ function Categories() {
     return () => handleSetBreadcrumbs([])
   }, [handleSetBreadcrumbs])
 
-  const categories = ['html', 'javascript', 'css']
+  const categories = ['html', 'javascript', 'css', 'liguagens de programação']
+  const categorySlugs = categories.map((category) => category.split(' ').join('-'))
   return (
-    <Card className="w-full">
-      <CardTitle>Categorias</CardTitle>
-      <CardBody>
-        <div className="flex flex-col">
-          <div className="flex">
-            <Link href={RouteEnum.CreateCategories}>
-              <a className="ml-auto">
-                <Button variant="primary">Criar Categoria</Button>
-              </a>
-            </Link>
-          </div>
+    <div
+      className={cn(
+        'flex flex-col 2xl:flex-row',
+        'mb-6',
+        'space-x-0 2xl:space-x-6 space-y-6 2xl:space-y-0'
+      )}
+    >
+      <Card className="flex-1">
+        <CardTitle>Categorias</CardTitle>
+        <CardBody>
           <Table>
             <thead>
               <tr>
-                <th>id</th>
                 <th>Nome</th>
-                <th>Subcategoria(s)</th>
+                <th>Slug</th>
+                <th>Posts</th>
                 <th>Exibir no menu</th>
-                <th>Criado em:</th>
+                <th>status</th>
                 <th></th>
               </tr>
             </thead>
             <tbody>
               {getRange(5).map((i) => {
+                const categoryIndex = getRandomIntInclusive(0, categories.length - 1)
                 return (
                   <tr key={i}>
+                    <td>{categories[categoryIndex]}</td>
+                    <td>{categorySlugs[categoryIndex]}</td>
+                    <td>{getRandomIntInclusive(0, 20)}</td>
                     <td>
-                      <Link href="#">
-                        <a className="hover:underline">
-                          #{getRandomIntInclusive(1, 1000)}
-                        </a>
-                      </Link>
-                    </td>
-                    <td>{categories[getRandomIntInclusive(0, categories.length - 1)]}</td>
-                    <td>
-                      {categories
-                        .map((cat, i) => (
-                          <Fragment key={'cat' + i}>
-                            <Link href="#">
-                              <a className="hover:underline cursor-pointer">{cat}</a>
-                            </Link>
-                            {categories.length > 0 && i >= 0 && i < categories.length - 1
-                              ? ', '
-                              : ''}
-                          </Fragment>
-                        ))
-                        .filter(() => getRandomIntInclusive(0, 3))}
-                    </td>
-
-                    <td>
-                      {getRandomIntInclusive(0, 1) ? (
-                        <Badge variant="info">Sim</Badge>
-                      ) : (
-                        <Badge variant="secondary">Não</Badge>
-                      )}
+                      <span className="text-lg">
+                        {getRandomIntInclusive(0, 1) ? (
+                          <FaCheck className="text-info" />
+                        ) : (
+                          <FaTimes className="text-secondary" />
+                        )}
+                      </span>
                     </td>
                     <td>
-                      {DateTime.now()
-                        .plus({ days: -1 * getRandomIntInclusive(0, 365) })
-                        .toFormat('ff')}
+                      <span className="text-lg">
+                        {getRandomIntInclusive(0, 1) ? (
+                          <FaEye className="text-info" />
+                        ) : (
+                          <FaEyeSlash className="text-secondary" />
+                        )}
+                      </span>
                     </td>
                     <td>
                       <div className="flex items-center justify-end">
-                        <IconButton icon={<FaPen />} />
-                        <IconButton className="ml-2" icon={<FaRegEye />} />
+                        <Link href="#">
+                          <a>
+                            <IconButton icon={<FaPen />} />
+                          </a>
+                        </Link>
+                        <Link href="#">
+                          <a>
+                            <IconButton className="ml-2" icon={<FaRegEye />} />
+                          </a>
+                        </Link>
                       </div>
                     </td>
                   </tr>
@@ -94,9 +88,12 @@ function Categories() {
               })}
             </tbody>
           </Table>
-        </div>
-      </CardBody>
-    </Card>
+        </CardBody>
+      </Card>
+      <div className="flex min-w-[300px]">
+        <CategoryForm />
+      </div>
+    </div>
   )
 }
 

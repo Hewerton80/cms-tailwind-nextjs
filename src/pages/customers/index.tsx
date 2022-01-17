@@ -9,28 +9,26 @@ import { FaPen, FaRegEye, FaTrash } from 'react-icons/fa'
 import { useContext, useEffect } from 'react'
 import { RouteEnum } from '../../utils/routes'
 import { BreadcrumbsContext } from '../../contexts/breadcrumbsContext'
+import AvatarGroup from '../../components/ui/media/AvatarGroup'
 
 function Customers() {
   const { handleSetBreadcrumbs } = useContext(BreadcrumbsContext)
 
   useEffect(() => {
-    handleSetBreadcrumbs([{ path: RouteEnum.Customers, text: 'Leitores' }])
+    handleSetBreadcrumbs([{ path: RouteEnum.Customers, text: 'Assinantes' }])
     return () => handleSetBreadcrumbs([])
   }, [handleSetBreadcrumbs])
 
   return (
     <Card className="w-full">
-      <CardTitle>Leitores</CardTitle>
+      <CardTitle>Assinantes</CardTitle>
       <CardBody>
         <Table>
           <thead>
             <tr>
-              <th>User</th>
-              <th>id</th>
-              <th>Nome</th>
-              <th>Email</th>
-              <th>N° de Posts lidos</th>
-              <th>Cadastrado em:</th>
+              <th></th>
+              <th>(Vizualizações / Likes / Favoritos)</th>
+              <th>Cadastro em</th>
               <th></th>
             </tr>
           </thead>
@@ -38,23 +36,19 @@ function Customers() {
             {Array.from(Array(5).keys()).map((i) => (
               <tr key={i}>
                 <td className="py-1">
-                  <Link href="#">
-                    <a className="hover:underline">
-                      <Avatar src={`/images/face${getRandomIntInclusive(4, 7)}.jpg`} />
-                    </a>
-                  </Link>
+                  <AvatarGroup
+                    src={`/images/face${getRandomIntInclusive(4, 7)}.jpg`}
+                    userName="Fulano da Silva "
+                    userEmail="Fulano@email.com.br"
+                  />
                 </td>
+
                 <td>
-                  <Link href="#">
-                    <a className="hover:underline">#{getRandomIntInclusive(1, 1000)}</a>
-                  </Link>
-                </td>
-                <td>Fulano</td>
-                <td>Fulano@email.com.br</td>
-                <td>
-                  <Link href="#">
-                    <a className="hover:underline">{getRandomIntInclusive(3, 20)}</a>
-                  </Link>
+                  {String(getRandomIntInclusive(3, 150)).padStart(2, '0')}
+                  {' / '}
+                  {String(getRandomIntInclusive(3, 20)).padStart(2, '0')}
+                  {' / '}
+                  {String(getRandomIntInclusive(3, 20)).padStart(2, '0')}
                 </td>
                 <td>
                   {DateTime.now()

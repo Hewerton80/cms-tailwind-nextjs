@@ -38,13 +38,11 @@ function Posts() {
           <Table>
             <thead>
               <tr>
-                <th>id</th>
                 <th>Título</th>
                 <th>Categoria(s)</th>
                 <th>Autor</th>
                 <th>(Vizualizações / Likes / Favoritos)</th>
-                <th>Situação</th>
-                <th>Publicado em:</th>
+                <th>Data</th>
                 <th></th>
               </tr>
             </thead>
@@ -54,13 +52,6 @@ function Posts() {
 
                 return (
                   <tr key={i}>
-                    <td>
-                      <Link href="#">
-                        <a className="hover:underline">
-                          #{getRandomIntInclusive(1, 1000)}
-                        </a>
-                      </Link>
-                    </td>
                     <td>
                       <Link href="#">
                         <a className="hover:underline">
@@ -95,15 +86,18 @@ function Posts() {
                       {' / '}
                       {String(getRandomIntInclusive(3, 20)).padStart(2, '0')}
                     </td>
+                    {/* <td>
+                      
+                    </td> */}
                     <td>
-                      <Badge variant={PostStatusVariantEnum[status]}>
-                        {PostStatusPtBrEnum[status]}
-                      </Badge>
-                    </td>
-                    <td>
-                      {DateTime.now()
-                        .plus({ days: -1 * getRandomIntInclusive(0, 365) })
-                        .toFormat('ff')}
+                      <span className="flex flex-col ">
+                        <Badge className="mb-1" variant={PostStatusVariantEnum[status]}>
+                          {PostStatusPtBrEnum[status]}
+                        </Badge>
+                        {DateTime.now()
+                          .plus({ days: -1 * getRandomIntInclusive(0, 365) })
+                          .toFormat('ff')}
+                      </span>
                     </td>
                     <td>
                       <div className="flex items-center justify-end">

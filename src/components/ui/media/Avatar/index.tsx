@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import cn from 'classnames'
-interface AvatarProps {
+export interface AvatarProps {
   size?: number
   src: string
   className?: string

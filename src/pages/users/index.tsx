@@ -12,6 +12,7 @@ import Badge from '../../components/ui/dataDisplay/Badge'
 import { RouteEnum } from '../../utils/routes'
 import { useContext, useEffect } from 'react'
 import { BreadcrumbsContext } from '../../contexts/breadcrumbsContext'
+import AvatarGroup from '../../components/ui/media/AvatarGroup'
 
 const Users: NextPage = () => {
   const { handleSetBreadcrumbs } = useContext(BreadcrumbsContext)
@@ -36,11 +37,8 @@ const Users: NextPage = () => {
           <Table>
             <thead>
               <tr>
-                <th>User</th>
-                <th>id</th>
-                <th>Nome</th>
-                <th>Email</th>
-                <th>Perfil</th>
+                <th></th>
+                <th>Função</th>
                 <th>Posts</th>
                 <th>Situação</th>
                 <th>Cadastrado em:</th>
@@ -51,15 +49,12 @@ const Users: NextPage = () => {
               {Array.from(Array(5).keys()).map((i) => (
                 <tr key={i}>
                   <td className="py-1">
-                    <Avatar src={`/images/face${getRandomIntInclusive(4, 7)}.jpg`} />
+                    <AvatarGroup
+                      src={`/images/face${getRandomIntInclusive(4, 7)}.jpg`}
+                      userName="Fulano da Silva "
+                      userEmail="Fulano@email.com.br"
+                    />
                   </td>
-                  <td>
-                    <Link href="#">
-                      <a className="hover:underline">#{getRandomIntInclusive(1, 1000)}</a>
-                    </Link>
-                  </td>
-                  <td>Fulano</td>
-                  <td>Fulano@email.com.br</td>
                   <td>{!getRandomIntInclusive(0, 1) ? 'Blogger' : 'Super Admin'}</td>
                   <td>{getRandomIntInclusive(3, 20)}</td>
 

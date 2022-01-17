@@ -22,8 +22,32 @@ function CategoryForm({ isEdit }: CategoryFormProps) {
   const [isSubCategory, setIsSubCategory] = useState(false)
   const [category, setCategory] = useState<ISelectBoxOptions>({ text: '', value: '' })
   const [subCategories, setSubCategories] = useState<ISelectBoxOptions[]>([])
+  const [slug, setSlug] = useState('')
+  const [hasChangedSlug, setHasChangedSlug] = useState(false)
 
   const categories = ['html', 'javascript', 'css']
+
+  const handleChangeName = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      setName(e.target.value)
+      if (!hasChangedSlug) {
+        setSlug(
+          e.target.value
+            .trim()
+            .toLowerCase()
+            .split(' ')
+            .filter((word) => word)
+            .join('-')
+        )
+      }
+    },
+    [hasChangedSlug]
+  )
+
+  const handleChangeSlug = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setSlug(e.target.value)
+    setHasChangedSlug(true)
+  }, [])
 
   const handleChangeRadioSubcategory = useCallback((checked: boolean) => {
     setIsSubCategory(checked)
@@ -35,98 +59,110 @@ function CategoryForm({ isEdit }: CategoryFormProps) {
   }, [])
 
   return (
-    <div className="flex space-x-6">
-      <Card className="flex-1">
-        <CardBody>
-          <Form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-            <div className="grid grid-cols-12 gap-6">
-              <div className="col-span-12">
-                <FormGroup>
-                  <FormLabel required>Nome</FormLabel>
-                  <InputText
-                    id="name"
-                    required
-                    placeholder="Título"
-                    value={name}
-                    onChange={(e) => setName(e.target.validationMessage)}
-                  />
-                </FormGroup>
-              </div>
-              <div className="col-span-12">
-                <FormGroup className="space-y-2">
-                  <InputRadio
-                    id="has-subcategories"
-                    checked={isSubCategory}
-                    onChange={(e) => handleChangeRadioSubcategory(e.target.checked)}
-                    text="Ter subcategorias"
-                  />
-                  <InputRadio
-                    id="is-subcategories"
-                    checked={!isSubCategory}
-                    onChange={(e) => handleChangeRadioSubcategory(!e.target.checked)}
-                    text="Ser subcategoria"
-                  />
-                </FormGroup>
-              </div>
-              <div className="col-span-6">
-                <FormGroup>
-                  {isSubCategory ? (
-                    <>
-                      <FormLabel required>Subcategorias:</FormLabel>
-                      <MultSelectBox
-                        options={categories.map((opt) => ({ value: opt, text: opt }))}
-                        placeholder="Subcategorias..."
-                        selectedOptions={subCategories}
-                        onChange={(values) => setSubCategories(values)}
-                      />
-                    </>
-                  ) : (
-                    <>
-                      <FormLabel required>Subcategoria de:</FormLabel>
-                      <SelectBox
-                        options={categories.map((opt) => ({ value: opt, text: opt }))}
-                        placeholder="Categoria..."
-                        selectedOption={category}
-                        onChange={(value) => setCategory(value)}
-                      />
-                    </>
-                  )}
-                </FormGroup>
-              </div>
+    <Card className="w-full">
+      <CardTitle>Criar categoria</CardTitle>
+      <CardBody>
+        <Form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+          <div className="flex flex-col space-y-6">
+            <div className="flex w-full">
+              <FormGroup>
+                <FormLabel required>Nome</FormLabel>
+                <InputText
+                  id="name"
+                  required
+                  placeholder="Título"
+                  value={name}
+                  onChange={handleChangeName}
+                />
+              </FormGroup>
             </div>
-            <div className="flex justify-end">
-              <Button type="submit" variant="primary">
-                Criar
-              </Button>
-              <Button type="button" variant="light" className="ml-2">
-                Cancelar
-              </Button>
+            <div className="flex w-full">
+              <FormGroup>
+                <FormLabel required>Slug</FormLabel>
+                <InputText
+                  id="slug"
+                  required
+                  placeholder="Título"
+                  value={slug}
+                  onChange={handleChangeSlug}
+                />
+              </FormGroup>
             </div>
-          </Form>
-        </CardBody>
-      </Card>
-      <Card className="max-w-[320px] w-full">
-        <CardBody>
-          <Form onSubmit={(e) => e.preventDefault()}>
-            <div className="flex flex-col">
-              <div className="space-y-6">
-                <FormGroup>
-                  <FormLabel required>Status</FormLabel>
-                  <Select id="status" required placeholder="Título">
-                    <option>Status</option>
-                    <option>Público</option>
-                    <option>Privado</option>
-                  </Select>
-                </FormGroup>
-                <FormGroup>
-                  <Switch id="hightlight" text="Exibir no meu" />
-                </FormGroup>
-              </div>
+            <div className="flex w-full">
+              <FormGroup>
+                <FormLabel>Descrição</FormLabel>
+                <TextArea id="description" placeholder="Descrição..." />
+              </FormGroup>
             </div>
-          </Form>
-        </CardBody>
-      </Card>
-    </div>
+            <div className="flex w-full">
+              <FormGroup className="space-y-2">
+                <InputRadio
+                  id="has-subcategories"
+                  checked={isSubCategory}
+                  onChange={(e) => handleChangeRadioSubcategory(e.target.checked)}
+                  text="Ter subcategorias"
+                />
+                <InputRadio
+                  id="is-subcategories"
+                  checked={!isSubCategory}
+                  onChange={(e) => handleChangeRadioSubcategory(!e.target.checked)}
+                  text="Ser subcategoria"
+                />
+              </FormGroup>
+            </div>
+            <div className="flex w-full">
+              <FormGroup>
+                {isSubCategory ? (
+                  <>
+                    <FormLabel required>Subcategorias:</FormLabel>
+                    <MultSelectBox
+                      options={categories.map((opt) => ({ value: opt, text: opt }))}
+                      placeholder="Subcategorias..."
+                      selectedOptions={subCategories}
+                      onChange={(values) => setSubCategories(values)}
+                    />
+                  </>
+                ) : (
+                  <>
+                    <FormLabel required>Subcategoria de:</FormLabel>
+                    <SelectBox
+                      options={categories.map((opt) => ({ value: opt, text: opt }))}
+                      placeholder="Categoria..."
+                      selectedOption={category}
+                      onChange={(value) => setCategory(value)}
+                    />
+                  </>
+                )}
+              </FormGroup>
+            </div>
+          </div>
+          <div className="flex  flex-col w-full">
+            <FormGroup>
+              <FormLabel required>Status</FormLabel>
+              <Select id="status" required placeholder="Título">
+                <option>Status</option>
+                <option>Público</option>
+                <option>Privado</option>
+              </Select>
+            </FormGroup>
+          </div>
+          <div className="flex  flex-col w-full">
+            <FormGroup>
+              <Switch id="hightlight" text="Exibir no meu" />
+            </FormGroup>
+          </div>
+
+          <div className="flex justify-end">
+            <Button type="submit" variant="primary">
+              Criar
+            </Button>
+            <Button type="button" variant="light" className="ml-2">
+              Cancelar
+            </Button>
+          </div>
+        </Form>
+      </CardBody>
+    </Card>
   )
 }
 
