@@ -20,7 +20,7 @@
   .modal {
     animation-duration: 0.12s;
     animation-name: show;
-    @apply relative z-[1001] w-full m-auto;
+    @apply relative z-[1001] w-full m-auto max-h-screen;
 
     &.md {
       @apply max-w-[500px];

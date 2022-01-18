@@ -37,6 +37,8 @@ function Categories() {
   const [slug, setSlug] = useState('')
   const [hasChangedSlug, setHasChangedSlug] = useState(false)
 
+  const [showModalCategoryForm, setShowModalCategoryForm] = useState(false)
+
   const handleChangeName = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
       setName(e.target.value)
@@ -67,8 +69,6 @@ function Categories() {
       setSubCategories([])
     }
   }, [])
-
-  const [showModalCategoryForm, setShowModalCategoryForm] = useState(false)
 
   useEffect(() => {
     handleSetBreadcrumbs([{ path: RouteEnum.Categories, text: 'Categorias' }])
@@ -158,16 +158,13 @@ function Categories() {
           </div>
         </CardBody>
       </Card>
-      {/* <div className="flex min-w-[300px]">
-          <CategoryForm />
-        </div> */}
 
       <Modal show={showModalCategoryForm} onClose={handleCloseModal} size="lg">
         <ModalTitle>Adicionar categoria </ModalTitle>
         <ModalContent>
-          <Form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-            <div className="flex flex-col space-y-6">
-              <div className="flex w-full">
+          <Form className="flex flex-col space-y-6" onSubmit={(e) => e.preventDefault()}>
+            <div className="grid grid-cols-12 gap-6">
+              <div className="col-span-12 sm:col-span-6">
                 <FormGroup>
                   <FormLabel required>Nome</FormLabel>
                   <InputText
@@ -179,7 +176,7 @@ function Categories() {
                   />
                 </FormGroup>
               </div>
-              <div className="flex w-full">
+              <div className="col-span-12 sm:col-span-6">
                 <FormGroup>
                   <FormLabel required>Slug</FormLabel>
                   <InputText
@@ -191,13 +188,13 @@ function Categories() {
                   />
                 </FormGroup>
               </div>
-              <div className="flex w-full">
+              <div className="col-span-12">
                 <FormGroup>
                   <FormLabel>Descrição</FormLabel>
                   <TextArea id="description" placeholder="Descrição..." />
                 </FormGroup>
               </div>
-              <div className="flex w-full">
+              <div className="col-span-12">
                 <FormGroup className="space-y-2">
                   <InputRadio
                     id="has-subcategories"
@@ -213,7 +210,7 @@ function Categories() {
                   />
                 </FormGroup>
               </div>
-              <div className="flex w-full">
+              <div className="col-span-12 sm:col-span-6">
                 <FormGroup>
                   {isSubCategory ? (
                     <>
@@ -238,23 +235,22 @@ function Categories() {
                   )}
                 </FormGroup>
               </div>
+              <div className="col-span-12 sm:col-span-6">
+                <FormGroup>
+                  <FormLabel required>Status</FormLabel>
+                  <Select id="status" required placeholder="Título">
+                    <option>Status</option>
+                    <option>Público</option>
+                    <option>Privado</option>
+                  </Select>
+                </FormGroup>
+              </div>
+              <div className="col-span-12 sm:col-span-6">
+                <FormGroup>
+                  <Switch id="hightlight" text="Exibir no meu" />
+                </FormGroup>
+              </div>
             </div>
-            <div className="flex  flex-col w-full">
-              <FormGroup>
-                <FormLabel required>Status</FormLabel>
-                <Select id="status" required placeholder="Título">
-                  <option>Status</option>
-                  <option>Público</option>
-                  <option>Privado</option>
-                </Select>
-              </FormGroup>
-            </div>
-            <div className="flex  flex-col w-full">
-              <FormGroup>
-                <Switch id="hightlight" text="Exibir no meu" />
-              </FormGroup>
-            </div>
-
             <div className="flex justify-end">
               <Button type="button" variant="light" onClick={handleCloseModal}>
                 Cancelar

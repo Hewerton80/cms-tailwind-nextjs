@@ -12,18 +12,33 @@ import Link from 'next/link'
 import Button from '../../components/ui/forms/Button'
 import IconButton from '../../components/ui/forms/IconButton'
 import { FaPen, FaRegEye } from 'react-icons/fa'
-import { useContext, useEffect } from 'react'
+import { useCallback, useContext, useEffect, useState } from 'react'
 import { BreadcrumbsContext } from '../../contexts/breadcrumbsContext'
 import { RouteEnum } from '../../utils/routes'
 import { getRange } from '../../utils/getRange'
+import { Modal, ModalContent, ModalTitle } from '../../components/ui/overlay/Modal'
+import Form from '../../components/ui/forms/Form'
+import FormGroup from '../../components/ui/forms/FormGroup'
+import InputText from '../../components/ui/forms/InputText'
+import FormLabel from '../../components/ui/forms/FormLabel'
 
 function Tags() {
   const { handleSetBreadcrumbs } = useContext(BreadcrumbsContext)
+
+  const [showModalTagForm, setShowModalTagForm] = useState(false)
 
   useEffect(() => {
     handleSetBreadcrumbs([{ path: RouteEnum.Tags, text: 'Tags' }])
     return () => handleSetBreadcrumbs([])
   }, [handleSetBreadcrumbs])
+
+  const handleShowModal = useCallback(() => {
+    setShowModalTagForm(true)
+  }, [])
+
+  const handleCloseModal = useCallback(() => {
+    setShowModalTagForm(false)
+  }, [])
 
   const tags = ['html', 'javascript', 'css']
   return (
@@ -32,7 +47,7 @@ function Tags() {
         <CardHeader>
           <CardTitle>Tags</CardTitle>
           <CardActions>
-            <Button className="ml-auto" variant="primary">
+            <Button className="ml-auto" variant="primary" onClick={handleShowModal}>
               Criar tag
             </Button>
           </CardActions>
@@ -83,6 +98,30 @@ function Tags() {
           </div>
         </CardBody>
       </Card>
+
+      <Modal show={showModalTagForm} onClose={handleCloseModal} size="md">
+        <ModalTitle>Adicionar tag </ModalTitle>
+        <ModalContent>
+          <Form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+            <div className="flex flex-col space-y-6">
+              <div className="flex w-full">
+                <FormGroup>
+                  <FormLabel required>Nome</FormLabel>
+                  <InputText id="name" required placeholder="Nome" />
+                </FormGroup>
+              </div>
+            </div>
+            <div className="flex justify-end">
+              <Button type="button" variant="light" onClick={handleCloseModal}>
+                Cancelar
+              </Button>
+              <Button type="submit" variant="primary" className="ml-2">
+                Criar
+              </Button>
+            </div>
+          </Form>
+        </ModalContent>
+      </Modal>
     </>
   )
 }
