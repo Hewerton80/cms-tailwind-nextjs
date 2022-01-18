@@ -1,6 +1,12 @@
 import type { NextPage } from 'next'
 import Table from '../../components/ui/dataDisplay/Table'
-import { Card, CardBody, CardTitle } from '../../components/ui/layout/Card'
+import {
+  Card,
+  CardActions,
+  CardBody,
+  CardHeader,
+  CardTitle,
+} from '../../components/ui/layout/Card'
 import Avatar from '../../components/ui/media/Avatar'
 import { getRandomIntInclusive } from '../../utils/getRamdomInt'
 import { DateTime } from 'luxon'
@@ -24,66 +30,66 @@ const Users: NextPage = () => {
 
   return (
     <Card className="w-full">
-      <CardTitle>Administradores</CardTitle>
+      <CardHeader>
+        <CardTitle>Administradores</CardTitle>
+        <CardActions>
+          <Link href={RouteEnum.CreateUser}>
+            <a className="ml-auto">
+              <Button variant="primary">Adicionar usuário</Button>
+            </a>
+          </Link>
+        </CardActions>
+      </CardHeader>
       <CardBody>
-        <div className="flex flex-col">
-          <div className="flex">
-            <Link href={RouteEnum.CreateUser}>
-              <a className="ml-auto">
-                <Button variant="primary">Adicionar usuário</Button>
-              </a>
-            </Link>
-          </div>
-          <Table>
-            <thead>
-              <tr>
-                <th></th>
-                <th>Função</th>
-                <th>Posts</th>
-                <th>Situação</th>
-                <th>Cadastrado em:</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {Array.from(Array(5).keys()).map((i) => (
-                <tr key={i}>
-                  <td className="py-1">
-                    <AvatarGroup
-                      src={`/images/face${getRandomIntInclusive(4, 7)}.jpg`}
-                      userName="Fulano da Silva "
-                      userEmail="Fulano@email.com.br"
-                    />
-                  </td>
-                  <td>{!getRandomIntInclusive(0, 1) ? 'Blogger' : 'Super Admin'}</td>
-                  <td>{getRandomIntInclusive(3, 20)}</td>
+        <Table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Função</th>
+              <th>Posts</th>
+              <th>Situação</th>
+              <th>Cadastrado em:</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {Array.from(Array(5).keys()).map((i) => (
+              <tr key={i}>
+                <td className="py-1">
+                  <AvatarGroup
+                    src={`/images/face${getRandomIntInclusive(4, 7)}.jpg`}
+                    userName="Fulano da Silva "
+                    userEmail="Fulano@email.com.br"
+                  />
+                </td>
+                <td>{!getRandomIntInclusive(0, 1) ? 'Blogger' : 'Super Admin'}</td>
+                <td>{getRandomIntInclusive(3, 20)}</td>
 
-                  <td>
-                    {!getRandomIntInclusive(0, 2) ? (
-                      <Badge variant="success">Ativo</Badge>
-                    ) : getRandomIntInclusive(0, 1) ? (
-                      <Badge variant="danger">Inativo</Badge>
-                    ) : (
-                      <Badge variant="warning">Pendente</Badge>
-                    )}
-                  </td>
-                  <td>
-                    {DateTime.now()
-                      .plus({ days: -1 * getRandomIntInclusive(0, 365) })
-                      .toFormat('ff')}
-                  </td>
-                  <td>
-                    <div className="flex items-center justify-end">
-                      <IconButton icon={<FaPen />} />
-                      <IconButton className="ml-2" icon={<FaRegEye />} />
-                      <IconButton variant="danger" className="ml-2" icon={<FaTrash />} />
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
-        </div>
+                <td>
+                  {!getRandomIntInclusive(0, 2) ? (
+                    <Badge variant="success">Ativo</Badge>
+                  ) : getRandomIntInclusive(0, 1) ? (
+                    <Badge variant="danger">Inativo</Badge>
+                  ) : (
+                    <Badge variant="warning">Pendente</Badge>
+                  )}
+                </td>
+                <td>
+                  {DateTime.now()
+                    .plus({ days: -1 * getRandomIntInclusive(0, 365) })
+                    .toFormat('ff')}
+                </td>
+                <td>
+                  <div className="flex items-center justify-end">
+                    <IconButton icon={<FaPen />} />
+                    <IconButton className="ml-2" icon={<FaRegEye />} />
+                    <IconButton variant="danger" className="ml-2" icon={<FaTrash />} />
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
       </CardBody>
     </Card>
   )

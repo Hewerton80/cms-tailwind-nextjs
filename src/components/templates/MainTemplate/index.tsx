@@ -21,18 +21,11 @@ function MainTemplate({ children, ...rest }: MainTemplateProps) {
       )}
       {...rest}
     >
-      <Header className="z-20" />
-      <div
-        className={cn(
-          'flex',
-          'min-h-screen w-full pt-[115px]',
-          'overflow-x-hidden relative',
-          'z-10'
-        )}
-      >
+      <Header />
+      <div className={cn('flex', 'w-full pt-[35px]', 'overflow-x-hidden relative')}>
         <SideBar />
         <Breadcrumbs
-          className="absolute top-[113px] right-7 -translate-y-full"
+          className="absolute top-[32px] right-7 -translate-y-full"
           links={breadcrumbs}
         />
         <div className="flex flex-col flex-1 px-7 overflow-auto ">{children}</div>

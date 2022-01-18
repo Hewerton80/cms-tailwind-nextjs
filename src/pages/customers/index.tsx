@@ -1,5 +1,5 @@
 import Table from '../../components/ui/dataDisplay/Table'
-import { Card, CardBody, CardTitle } from '../../components/ui/layout/Card'
+import { Card, CardBody, CardHeader, CardTitle } from '../../components/ui/layout/Card'
 import Avatar from '../../components/ui/media/Avatar'
 import { getRandomIntInclusive } from '../../utils/getRamdomInt'
 import { DateTime } from 'luxon'
@@ -21,7 +21,9 @@ function Customers() {
 
   return (
     <Card className="w-full">
-      <CardTitle>Assinantes</CardTitle>
+      <CardHeader>
+        <CardTitle>Assinantes</CardTitle>
+      </CardHeader>
       <CardBody>
         <Table>
           <thead>

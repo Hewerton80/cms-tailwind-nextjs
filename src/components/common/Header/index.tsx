@@ -12,7 +12,7 @@ function Header({ className, ...rest }: HeaderProps) {
 
   return (
     <header
-      className={cn('fixed', 'flex', 'h-20 w-full', 'px-7', 'bg-primary', className)}
+      className={cn('flex', 'h-20 w-full', 'px-7', 'bg-primary', className)}
       {...rest}
     >
       <div className="flex items-center justify-between w-full h-full">

@@ -18,6 +18,25 @@ export function Card({ children, className, ...rest }: CardProps) {
   )
 }
 
+export function CardHeader({ children, className, ...rest }: CardProps) {
+  return (
+    <div
+      className={cn('flex items-center justify-between px-7 pt-6', className)}
+      {...rest}
+    >
+      {children}
+    </div>
+  )
+}
+
+export function CardActions({ children, className, ...rest }: CardProps) {
+  return (
+    <div className={cn('flex items-center', className)} {...rest}>
+      {children}
+    </div>
+  )
+}
+
 export function CardBody({ children, className, ...rest }: CardProps) {
   return (
     <div className={cn('flex flex-col px-7 py-6', className)} {...rest}>
@@ -28,7 +47,7 @@ export function CardBody({ children, className, ...rest }: CardProps) {
 
 export function CardTitle({ children, className, ...rest }: CardProps) {
   return (
-    <div className={cn('flex px-7 pt-6', className)} {...rest}>
+    <div className={cn('flex ', className)} {...rest}>
       <h4 className="font-medium text-black">{children}</h4>
     </div>
   )

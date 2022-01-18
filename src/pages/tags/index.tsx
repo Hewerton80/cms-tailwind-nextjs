@@ -1,16 +1,20 @@
 import Table from '../../components/ui/dataDisplay/Table'
-import { Card, CardBody, CardTitle } from '../../components/ui/layout/Card'
+import {
+  Card,
+  CardActions,
+  CardBody,
+  CardHeader,
+  CardTitle,
+} from '../../components/ui/layout/Card'
 import { getRandomIntInclusive } from '../../utils/getRamdomInt'
 import { DateTime } from 'luxon'
 import Link from 'next/link'
-import { PostStatusEnum } from '../../types/Post'
 import Button from '../../components/ui/forms/Button'
 import IconButton from '../../components/ui/forms/IconButton'
 import { FaPen, FaRegEye } from 'react-icons/fa'
 import { useContext, useEffect } from 'react'
 import { BreadcrumbsContext } from '../../contexts/breadcrumbsContext'
 import { RouteEnum } from '../../utils/routes'
-import Modal from '../../components/ui/overlay/Modal'
 import { getRange } from '../../utils/getRange'
 
 function Tags() {
@@ -25,14 +29,17 @@ function Tags() {
   return (
     <>
       <Card className="w-full">
-        <CardTitle>Tags</CardTitle>
+        <CardHeader>
+          <CardTitle>Tags</CardTitle>
+          <CardActions>
+            <Button className="ml-auto" variant="primary">
+              Criar tag
+            </Button>
+          </CardActions>
+        </CardHeader>
         <CardBody>
           <div className="flex flex-col">
-            <div className="flex">
-              <Button className="ml-auto" variant="primary">
-                Criar tag
-              </Button>
-            </div>
+            <div className="flex"></div>
             <Table>
               <thead>
                 <tr>
@@ -76,9 +83,6 @@ function Tags() {
           </div>
         </CardBody>
       </Card>
-      <Modal show={false}>
-        <h1>Teste</h1>
-      </Modal>
     </>
   )
 }

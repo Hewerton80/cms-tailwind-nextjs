@@ -5,7 +5,7 @@ import FormLabel from '../../components/ui/forms/FormLabel'
 import InputText from '../../components/ui/forms/InputText'
 import Select from '../../components/ui/forms/Select'
 import TextArea from '../../components/ui/forms/TextArea'
-import { Card, CardBody, CardTitle } from '../../components/ui/layout/Card'
+import { Card, CardBody, CardHeader, CardTitle } from '../../components/ui/layout/Card'
 
 interface UserFormProps {
   isEdit?: boolean
@@ -16,7 +16,9 @@ function UserForm({ isEdit }: UserFormProps) {
   return (
     <div className="grid grid-cols-12 gap-6">
       <Card className="col-span-12 md:col-span-8">
-        <CardTitle>{isEdit ? 'Editar' : 'Criar'} Usuário</CardTitle>
+        <CardHeader>
+          <CardTitle>{isEdit ? 'Editar' : 'Criar'} Usuário</CardTitle>
+        </CardHeader>
         <CardBody>
           <Form onSubmit={(e) => e.preventDefault()}>
             <div className="grid grid-cols-12 gap-6">
@@ -96,7 +98,9 @@ function UserForm({ isEdit }: UserFormProps) {
         </CardBody>
       </Card>
       <Card className="col-span-12 md:col-span-4">
-        <CardTitle>Opcionais</CardTitle>
+        <CardHeader>
+          <CardTitle>Opcionais</CardTitle>
+        </CardHeader>
         <CardBody>
           <Form onSubmit={(e) => e.preventDefault()}>
             <div className="flex flex-col space-y-6">
