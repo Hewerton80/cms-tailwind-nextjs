@@ -46,7 +46,6 @@ function Customers() {
           <CardTitle>Assinantes</CardTitle>
           <CardActions>
             <Button variant="primary" onClick={handleShowModal}>
-              {' '}
               Adicionar assinante
             </Button>
           </CardActions>

@@ -5,12 +5,7 @@ import styles from './styles.module.scss'
 import { Card, CardProps } from '../../layout/Card'
 import { FaTimes } from 'react-icons/fa'
 
-interface ModalProps extends HTMLAttributes<HTMLDivElement> {
-  show: boolean
-  onClose?: Callback
-  size?: 'sm' | 'md' | 'lg'
-}
-interface Modaltitle extends HTMLAttributes<HTMLDivElement> {
+export interface ModalProps extends HTMLAttributes<HTMLDivElement> {
   show: boolean
   onClose?: Callback
   size?: 'sm' | 'md' | 'lg'

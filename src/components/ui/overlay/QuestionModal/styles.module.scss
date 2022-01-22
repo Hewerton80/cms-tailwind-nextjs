@@ -1,0 +1,9 @@
+.root {
+  @apply flex flex-col items-center space-y-3;
+  svg {
+    @apply text-7xl;
+  }
+  h4 {
+    @apply text-lg text-center;
+  }
+}
