@@ -52,3 +52,11 @@ export function CardTitle({ children, className, ...rest }: CardProps) {
     </div>
   )
 }
+
+export function CardFooter({ children, className, ...rest }: CardProps) {
+  return (
+    <div className={cn('flex px-7 pb-6', className)} {...rest}>
+      {children}
+    </div>
+  )
+}

@@ -27,45 +27,45 @@ function UserForm({ isEdit }: UserFormProps) {
   return (
     <>
       <div className="grid grid-cols-12 gap-6">
-        <Card className="col-span-12 md:col-span-8">
+        <Card className="col-span-12 sm:col-span-12 lg:col-span-8">
           <CardHeader>
             <CardTitle>{isEdit ? 'Editar' : 'Criar'} Usuário</CardTitle>
           </CardHeader>
           <CardBody>
             <Form onSubmit={handleCreateUser}>
               <div className="grid grid-cols-12 gap-6">
-                <div className="col-span-12 md:col-span-6 lg:col-span-4">
+                <div className="col-span-12 md:col-span-12 lg:col-span-4">
                   <FormGroup>
                     <FormLabel required>Nome de usuário</FormLabel>
                     <InputText required placeholder="Nome de usuário" />
                   </FormGroup>
                 </div>
-                <div className="col-span-12 md:col-span-6 lg:col-span-4">
+                <div className="col-span-12 md:col-span-12 lg:col-span-4">
                   <FormGroup>
                     <FormLabel required>Primeiro nome</FormLabel>
                     <InputText required placeholder="Primeiro nome" />
                   </FormGroup>
                 </div>
-                <div className="col-span-12 md:col-span-6 lg:col-span-4">
+                <div className="col-span-12 md:col-span-12 lg:col-span-4">
                   <FormGroup>
                     <FormLabel required>Segundo nome</FormLabel>
                     <InputText required placeholder="Segundo nome" />
                   </FormGroup>
                 </div>
 
-                <div className="col-span-12 md:col-span-6 lg:col-span-4">
+                <div className="col-span-12 md:col-span-12 lg:col-span-4">
                   <FormGroup>
                     <FormLabel required>Email</FormLabel>
                     <InputText required placeholder="Email" type="email" />
                   </FormGroup>
                 </div>
-                <div className="col-span-12 md:col-span-6 lg:col-span-4">
+                <div className="col-span-12 md:col-span-12 lg:col-span-4">
                   <FormGroup>
                     <FormLabel required>Profissão</FormLabel>
                     <InputText required placeholder="Profissão" />
                   </FormGroup>
                 </div>
-                <div className="col-span-12 md:col-span-6 lg:col-span-4">
+                <div className="col-span-12 md:col-span-12 lg:col-span-4">
                   <FormGroup>
                     <FormLabel required>Perfil</FormLabel>
                     <Select required>
@@ -94,7 +94,7 @@ function UserForm({ isEdit }: UserFormProps) {
             </Form>
           </CardBody>
         </Card>
-        <Card className="col-span-12 md:col-span-4">
+        <Card className="col-span-12 sm:col-span-12 lg:col-span-4">
           <CardHeader>
             <CardTitle>Opcionais</CardTitle>
           </CardHeader>

@@ -1,44 +1,48 @@
-import { HTMLAttributes, useState } from 'react'
+import { HTMLAttributes, useContext, useState } from 'react'
 import cn from 'classnames'
 import Image from 'next/image'
 import { FaBars, FaAngleDown, FaSignOutAlt } from 'react-icons/fa'
 import Avatar from '../../ui/media/Avatar'
 import DropDown from '../../ui/overlay/DropDown'
+import { ToogleSideBarContext } from '../../../contexts/toogleSideBarContext'
+import styles from './styles.module.scss'
 
 interface HeaderProps extends HTMLAttributes<HTMLElement> {}
 
 function Header({ className, ...rest }: HeaderProps) {
+  const { showSideBar } = useContext(ToogleSideBarContext)
   const [showDropDown, setShowDropDown] = useState(false)
 
+  const { handleToogleSideBar } = useContext(ToogleSideBarContext)
+
   return (
-    <header
-      className={cn('flex', 'h-20 w-full', 'px-7', 'bg-primary', className)}
-      {...rest}
-    >
-      <div className="flex items-center justify-between w-full h-full">
-        <div className="flex h-full items-center w-60 px-5">
-          <Image src="/images/logo.svg" alt="logo" width={126} height={40} />
-          <span className="flex ml-auto cursor-pointer w-5 h-7" role="button">
-            <FaBars className="m-auto text-white text-xl" />
+    <header className={cn(styles.root, className)} {...rest}>
+      <div className={styles.header_inner}>
+        <div className={cn(showSideBar && styles.show)}>
+          <span className={cn(styles.logo_wrapper, showSideBar && styles.show)}>
+            <Image src="/images/logo.svg" alt="logo" width={126} height={40} />
+          </span>
+          <span
+            className={cn(styles.navbar_toggler)}
+            role="button"
+            onClick={handleToogleSideBar}
+          >
+            <FaBars />
           </span>
         </div>
 
-        <div className="flex h-full items-center ml-auto">
-          <div
-            className="flex items-center cursor-pointer relative"
-            role="button"
-            onClick={() => !showDropDown && setShowDropDown(true)}
-          >
+        <div>
+          <div role="button" onClick={() => !showDropDown && setShowDropDown(true)}>
             <Avatar src="/images/face5.jpg" />
-            <p className="ml-4 text-sm font-bold text-white">Fulano de tal</p>
-            <FaAngleDown className="text-white ml-1" />
+            <p>Fulano de tal</p>
+            <FaAngleDown />
             {showDropDown && (
               <DropDown
                 onClickOutside={() => setShowDropDown(false)}
                 onClickOption={() => console.log('logout')}
                 dropDownItens={[
-                  <span key="logout" className="flex items-center">
-                    <FaSignOutAlt className="text-black mr-2" /> Log out
+                  <span key="logout">
+                    <FaSignOutAlt /> Log out
                   </span>,
                 ]}
               />

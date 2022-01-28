@@ -1,10 +1,11 @@
-import { createContext, ReactNode, useState, useCallback } from 'react'
+import { createContext, ReactNode, useState, useCallback, useEffect } from 'react'
 import { Callback } from '../types/Global'
+import { getBodyElement } from '../utils/getBodyElement'
+import { isMobile } from '../utils/isMobile'
 
 interface IToogleSideBarContext {
   showSideBar: boolean
   handleToogleSideBar: Callback
-  handleCloseSideBar: Callback
 }
 
 export const ToogleSideBarContext = createContext({} as IToogleSideBarContext)
@@ -14,14 +15,27 @@ interface IToogleSideBarContextProps {
 }
 
 export function ToogleSideBarContextProvider({ children }: IToogleSideBarContextProps) {
-  const [showSideBar, setShowSideBar] = useState(false)
+  const [showSideBar, setShowSideBar] = useState(true)
+
+  useEffect(() => {
+    if (isMobile()) {
+      setShowSideBar(false)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (isMobile()) {
+      const bodyElement = getBodyElement()
+      if (showSideBar) {
+        bodyElement?.classList?.add('hidden_scroll')
+      } else {
+        bodyElement?.classList?.remove('hidden_scroll')
+      }
+    }
+  }, [showSideBar])
 
   const handleToogleSideBar = useCallback(() => {
     setShowSideBar((currentShowSideBar) => !currentShowSideBar)
-  }, [])
-
-  const handleCloseSideBar = useCallback(() => {
-    setShowSideBar(false)
   }, [])
 
   return (
@@ -29,7 +43,6 @@ export function ToogleSideBarContextProvider({ children }: IToogleSideBarContext
       value={{
         showSideBar,
         handleToogleSideBar,
-        handleCloseSideBar,
       }}
     >
       {children}

@@ -1,17 +1,62 @@
 .root {
-  @apply flex w-60 ml-2 pt-8 pb-14 h-auto;
+  @apply flex items-start  pt-8 pb-14 overflow-hidden w-60 fixed -translate-x-60
+  translate-y-[-35px] z-20;
+  transition: ease 0.3s all;
+  // height: calc(100vh) !important;
+  height: calc(100vh - 80px) !important;
+  &.expanded {
+    @apply translate-x-0;
+  }
+  @media (min-width: theme('screens.md')) {
+    @apply ml-2 w-[68px] items-center static;
+    transform: translateX(0) !important;
+    transform: translatey(0) !important;
+    height: auto;
+    &.expanded {
+      @apply w-60 px-5;
+    }
+  }
+
   nav,
   ul {
     @apply flex flex-col w-full;
     li {
       @apply flex w-full hover:bg-gray-lighter;
+      &.active {
+        @apply bg-gray-lighter;
+      }
       a {
-        @apply flex items-center w-full h-full text-secondary text-sm;
-        padding: 13.92px 14px 13.92px 9.6px;
+        @apply flex items-center w-full h-full text-secondary text-sm justify-start
+        py-3.5 pr-3.5 pl-[9.6px];
         p {
           @apply ml-3;
         }
+        svg {
+          @apply text-lg;
+        }
+        @media (min-width: theme('screens.md')) {
+          @apply justify-center;
+          p {
+            @apply hidden;
+          }
+          &.expanded {
+            @apply justify-start;
+            p {
+              @apply block;
+            }
+          }
+        }
       }
     }
+  }
+}
+.wrapper_sidebar {
+  @apply hidden fixed left-0 top-0 w-screen min-h-screen z-10;
+  background-color: rgba(0, 0, 0, 0.3);
+  &.expanded {
+    @apply flex;
+  }
+  @media (min-width: theme('screens.md')) {
+    display: none !important;
   }
 }

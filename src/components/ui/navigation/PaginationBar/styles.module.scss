@@ -1,0 +1,29 @@
+.root {
+  @apply flex items-start justify-end w-full;
+  & > span {
+    @apply text-white font-sans text-xs sm:text-base leading-4 mb-2 sm:mb-0;
+  }
+  & > ul {
+    @apply flex;
+    // li {
+    //   @apply border-r-0;
+    // }
+    li {
+      button {
+        @apply border-1 border-gray-lightest rounded-none w-8 h-9 px-0;
+        background-color: theme('colors.white') !important;
+        color: theme('colors.black') !important;
+        box-shadow: none !important;
+        &:hover {
+          border-color: theme('colors.gray-lightest') !important;
+          background-color: #f4f5fa !important;
+        }
+      }
+      &.active button {
+        border-color: theme('colors.primary') !important;
+        background-color: theme('colors.primary') !important;
+        color: theme('colors.white') !important;
+      }
+    }
+  }
+}

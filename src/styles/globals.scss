@@ -9,6 +9,9 @@
 html,
 body {
   @apply font-sans m-0 p-0 bg-body;
+  &.hidden_scroll {
+    @apply overflow-y-hidden;
+  }
 }
 
 a {

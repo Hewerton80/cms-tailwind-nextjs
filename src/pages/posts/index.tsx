@@ -3,6 +3,7 @@ import {
   Card,
   CardActions,
   CardBody,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from '../../components/ui/layout/Card'
@@ -21,6 +22,7 @@ import IconButton from '../../components/ui/forms/IconButton'
 import { FaPen, FaRegEye, FaTrash } from 'react-icons/fa'
 import { BreadcrumbsContext } from '../../contexts/breadcrumbsContext'
 import { RouteEnum } from '../../utils/routes'
+import PaginationBar from '../../components/ui/navigation/PaginationBar'
 
 function Posts() {
   const { handleSetBreadcrumbs } = useContext(BreadcrumbsContext)
@@ -119,6 +121,9 @@ function Posts() {
           </tbody>
         </Table>
       </CardBody>
+      <CardFooter>
+        <PaginationBar currentPage={1} totalPages={10} onChangePage={(toPage) => {}} />
+      </CardFooter>
     </Card>
   )
 }

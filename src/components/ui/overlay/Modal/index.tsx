@@ -1,9 +1,10 @@
-import { HTMLAttributes } from 'react'
+import { HTMLAttributes, useEffect } from 'react'
 import cn from 'classnames'
 import { Callback } from '../../../../types/Global'
 import styles from './styles.module.scss'
 import { Card, CardProps } from '../../layout/Card'
 import { FaTimes } from 'react-icons/fa'
+import { getBodyElement } from '../../../../utils/getBodyElement'
 
 export interface ModalProps extends HTMLAttributes<HTMLDivElement> {
   show: boolean
@@ -19,6 +20,15 @@ export function Modal({
   onClose,
   ...rest
 }: ModalProps) {
+  useEffect(() => {
+    const bodyElement = getBodyElement()
+    if (show) {
+      bodyElement?.classList?.add('hidden_scroll')
+    } else {
+      bodyElement?.classList?.remove('hidden_scroll')
+    }
+  }, [show])
+
   if (!show) {
     return <></>
   }

@@ -8,8 +8,23 @@ import {
 } from 'react-icons/io5'
 import Button from '../../forms/Button'
 
+const variants = {
+  success: {
+    text: 'Parabéns!',
+    icon: <IoCheckmarkCircleOutline className="text-success" />,
+  },
+  info: {
+    text: 'Info!',
+    icon: <IoAlertCircleOutline className="text-info" />,
+  },
+  danger: {
+    text: 'Erro!',
+    icon: <IoCloseCircleOutline className="text-danger" />,
+  },
+}
+
 interface AlertModalProps extends ModalProps {
-  variant: 'success' | 'info' | 'danger'
+  variant: keyof typeof variants
   description?: string | JSX.Element
   textButton?: string
 }
@@ -21,21 +36,6 @@ function AlertModal({
   onClose,
   ...rest
 }: AlertModalProps) {
-  const variants = {
-    success: {
-      text: 'Parabéns!',
-      icon: <IoCheckmarkCircleOutline className="text-success" />,
-    },
-    info: {
-      text: 'Info!',
-      icon: <IoAlertCircleOutline className="text-info" />,
-    },
-    danger: {
-      text: 'Erro!',
-      icon: <IoCloseCircleOutline className="text-danger" />,
-    },
-  }
-
   return (
     <Modal onClose={onClose} size="md" {...rest}>
       <ModalContent>

@@ -4,6 +4,7 @@ import {
   Card,
   CardActions,
   CardBody,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from '../../components/ui/layout/Card'
@@ -19,6 +20,7 @@ import { RouteEnum } from '../../utils/routes'
 import { useContext, useEffect } from 'react'
 import { BreadcrumbsContext } from '../../contexts/breadcrumbsContext'
 import AvatarGroup from '../../components/ui/media/AvatarGroup'
+import PaginationBar from '../../components/ui/navigation/PaginationBar'
 
 const Users: NextPage = () => {
   const { handleSetBreadcrumbs } = useContext(BreadcrumbsContext)
@@ -91,6 +93,9 @@ const Users: NextPage = () => {
           </tbody>
         </Table>
       </CardBody>
+      <CardFooter>
+        <PaginationBar currentPage={1} totalPages={10} onChangePage={(toPage) => {}} />
+      </CardFooter>
     </Card>
   )
 }

@@ -3,6 +3,7 @@ import {
   Card,
   CardActions,
   CardBody,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from '../../components/ui/layout/Card'
@@ -26,6 +27,7 @@ import TextArea from '../../components/ui/forms/TextArea'
 import InputText from '../../components/ui/forms/InputText'
 import Form from '../../components/ui/forms/Form'
 import Select from '../../components/ui/forms/Select'
+import PaginationBar from '../../components/ui/navigation/PaginationBar'
 
 function Categories() {
   const { handleSetBreadcrumbs } = useContext(BreadcrumbsContext)
@@ -157,6 +159,9 @@ function Categories() {
             </Table>
           </div>
         </CardBody>
+        <CardFooter>
+          <PaginationBar currentPage={1} totalPages={10} onChangePage={(toPage) => {}} />
+        </CardFooter>
       </Card>
 
       <Modal show={showModalCategoryForm} onClose={handleCloseModal} size="lg">

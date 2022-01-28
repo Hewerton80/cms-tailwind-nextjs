@@ -3,6 +3,7 @@ import {
   Card,
   CardActions,
   CardBody,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from '../../components/ui/layout/Card'
@@ -21,6 +22,7 @@ import Form from '../../components/ui/forms/Form'
 import FormGroup from '../../components/ui/forms/FormGroup'
 import InputText from '../../components/ui/forms/InputText'
 import FormLabel from '../../components/ui/forms/FormLabel'
+import PaginationBar from '../../components/ui/navigation/PaginationBar'
 
 function Tags() {
   const { handleSetBreadcrumbs } = useContext(BreadcrumbsContext)
@@ -97,6 +99,9 @@ function Tags() {
             </Table>
           </div>
         </CardBody>
+        <CardFooter>
+          <PaginationBar currentPage={1} totalPages={10} onChangePage={(toPage) => {}} />
+        </CardFooter>
       </Card>
 
       <Modal show={showModalTagForm} onClose={handleCloseModal} size="md">

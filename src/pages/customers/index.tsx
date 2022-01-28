@@ -3,6 +3,7 @@ import {
   Card,
   CardActions,
   CardBody,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from '../../components/ui/layout/Card'
@@ -20,6 +21,7 @@ import Form from '../../components/ui/forms/Form'
 import FormGroup from '../../components/ui/forms/FormGroup'
 import FormLabel from '../../components/ui/forms/FormLabel'
 import InputText from '../../components/ui/forms/InputText'
+import PaginationBar from '../../components/ui/navigation/PaginationBar'
 
 function Customers() {
   const { handleSetBreadcrumbs } = useContext(BreadcrumbsContext)
@@ -95,6 +97,9 @@ function Customers() {
             </tbody>
           </Table>
         </CardBody>
+        <CardFooter>
+          <PaginationBar currentPage={1} totalPages={10} onChangePage={(toPage) => {}} />
+        </CardFooter>
       </Card>
       <Modal show={showModalCustomerForm} onClose={handleCloseModal} size="lg">
         <ModalTitle>Adicionar assinante </ModalTitle>
