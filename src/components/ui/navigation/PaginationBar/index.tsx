@@ -1,12 +1,15 @@
-import { HTMLAttributes, useMemo } from 'react'
+import { HTMLAttributes, useCallback, useMemo } from 'react'
 import Button from '../../forms/Button'
 import cn from 'classnames'
 import styles from './styles.module.scss'
+import { getRange } from '../../../../utils/getRange'
+import { getBodyElement } from '../../../../utils/getBodyElement'
 
 interface PaginationBarProps extends HTMLAttributes<HTMLDivElement> {
   currentPage: number
   totalPages: number
-  totalRecords?: number
+  totalRecords: number
+  perPage: number
   disabled?: boolean
   onChangePage: (toPage: number) => void
 }
@@ -16,35 +19,59 @@ function PaginationBar({
   totalPages,
   currentPage,
   totalRecords,
+  perPage,
   disabled,
   onChangePage,
   ...rest
 }: PaginationBarProps) {
+  const paginationLabel = useMemo(() => {
+    const startRange = (currentPage - 1) * perPage + 1
+    let endRange = (currentPage - 1) * perPage + perPage
+    endRange = endRange < totalRecords ? endRange : totalRecords
+    return (
+      <>
+        Resultados da Busca {startRange}
+        {' - '}
+        {endRange} de {totalRecords}
+      </>
+    )
+  }, [currentPage, perPage, totalRecords])
+
   const arrayPagesItens = useMemo(() => {
-    const numButtonsToNavihate = 5
+    const maximumNumberOfButtonsToNavigate = 5
     let initialIndexPage =
-      parseInt(String(currentPage / numButtonsToNavihate)) * numButtonsToNavihate
+      parseInt(String(currentPage / maximumNumberOfButtonsToNavigate)) *
+      maximumNumberOfButtonsToNavigate
     initialIndexPage = initialIndexPage > 0 ? initialIndexPage - 1 : 0
 
-    return Array.from(Array(totalPages).keys()).slice(
+    return getRange(totalPages).slice(
       initialIndexPage,
-      initialIndexPage + numButtonsToNavihate
+      initialIndexPage + maximumNumberOfButtonsToNavigate
     )
   }, [currentPage, totalPages])
 
+  const handleChangePage = useCallback(
+    (toPage: number) => {
+      onChangePage(toPage)
+      const bodyElement = getBodyElement()
+      if (bodyElement && document?.documentElement) {
+        bodyElement.scrollTop = 0
+        document.documentElement.scrollTop = 0
+      }
+    },
+    [onChangePage]
+  )
+
   return (
     <div className={cn(styles.root, className)} {...rest}>
+      <span>{paginationLabel}</span>
       {totalPages > 0 && (
         <>
-          <span className="text-white font-sans text-xs sm:text-base leading-4 mb-2 sm:mb-0">
-            Resultados da Busca {(currentPage - 1) * 15 + 1} -{' '}
-            {(currentPage - 1) * 15 + 15} de {totalRecords}
-          </span>
           <ul className="flex">
             <li>
               <Button
                 className={'border-r-0 '}
-                onClick={() => onChangePage(currentPage - 1)}
+                onClick={() => handleChangePage(currentPage - 1)}
                 disabled={currentPage === 1 || disabled}
               >
                 {'<'}
@@ -58,7 +85,7 @@ function PaginationBar({
                 <Button
                   className={i > 0 ? 'border-l-0 ' : ''}
                   disabled={disabled}
-                  onClick={() => i + 1 !== currentPage && onChangePage(page + 1)}
+                  onClick={() => i + 1 !== currentPage && handleChangePage(page + 1)}
                 >
                   {page + 1}
                 </Button>
@@ -67,7 +94,7 @@ function PaginationBar({
             <li>
               <Button
                 className={'border-l-0 '}
-                onClick={() => onChangePage(currentPage + 1)}
+                onClick={() => handleChangePage(currentPage + 1)}
                 disabled={currentPage === totalPages || disabled}
               >
                 {'>'}

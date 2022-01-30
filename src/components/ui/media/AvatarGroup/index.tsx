@@ -2,8 +2,8 @@ import cn from 'classnames'
 import Avatar, { AvatarProps } from '../Avatar'
 
 interface AvatarGroupProps extends AvatarProps {
-  userName: string
-  userEmail: string
+  userName?: string
+  userEmail?: string
 }
 
 function AvatarGroup({ userName, userEmail, className, ...rest }: AvatarGroupProps) {

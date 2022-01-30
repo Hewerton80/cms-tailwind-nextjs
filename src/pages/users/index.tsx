@@ -17,18 +17,52 @@ import { FaPen, FaRegEye, FaTrash } from 'react-icons/fa'
 import Button from '../../components/ui/forms/Button'
 import Badge from '../../components/ui/dataDisplay/Badge'
 import { RouteEnum } from '../../utils/routes'
-import { useContext, useEffect } from 'react'
+import { useCallback, useContext, useEffect, useState } from 'react'
 import { BreadcrumbsContext } from '../../contexts/breadcrumbsContext'
 import AvatarGroup from '../../components/ui/media/AvatarGroup'
 import PaginationBar from '../../components/ui/navigation/PaginationBar'
+import { useUser } from '../../hooks/useUser'
+import {
+  UserRoleEnum,
+  UserRolePtBrEnum,
+  UserStatusEnum,
+  UserStatusPtBrEnum,
+  UserStatusVariantEnum,
+} from '../../types/User'
 
 const Users: NextPage = () => {
   const { handleSetBreadcrumbs } = useContext(BreadcrumbsContext)
+  const { usersRecords, getUsers } = useUser()
+
+  const [currentPage, setCurrentPage] = useState(1)
+  const [totalPages, setTotalPages] = useState(1)
+  const [totalRecords, setTotalRecords] = useState(1)
+  const [perPage, setPerPage] = useState(1)
 
   useEffect(() => {
     handleSetBreadcrumbs([{ path: RouteEnum.Home, text: 'Administradores' }])
     return () => handleSetBreadcrumbs([])
   }, [handleSetBreadcrumbs])
+
+  useEffect(() => {
+    getUsers({ page: 1 })
+  }, [getUsers])
+
+  useEffect(() => {
+    if (usersRecords) {
+      setTotalPages(usersRecords?.totalPages)
+      setTotalRecords(usersRecords?.total)
+      setPerPage(usersRecords?.perPage)
+    }
+  }, [usersRecords])
+
+  const handleChangePage = useCallback(
+    (page: number) => {
+      setCurrentPage(page)
+      getUsers({ page })
+    },
+    [getUsers]
+  )
 
   return (
     <Card className="w-full">
@@ -55,29 +89,25 @@ const Users: NextPage = () => {
             </tr>
           </thead>
           <tbody>
-            {Array.from(Array(5).keys()).map((i) => (
-              <tr key={i}>
+            {usersRecords?.docs?.map((user, i) => (
+              <tr key={user?.id}>
                 <td className="py-1">
                   <AvatarGroup
-                    src={`/images/face${getRandomIntInclusive(4, 7)}.jpg`}
-                    userName="Fulano da Silva "
-                    userEmail="Fulano@email.com.br"
+                    src={String(user?.avatar_url)}
+                    userName={String(user?.nickname)}
+                    userEmail={String(user?.email)}
                   />
                 </td>
-                <td>{!getRandomIntInclusive(0, 1) ? 'Blogger' : 'Super Admin'}</td>
+                <td>{UserRolePtBrEnum[user?.role as UserRoleEnum]}</td>
                 <td>{getRandomIntInclusive(3, 20)}</td>
 
                 <td>
-                  {!getRandomIntInclusive(0, 2) ? (
-                    <Badge variant="success">Ativo</Badge>
-                  ) : getRandomIntInclusive(0, 1) ? (
-                    <Badge variant="danger">Inativo</Badge>
-                  ) : (
-                    <Badge variant="warning">Pendente</Badge>
-                  )}
+                  <Badge variant={UserStatusVariantEnum[user?.status as UserStatusEnum]}>
+                    {UserStatusPtBrEnum[user?.status as UserStatusEnum]}
+                  </Badge>
                 </td>
                 <td>
-                  {DateTime.now()
+                  {DateTime.fromISO(String(user?.created_at))
                     .plus({ days: -1 * getRandomIntInclusive(0, 365) })
                     .toFormat('ff')}
                 </td>
@@ -94,7 +124,13 @@ const Users: NextPage = () => {
         </Table>
       </CardBody>
       <CardFooter>
-        <PaginationBar currentPage={1} totalPages={10} onChangePage={(toPage) => {}} />
+        <PaginationBar
+          currentPage={currentPage}
+          totalPages={totalPages}
+          totalRecords={totalRecords}
+          perPage={perPage}
+          onChangePage={handleChangePage}
+        />
       </CardFooter>
     </Card>
   )

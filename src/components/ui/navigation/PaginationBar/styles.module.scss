@@ -1,13 +1,12 @@
 .root {
-  @apply flex items-start justify-end w-full;
+  @apply flex items-start justify-between w-full;
+  & > div {
+  }
   & > span {
-    @apply text-white font-sans text-xs sm:text-base leading-4 mb-2 sm:mb-0;
+    @apply text-sm text-dark;
   }
   & > ul {
     @apply flex;
-    // li {
-    //   @apply border-r-0;
-    // }
     li {
       button {
         @apply border-1 border-gray-lightest rounded-none w-8 h-9 px-0;

@@ -1,1 +1,1 @@
-export const getBodyElement = () => document.querySelector('body')
+export const getBodyElement = () => document?.body
