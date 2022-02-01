@@ -11,6 +11,7 @@ interface PaginationBarProps extends HTMLAttributes<HTMLDivElement> {
   totalRecords: number
   perPage: number
   disabled?: boolean
+  hidden?: boolean
   onChangePage: (toPage: number) => void
 }
 
@@ -21,6 +22,7 @@ function PaginationBar({
   totalRecords,
   perPage,
   disabled,
+  hidden = false,
   onChangePage,
   ...rest
 }: PaginationBarProps) {
@@ -61,6 +63,10 @@ function PaginationBar({
     },
     [onChangePage]
   )
+
+  if (hidden) {
+    return <></>
+  }
 
   return (
     <div className={cn(styles.root, className)} {...rest}>

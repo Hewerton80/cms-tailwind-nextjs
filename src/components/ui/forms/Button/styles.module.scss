@@ -83,7 +83,7 @@
           0 1px 5px 0 theme('colors.danger') / 12;
       }
       &:active {
-        background-color: rgb(189, 33, 48);
+        background-color: #bd2130;
         border-color: #b21f2d;
       }
       &:focus,
@@ -94,7 +94,7 @@
   }
 
   &.warning {
-    @apply bg-warning text-black;
+    @apply bg-warning text-white;
     &:not(:disabled) {
       &:hover {
         background-color: #cb7d0a;

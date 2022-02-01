@@ -10,7 +10,7 @@ import Button from '../../forms/Button'
 
 const variants = {
   success: {
-    text: 'Parabéns!',
+    text: 'Sucesso!',
     icon: <IoCheckmarkCircleOutline className="text-success" />,
   },
   info: {

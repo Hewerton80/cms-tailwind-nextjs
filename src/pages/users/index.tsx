@@ -8,7 +8,6 @@ import {
   CardHeader,
   CardTitle,
 } from '../../components/ui/layout/Card'
-import Avatar from '../../components/ui/media/Avatar'
 import { getRandomIntInclusive } from '../../utils/getRamdomInt'
 import { DateTime } from 'luxon'
 import Link from 'next/link'
@@ -29,14 +28,15 @@ import {
   UserStatusPtBrEnum,
   UserStatusVariantEnum,
 } from '../../types/User'
+import Alert from '../../components/ui/feedback/Alert'
 
 const Users: NextPage = () => {
   const { handleSetBreadcrumbs } = useContext(BreadcrumbsContext)
-  const { usersRecords, getUsers } = useUser()
+  const { usersRecords, usersError, getUsers } = useUser()
 
-  const [currentPage, setCurrentPage] = useState(1)
-  const [totalPages, setTotalPages] = useState(1)
-  const [totalRecords, setTotalRecords] = useState(1)
+  const [currentPage, setCurrentPage] = useState(0)
+  const [totalPages, setTotalPages] = useState(0)
+  const [totalRecords, setTotalRecords] = useState(0)
   const [perPage, setPerPage] = useState(1)
 
   useEffect(() => {
@@ -50,6 +50,7 @@ const Users: NextPage = () => {
 
   useEffect(() => {
     if (usersRecords) {
+      setCurrentPage(usersRecords?.currentPage)
       setTotalPages(usersRecords?.totalPages)
       setTotalRecords(usersRecords?.total)
       setPerPage(usersRecords?.perPage)
@@ -77,51 +78,57 @@ const Users: NextPage = () => {
         </CardActions>
       </CardHeader>
       <CardBody>
-        <Table>
-          <thead>
-            <tr>
-              <th></th>
-              <th>Função</th>
-              <th>Posts</th>
-              <th>Situação</th>
-              <th>Cadastrado em:</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {usersRecords?.docs?.map((user, i) => (
-              <tr key={user?.id}>
-                <td className="py-1">
-                  <AvatarGroup
-                    src={String(user?.avatar_url)}
-                    userName={String(user?.nickname)}
-                    userEmail={String(user?.email)}
-                  />
-                </td>
-                <td>{UserRolePtBrEnum[user?.role as UserRoleEnum]}</td>
-                <td>{getRandomIntInclusive(3, 20)}</td>
-
-                <td>
-                  <Badge variant={UserStatusVariantEnum[user?.status as UserStatusEnum]}>
-                    {UserStatusPtBrEnum[user?.status as UserStatusEnum]}
-                  </Badge>
-                </td>
-                <td>
-                  {DateTime.fromISO(String(user?.created_at))
-                    .plus({ days: -1 * getRandomIntInclusive(0, 365) })
-                    .toFormat('ff')}
-                </td>
-                <td>
-                  <div className="flex items-center justify-end">
-                    <IconButton icon={<FaPen />} />
-                    <IconButton className="ml-2" icon={<FaRegEye />} />
-                    <IconButton variant="danger" className="ml-2" icon={<FaTrash />} />
-                  </div>
-                </td>
+        {usersError ? (
+          <Alert variant="danger">{usersError}</Alert>
+        ) : (
+          <Table>
+            <thead>
+              <tr>
+                <th></th>
+                <th>Função</th>
+                <th>Posts</th>
+                <th>Situação</th>
+                <th>Cadastrado em:</th>
+                <th></th>
               </tr>
-            ))}
-          </tbody>
-        </Table>
+            </thead>
+            <tbody>
+              {usersRecords?.docs?.map((user, i) => (
+                <tr key={user?.id}>
+                  <td className="py-1">
+                    <AvatarGroup
+                      src={String(user?.avatar_url)}
+                      userName={String(user?.nickname)}
+                      userEmail={String(user?.email)}
+                    />
+                  </td>
+                  <td>{UserRolePtBrEnum[user?.role as UserRoleEnum]}</td>
+                  <td>{getRandomIntInclusive(3, 20)}</td>
+
+                  <td>
+                    <Badge
+                      variant={UserStatusVariantEnum[user?.status as UserStatusEnum]}
+                    >
+                      {UserStatusPtBrEnum[user?.status as UserStatusEnum]}
+                    </Badge>
+                  </td>
+                  <td>
+                    {DateTime.fromISO(String(user?.created_at))
+                      .plus({ days: -1 * getRandomIntInclusive(0, 365) })
+                      .toFormat('ff')}
+                  </td>
+                  <td>
+                    <div className="flex items-center justify-end">
+                      <IconButton icon={<FaPen />} />
+                      <IconButton className="ml-2" icon={<FaRegEye />} />
+                      <IconButton variant="danger" className="ml-2" icon={<FaTrash />} />
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        )}
       </CardBody>
       <CardFooter>
         <PaginationBar
@@ -130,6 +137,7 @@ const Users: NextPage = () => {
           totalRecords={totalRecords}
           perPage={perPage}
           onChangePage={handleChangePage}
+          hidden={Boolean(usersError)}
         />
       </CardFooter>
     </Card>
