@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes } from 'react'
 import cn from 'classnames'
-import styles from './styles.module.scss'
+import styles from './styles.module.css'
 import { Variant } from '../../../../types/Global'
 import Spinner from '../../feedback/Spinner'
 

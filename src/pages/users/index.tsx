@@ -29,15 +29,16 @@ import {
   UserStatusVariantEnum,
 } from '../../types/User'
 import Alert from '../../components/ui/feedback/Alert'
+import ShimmerTableCells from '../../components/ui/feedback/ShimmerTableCells'
 
 const Users: NextPage = () => {
   const { handleSetBreadcrumbs } = useContext(BreadcrumbsContext)
-  const { usersRecords, usersError, getUsers } = useUser()
+  const { usersRecords, usersError, isLoagingUsers, getUsers } = useUser()
 
   const [currentPage, setCurrentPage] = useState(0)
   const [totalPages, setTotalPages] = useState(0)
   const [totalRecords, setTotalRecords] = useState(0)
-  const [perPage, setPerPage] = useState(1)
+  const [perPage, setPerPage] = useState(25)
 
   useEffect(() => {
     handleSetBreadcrumbs([{ path: RouteEnum.Home, text: 'Administradores' }])
@@ -93,39 +94,47 @@ const Users: NextPage = () => {
               </tr>
             </thead>
             <tbody>
-              {usersRecords?.docs?.map((user, i) => (
-                <tr key={user?.id}>
-                  <td className="py-1">
-                    <AvatarGroup
-                      src={String(user?.avatar_url)}
-                      userName={String(user?.nickname)}
-                      userEmail={String(user?.email)}
-                    />
-                  </td>
-                  <td>{UserRolePtBrEnum[user?.role as UserRoleEnum]}</td>
-                  <td>{getRandomIntInclusive(3, 20)}</td>
+              {isLoagingUsers ? (
+                <ShimmerTableCells numberOfColumns={6} numberOfRows={perPage} />
+              ) : (
+                usersRecords?.docs?.map((user) => (
+                  <tr key={user?.id}>
+                    <td className="py-1">
+                      <AvatarGroup
+                        src={String(user?.avatar_url)}
+                        userName={String(user?.nickname)}
+                        userEmail={String(user?.email)}
+                      />
+                    </td>
+                    <td>{UserRolePtBrEnum[user?.role as UserRoleEnum]}</td>
+                    <td>{getRandomIntInclusive(3, 20)}</td>
 
-                  <td>
-                    <Badge
-                      variant={UserStatusVariantEnum[user?.status as UserStatusEnum]}
-                    >
-                      {UserStatusPtBrEnum[user?.status as UserStatusEnum]}
-                    </Badge>
-                  </td>
-                  <td>
-                    {DateTime.fromISO(String(user?.created_at))
-                      .plus({ days: -1 * getRandomIntInclusive(0, 365) })
-                      .toFormat('ff')}
-                  </td>
-                  <td>
-                    <div className="flex items-center justify-end">
-                      <IconButton icon={<FaPen />} />
-                      <IconButton className="ml-2" icon={<FaRegEye />} />
-                      <IconButton variant="danger" className="ml-2" icon={<FaTrash />} />
-                    </div>
-                  </td>
-                </tr>
-              ))}
+                    <td>
+                      <Badge
+                        variant={UserStatusVariantEnum[user?.status as UserStatusEnum]}
+                      >
+                        {UserStatusPtBrEnum[user?.status as UserStatusEnum]}
+                      </Badge>
+                    </td>
+                    <td>
+                      {DateTime.fromISO(String(user?.created_at))
+                        .plus({ days: -1 * getRandomIntInclusive(0, 365) })
+                        .toFormat('ff')}
+                    </td>
+                    <td>
+                      <div className="flex items-center justify-end">
+                        <IconButton icon={<FaPen />} />
+                        <IconButton className="ml-2" icon={<FaRegEye />} />
+                        <IconButton
+                          variant="danger"
+                          className="ml-2"
+                          icon={<FaTrash />}
+                        />
+                      </div>
+                    </td>
+                  </tr>
+                ))
+              )}
             </tbody>
           </Table>
         )}
