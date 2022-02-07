@@ -2,10 +2,10 @@
   @apply text-sm outline-none rounded-sm duration-300 h-[46px] text-[#495057] px-[22px];
   border: 1px solid #f3f3f3;
   transition: 0.3s ease all;
-  &:not(:disabled) {
-    cursor: pointer;
-  }
-  &:focus {
-    @apply border-info;
-  }
+}
+.root:not(:disabled) {
+  cursor: pointer;
+}
+.root:focus {
+  @apply border-info;
 }

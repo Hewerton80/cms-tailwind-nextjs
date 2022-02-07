@@ -6,7 +6,7 @@ import { ToogleSideBarContext } from '../../../contexts/toogleSideBarContext'
 import { isMobile } from '../../../utils/isMobile'
 import { menu } from '../../../utils/routes'
 import { Card, CardProps } from '../../ui/layout/Card'
-import styles from './styles.module.scss'
+import styles from './styles.module.css'
 
 interface SideBarProps extends CardProps {}
 

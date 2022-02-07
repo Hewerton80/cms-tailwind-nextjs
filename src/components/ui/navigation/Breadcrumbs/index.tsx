@@ -1,7 +1,7 @@
 import cn from 'classnames'
 import Link from 'next/link'
 import { IBreadcrumbsLink } from '../../../../contexts/breadcrumbsContext'
-import styles from './styles.module.scss'
+import styles from './styles.module.css'
 
 interface BreadcrumbsProps {
   links: IBreadcrumbsLink[]
@@ -16,13 +16,7 @@ function Breadcrumbs({ className, links, ...rest }: BreadcrumbsProps) {
         return (
           <p key={link.text}>
             <Link href={link.path}>
-              <a
-                className={cn(
-                  isLastIndex
-                    ? 'pointer-events-none'
-                    : 'pointer-events-auto hover:underline decoration-gray'
-                )}
-              >
+              <a className={cn(isLastIndex && styles.is_last_index)}>
                 <span className={cn(isLastIndex && 'text-primary')}>{link.text}</span>
               </a>
             </Link>

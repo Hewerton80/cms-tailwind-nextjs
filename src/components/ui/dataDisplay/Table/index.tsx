@@ -1,6 +1,6 @@
 import { HTMLAttributes } from 'react'
 import cn from 'classnames'
-import styles from './styles.module.scss'
+import styles from './styles.module.css'
 
 interface TableProps extends HTMLAttributes<HTMLDivElement> {}
 

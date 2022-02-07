@@ -16,9 +16,9 @@
 
 .card_title {
   @apply flex;
-  & > h4 {
-    @apply font-medium text-black;
-  }
+}
+.card_title > h4 {
+  @apply font-medium text-black;
 }
 
 .card_footer {

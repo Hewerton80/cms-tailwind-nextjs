@@ -1,6 +1,6 @@
 import cn from 'classnames'
 import { HTMLAttributes } from 'react'
-import styles from './styles.module.scss'
+import styles from './styles.module.css'
 
 interface FormGroupProps extends HTMLAttributes<HTMLDivElement> {
   erro?: string

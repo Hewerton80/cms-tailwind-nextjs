@@ -4,7 +4,7 @@
   color: #495057;
   padding: 14px 22px;
   transition: 0.3s ease all;
-  &:focus {
-    @apply border-info;
-  }
+}
+.root:focus {
+  @apply border-info;
 }

@@ -2,7 +2,7 @@ import DivWitchClickOutsideEvent, {
   DivWitchClickOutsideEventProps,
 } from '../DivWitchClickOutsideEvent'
 import cn from 'classnames'
-import styles from './styles.module.scss'
+import styles from './styles.module.css'
 
 interface DropDownProps extends DivWitchClickOutsideEventProps {
   onClickOption?: (index: number) => void

@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import cn from 'classnames'
 import { Variant } from '../../../../types/Global'
-import styles from './styles.module.scss'
+import styles from './styles.module.css'
 
 interface BadgeProps {
   children?: ReactNode

@@ -1,5 +1,5 @@
 import { Modal, ModalContent, ModalProps } from '../Modal'
-import styles from './styles.module.scss'
+import styles from './styles.module.css'
 import cn from 'classnames'
 import {
   IoAlertCircleOutline,

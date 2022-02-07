@@ -5,7 +5,7 @@ import { FaBars, FaAngleDown, FaSignOutAlt } from 'react-icons/fa'
 import Avatar from '../../ui/media/Avatar'
 import DropDown from '../../ui/overlay/DropDown'
 import { ToogleSideBarContext } from '../../../contexts/toogleSideBarContext'
-import styles from './styles.module.scss'
+import styles from './styles.module.css'
 
 interface HeaderProps extends HTMLAttributes<HTMLElement> {}
 

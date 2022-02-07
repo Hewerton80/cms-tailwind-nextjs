@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import cn from 'classnames'
-import styles from './styles.module.scss'
+import styles from './styles.module.css'
 import DivWitchClickOutsideEvent from '../../overlay/DivWitchClickOutsideEvent'
 import InputText from '../InputText'
 import { FaCaretDown } from 'react-icons/fa'
@@ -90,7 +90,11 @@ function SelectBox({
       {isFocused && (
         <DivWitchClickOutsideEvent onClickOutside={() => setIsFocused(false)}>
           <span>
-            <InputText value={search} onChange={(e) => setSearch(e.target.value)} />
+            <InputText
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              autoFocus
+            />
           </span>
           <List>
             {filteredOptions.map((opt, i) => (

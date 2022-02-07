@@ -1,6 +1,6 @@
 import { HTMLAttributes } from 'react'
 import cn from 'classnames'
-import styles from './styles.module.scss'
+import styles from './styles.module.css'
 export interface CardProps extends HTMLAttributes<HTMLDivElement> {}
 
 export function Card({ children, className, ...rest }: CardProps) {

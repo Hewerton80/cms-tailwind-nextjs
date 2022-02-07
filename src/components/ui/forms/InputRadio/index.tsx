@@ -1,6 +1,6 @@
 import { InputHTMLAttributes } from 'react'
 import cn from 'classnames'
-import styles from './styles.module.scss'
+import styles from './styles.module.css'
 
 interface InputRadioProps extends InputHTMLAttributes<HTMLInputElement> {
   text?: string

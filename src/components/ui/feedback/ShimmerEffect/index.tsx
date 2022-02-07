@@ -1,5 +1,5 @@
 import { HTMLAttributes } from 'react'
-import styles from './styles.module.scss'
+import styles from './styles.module.css'
 import cn from 'classnames'
 
 interface ShimmerEffectProps extends HTMLAttributes<HTMLDivElement> {}

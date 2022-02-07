@@ -1,6 +1,6 @@
 import { HTMLAttributes, LiHTMLAttributes } from 'react'
 import cn from 'classnames'
-import styles from './styles.module.scss'
+import styles from './styles.module.css'
 
 interface ListProps extends HTMLAttributes<HTMLUListElement> {}
 interface ListItemProps extends LiHTMLAttributes<HTMLLIElement> {

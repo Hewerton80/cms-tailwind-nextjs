@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import cn from 'classnames'
-import styles from './styles.module.scss'
+import styles from './styles.module.css'
 import DivWitchClickOutsideEvent from '../../overlay/DivWitchClickOutsideEvent'
 import InputText from '../InputText'
 import { IoClose } from 'react-icons/io5'
