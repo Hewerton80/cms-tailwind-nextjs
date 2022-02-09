@@ -5,6 +5,7 @@ import DivWitchClickOutsideEvent from '../../overlay/DivWitchClickOutsideEvent'
 import InputText from '../InputText'
 import { FaCaretDown } from 'react-icons/fa'
 import { List, ListItem } from '../../dataDisplay/List'
+import ValidationError from '../../feedback/ValidationError'
 
 export interface ISelectBoxOptions {
   value: string
@@ -17,6 +18,7 @@ interface SelectBoxProps {
   options: ISelectBoxOptions[]
   selectedOption?: ISelectBoxOptions
   placeholder?: string
+  error?: string
   onChange?: (value: ISelectBoxOptions) => void
 }
 
@@ -26,6 +28,7 @@ function SelectBox({
   id,
   selectedOption = { value: '', text: '' },
   placeholder = '',
+  error,
   onChange,
 }: SelectBoxProps) {
   const [isFocused, setIsFocused] = useState(false)
@@ -76,42 +79,47 @@ function SelectBox({
   )
 
   return (
-    <div
-      id={id}
-      className={cn(styles.root, className)}
-      role="searchbox"
-      onClick={() => !isFocused && setIsFocused(true)}
-    >
-      <span>
-        <p>
-          {selectedValueText || <span className="text-secondary">{placeholder}</span>}
-        </p>
-      </span>
-      {isFocused && (
-        <DivWitchClickOutsideEvent onClickOutside={() => setIsFocused(false)}>
-          <span>
-            <InputText
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              autoFocus
-            />
-          </span>
-          <List>
-            {filteredOptions.map((opt, i) => (
-              <ListItem
-                key={opt.value + i}
-                role="button"
-                onClick={() => handleChangeOptions({ value: opt.value, text: opt.text })}
-                isActive={selectedOption.value === opt.value}
-              >
-                {opt.text}
-              </ListItem>
-            ))}
-          </List>
-        </DivWitchClickOutsideEvent>
-      )}
-      <FaCaretDown className={cn(isFocused && 'rotate-180')} />
-    </div>
+    <>
+      <div
+        id={id}
+        className={cn(styles.root, error && styles.error, className)}
+        role="searchbox"
+        onClick={() => !isFocused && setIsFocused(true)}
+      >
+        <span>
+          <p>
+            {selectedValueText || <span className="text-secondary">{placeholder}</span>}
+          </p>
+        </span>
+        {isFocused && (
+          <DivWitchClickOutsideEvent onClickOutside={() => setIsFocused(false)}>
+            <span>
+              <InputText
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                autoFocus
+              />
+            </span>
+            <List>
+              {filteredOptions.map((opt, i) => (
+                <ListItem
+                  key={opt.value + i}
+                  role="button"
+                  onClick={() =>
+                    handleChangeOptions({ value: opt.value, text: opt.text })
+                  }
+                  isActive={selectedOption.value === opt.value}
+                >
+                  {opt.text}
+                </ListItem>
+              ))}
+            </List>
+          </DivWitchClickOutsideEvent>
+        )}
+        <FaCaretDown className={cn(isFocused && 'rotate-180')} />
+      </div>
+      {error && <ValidationError>{error}</ValidationError>}
+    </>
   )
 }
 

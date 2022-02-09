@@ -160,7 +160,13 @@ function Categories() {
           </div>
         </CardBody>
         <CardFooter>
-          <PaginationBar currentPage={1} totalPages={10} onChangePage={(toPage) => {}} />
+          <PaginationBar
+            currentPage={1}
+            totalPages={10}
+            onChangePage={() => {}}
+            totalRecords={1}
+            perPage={25}
+          />
         </CardFooter>
       </Card>
 
@@ -196,7 +202,11 @@ function Categories() {
               <div className="col-span-12">
                 <FormGroup>
                   <FormLabel>Descrição</FormLabel>
-                  <TextArea id="description" placeholder="Descrição..." />
+                  <TextArea
+                    id="description"
+                    placeholder="Descrição..."
+                    error="Descrição inválida"
+                  />
                 </FormGroup>
               </div>
               <div className="col-span-12">
@@ -225,6 +235,7 @@ function Categories() {
                         placeholder="Subcategorias..."
                         selectedOptions={subCategories}
                         onChange={(values) => setSubCategories(values)}
+                        // error="Subcategorias é obrigatório"
                       />
                     </>
                   ) : (
@@ -235,6 +246,7 @@ function Categories() {
                         placeholder="Categoria..."
                         selectedOption={category}
                         onChange={(value) => setCategory(value)}
+                        error="Subcategoria é obrigatório"
                       />
                     </>
                   )}
@@ -243,7 +255,12 @@ function Categories() {
               <div className="col-span-12 sm:col-span-6">
                 <FormGroup>
                   <FormLabel required>Status</FormLabel>
-                  <Select id="status" required placeholder="Título">
+                  <Select
+                    id="status"
+                    required
+                    placeholder="Título"
+                    error="Status é obrigatório"
+                  >
                     <option>Status</option>
                     <option>Público</option>
                     <option>Privado</option>

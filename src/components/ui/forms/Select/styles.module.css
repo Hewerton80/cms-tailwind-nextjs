@@ -6,6 +6,13 @@
 .root:not(:disabled) {
   cursor: pointer;
 }
-.root:focus {
+.root.error {
+  @apply border-danger;
+}
+.root.error:focus {
+  /* prettier-ignore */
+  box-shadow: 0 0 0 0.2rem theme('colors.danger')40;
+}
+.root:not(.error):focus {
   @apply border-info;
 }

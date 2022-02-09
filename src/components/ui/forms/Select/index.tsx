@@ -1,11 +1,19 @@
 import { SelectHTMLAttributes } from 'react'
 import cn from 'classnames'
 import styles from './styles.module.css'
+import ValidationError from '../../feedback/ValidationError'
 
-interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {}
+interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
+  error?: string
+}
 
-function Select({ className, ...rest }: SelectProps) {
-  return <select className={cn(styles.root, className)} {...rest} />
+function Select({ className, error, ...rest }: SelectProps) {
+  return (
+    <>
+      <select className={cn(styles.root, error && styles.error, className)} {...rest} />
+      {error && <ValidationError>{error}</ValidationError>}
+    </>
+  )
 }
 
 export default Select

@@ -1,6 +1,9 @@
 .root {
   @apply relative w-[inherit] h-[inherit];
 }
+.root.error {
+  @apply border-1 border-danger;
+}
 .root > span {
   @apply flex items-center text-sm outline-none rounded-sm duration-300 
   h-[46px] px-[22px] text-[#495057];

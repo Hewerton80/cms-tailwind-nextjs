@@ -6,6 +6,7 @@ import InputText from '../InputText'
 import { IoClose } from 'react-icons/io5'
 import { List, ListItem } from '../../dataDisplay/List'
 import Badge from '../../dataDisplay/Badge'
+import ValidationError from '../../feedback/ValidationError'
 
 export interface IMultSelectBoxOptions {
   value: string
@@ -18,6 +19,7 @@ interface MultSelectBoxProps {
   options: IMultSelectBoxOptions[]
   selectedOptions?: IMultSelectBoxOptions[]
   placeholder?: string
+  error?: string
   onChange?: (values: IMultSelectBoxOptions[]) => void
 }
 
@@ -25,6 +27,7 @@ function MultSelectBox({
   className,
   options,
   id,
+  error,
   selectedOptions = [],
   placeholder = '',
   onChange,
@@ -101,55 +104,62 @@ function MultSelectBox({
   )
 
   return (
-    <div
-      id={id}
-      className={cn(styles.root, className)}
-      role="searchbox"
-      onClick={handleFocus}
-    >
-      <span>
-        <ul>
-          {selectedOptions?.length > 0
-            ? selectedOptions.map((selectedOpt, i) => (
-                <li key={selectedOpt.value + i}>
-                  <Badge variant="primary" className="h-[22px] cursor-default">
-                    <IoClose
-                      className="text-white mr-1.5 cursor-pointer"
-                      onClick={() => handleRemoveOption(selectedOpt.value)}
-                    />{' '}
-                    {selectedOpt.text}
-                  </Badge>
-                </li>
-              ))
-            : !isFocused && <span className="text-secondary mt-1.5">{placeholder}</span>}
-          <li>
-            {' '}
-            <InputText
-              ref={inputRef}
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              style={{ width: (search.length + 1) * 8 }}
-            />
-          </li>
-        </ul>
-      </span>
-      {isFocused && (
-        <DivWitchClickOutsideEvent onClickOutside={() => setIsFocused(false)}>
-          <List>
-            {filteredOptions.map((opt, i) => (
-              <ListItem
-                key={opt.value + i}
-                role="button"
-                onClick={() => handleChangeOptions({ value: opt.value, text: opt.text })}
-                // isActive={selectedOptions.map(sopt => sopt) === opt.value}
-              >
-                {opt.text}
-              </ListItem>
-            ))}
-          </List>
-        </DivWitchClickOutsideEvent>
-      )}
-    </div>
+    <>
+      <div
+        id={id}
+        className={cn(styles.root, error && styles.error, className)}
+        role="searchbox"
+        onClick={handleFocus}
+      >
+        <span>
+          <ul>
+            {selectedOptions?.length > 0
+              ? selectedOptions.map((selectedOpt, i) => (
+                  <li key={selectedOpt.value + i}>
+                    <Badge variant="primary" className="h-[22px] cursor-default">
+                      <IoClose
+                        className="text-white mr-1.5 cursor-pointer"
+                        onClick={() => handleRemoveOption(selectedOpt.value)}
+                      />{' '}
+                      {selectedOpt.text}
+                    </Badge>
+                  </li>
+                ))
+              : !isFocused && (
+                  <span className="text-secondary mt-1.5">{placeholder}</span>
+                )}
+            <li>
+              {' '}
+              <InputText
+                ref={inputRef}
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                style={{ width: (search.length + 1) * 8 }}
+              />
+            </li>
+          </ul>
+        </span>
+        {isFocused && (
+          <DivWitchClickOutsideEvent onClickOutside={() => setIsFocused(false)}>
+            <List>
+              {filteredOptions.map((opt, i) => (
+                <ListItem
+                  key={opt.value + i}
+                  role="button"
+                  onClick={() =>
+                    handleChangeOptions({ value: opt.value, text: opt.text })
+                  }
+                  // isActive={selectedOptions.map(sopt => sopt) === opt.value}
+                >
+                  {opt.text}
+                </ListItem>
+              ))}
+            </List>
+          </DivWitchClickOutsideEvent>
+        )}
+      </div>
+      {error && <ValidationError>{error}</ValidationError>}
+    </>
   )
 }
 

@@ -37,7 +37,11 @@ function UserForm({ isEdit }: UserFormProps) {
                 <div className="col-span-12 md:col-span-12 lg:col-span-4">
                   <FormGroup>
                     <FormLabel required>Nome de usuário</FormLabel>
-                    <InputText required placeholder="Nome de usuário" />
+                    <InputText
+                      required
+                      placeholder="Nome de usuário"
+                      error="Nome inválido Nome inválido Nome inválido Nome inválido Nome inválido"
+                    />
                   </FormGroup>
                 </div>
                 <div className="col-span-12 md:col-span-12 lg:col-span-4">
