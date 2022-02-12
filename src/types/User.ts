@@ -32,7 +32,7 @@ export interface IUser {
   secondname?: string
   nickname?: string
   occupation?: string
-  role?: UserRoleEnum
+  role?: UserRoleEnum | string
   status?: UserStatusEnum
   provider?: string
   password?: string

@@ -33,7 +33,7 @@ import ShimmerTableCells from '../../components/ui/feedback/ShimmerTableCells'
 
 const Users: NextPage = () => {
   const { handleSetBreadcrumbs } = useContext(BreadcrumbsContext)
-  const { usersRecords, usersError, isLoagingUsers, getUsers } = useUser()
+  const { usersRecords, usersMenssageError, isLoagingUsers, getUsers } = useUser()
 
   const [currentPage, setCurrentPage] = useState(0)
   const [totalPages, setTotalPages] = useState(0)
@@ -79,8 +79,8 @@ const Users: NextPage = () => {
         </CardActions>
       </CardHeader>
       <CardBody>
-        {usersError ? (
-          <Alert variant="danger">{usersError}</Alert>
+        {usersMenssageError ? (
+          <Alert variant="danger">{usersMenssageError}</Alert>
         ) : (
           <Table>
             <thead>
@@ -146,7 +146,7 @@ const Users: NextPage = () => {
           totalRecords={totalRecords}
           perPage={perPage}
           onChangePage={handleChangePage}
-          hidden={Boolean(usersError)}
+          hidden={Boolean(usersMenssageError)}
         />
       </CardFooter>
     </Card>

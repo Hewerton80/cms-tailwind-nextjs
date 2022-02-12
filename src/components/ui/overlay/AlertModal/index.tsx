@@ -44,7 +44,7 @@ function AlertModal({
           <h4>{variants[variant].text}</h4>
           <p>{description}</p>
           <Button variant={variant} type="button" onClick={() => onClose?.()}>
-            {textButton || 'Continue'}
+            {textButton || 'Ok'}
           </Button>
         </div>
       </ModalContent>

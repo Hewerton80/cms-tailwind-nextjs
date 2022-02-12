@@ -1,3 +1,5 @@
+import { types } from '@storybook/addons'
+import { useRouter } from 'next/router'
 import { FormEvent, useCallback, useState } from 'react'
 import Button from '../../components/ui/forms/Button'
 import Form from '../../components/ui/forms/Form'
@@ -9,6 +11,9 @@ import TextArea from '../../components/ui/forms/TextArea'
 import { Card, CardBody, CardHeader, CardTitle } from '../../components/ui/layout/Card'
 import AlertModal from '../../components/ui/overlay/AlertModal'
 import QuestionModal from '../../components/ui/overlay/QuestionModal'
+import { useUser } from '../../hooks/useUser'
+import { IUser } from '../../types/User'
+import { userRoleOptions } from '../../utils/userRoleOptions'
 
 interface UserFormProps {
   isEdit?: boolean
@@ -16,13 +21,48 @@ interface UserFormProps {
 }
 
 function UserForm({ isEdit }: UserFormProps) {
+  const { createUser, isSubmitingUsers, submitUserError } = useUser()
+
+  const router = useRouter()
+
   const [showSuccessMemssage, setShowSuccessMenssage] = useState(false)
+  const [showErrorMemssage, setShowErrorMenssage] = useState(false)
   const [showQuestionMemssage, setShowQuestionMenssage] = useState(false)
 
-  const handleCreateUser = useCallback((e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setShowSuccessMenssage(true)
-  }, [])
+  const [newUser, setNewUser] = useState<IUser>({
+    nickname: '',
+    firstname: '',
+    secondname: '',
+    email: '',
+    occupation: '',
+    website: '',
+    about: '',
+    role: '',
+  })
+
+  const handleChangeUser = useCallback(
+    ({ field, value }: { field: keyof typeof newUser; value: string }) => {
+      setNewUser({
+        ...newUser,
+        [field]: value,
+      })
+    },
+    [newUser]
+  )
+
+  const handleCreateUser = useCallback(
+    (e: FormEvent<HTMLFormElement>) => {
+      e.preventDefault()
+      const callbackSucess = () => {
+        setShowSuccessMenssage(true)
+      }
+      const callbackError = () => {
+        setShowErrorMenssage(true)
+      }
+      createUser(newUser, callbackSucess, callbackError)
+    },
+    [newUser, createUser]
+  )
 
   return (
     <>
@@ -38,44 +78,113 @@ function UserForm({ isEdit }: UserFormProps) {
                   <FormGroup>
                     <FormLabel required>Nome de usuário</FormLabel>
                     <InputText
+                      id="nickname"
+                      value={newUser.nickname}
+                      onChange={(e) =>
+                        handleChangeUser({
+                          field: 'nickname',
+                          value: e.target.value,
+                        })
+                      }
                       required
                       placeholder="Nome de usuário"
-                      error="Nome inválido Nome inválido Nome inválido Nome inválido Nome inválido"
+                      error={submitUserError?.nickname}
                     />
                   </FormGroup>
                 </div>
                 <div className="col-span-12 md:col-span-12 lg:col-span-4">
                   <FormGroup>
                     <FormLabel required>Primeiro nome</FormLabel>
-                    <InputText required placeholder="Primeiro nome" />
+                    <InputText
+                      id="firstname"
+                      required
+                      placeholder="Primeiro nome"
+                      value={newUser.firstname}
+                      onChange={(e) =>
+                        handleChangeUser({
+                          field: 'firstname',
+                          value: e.target.value,
+                        })
+                      }
+                      error={submitUserError?.firstname}
+                    />
                   </FormGroup>
                 </div>
                 <div className="col-span-12 md:col-span-12 lg:col-span-4">
                   <FormGroup>
                     <FormLabel required>Segundo nome</FormLabel>
-                    <InputText required placeholder="Segundo nome" />
+                    <InputText
+                      id="secondname"
+                      placeholder="Segundo nome"
+                      value={newUser.secondname}
+                      onChange={(e) =>
+                        handleChangeUser({
+                          field: 'secondname',
+                          value: e.target.value,
+                        })
+                      }
+                      error={submitUserError?.secondname}
+                    />
                   </FormGroup>
                 </div>
 
                 <div className="col-span-12 md:col-span-12 lg:col-span-4">
                   <FormGroup>
                     <FormLabel required>Email</FormLabel>
-                    <InputText required placeholder="Email" type="email" />
+                    <InputText
+                      id="email"
+                      value={newUser.email}
+                      onChange={(e) =>
+                        handleChangeUser({
+                          field: 'email',
+                          value: e.target.value,
+                        })
+                      }
+                      error={submitUserError?.email}
+                      placeholder="Email"
+                      type="email"
+                    />
                   </FormGroup>
                 </div>
                 <div className="col-span-12 md:col-span-12 lg:col-span-4">
                   <FormGroup>
                     <FormLabel required>Profissão</FormLabel>
-                    <InputText required placeholder="Profissão" />
+                    <InputText
+                      id="occupation"
+                      value={newUser.occupation}
+                      onChange={(e) =>
+                        handleChangeUser({
+                          field: 'occupation',
+                          value: e.target.value,
+                        })
+                      }
+                      error={submitUserError?.occupation}
+                      required
+                      placeholder="Profissão"
+                    />
                   </FormGroup>
                 </div>
                 <div className="col-span-12 md:col-span-12 lg:col-span-4">
                   <FormGroup>
                     <FormLabel required>Perfil</FormLabel>
-                    <Select required>
-                      <option>Perfil</option>
-                      <option>Super Admin</option>
-                      <option>Blogger</option>
+                    <Select
+                      id="role"
+                      required
+                      value={newUser.role}
+                      onChange={(e) =>
+                        handleChangeUser({
+                          field: 'role',
+                          value: e.target.value,
+                        })
+                      }
+                      error={submitUserError?.role}
+                    >
+                      <option value="">Perfil</option>
+                      {userRoleOptions.map((userRoleOption) => (
+                        <option key={userRoleOption.value} value={userRoleOption.value}>
+                          {userRoleOption.text}
+                        </option>
+                      ))}
                     </Select>
                   </FormGroup>
                 </div>
@@ -86,10 +195,16 @@ function UserForm({ isEdit }: UserFormProps) {
                       variant="light"
                       type="button"
                       onClick={() => setShowQuestionMenssage(true)}
+                      disabled={isSubmitingUsers}
                     >
                       Cancelar
                     </Button>
-                    <Button className="ml-2" variant="primary" type="submit">
+                    <Button
+                      className="ml-2"
+                      variant="primary"
+                      isLoading={isSubmitingUsers}
+                      type="submit"
+                    >
                       Criar
                     </Button>
                   </div>
@@ -108,14 +223,35 @@ function UserForm({ isEdit }: UserFormProps) {
                 <FormGroup>
                   <FormLabel>Site</FormLabel>
                   <InputText
+                    id="website"
                     placeholder="https://www.linkedin.com/in/loren..."
                     type="url"
+                    value={newUser.website}
+                    onChange={(e) =>
+                      handleChangeUser({
+                        field: 'website',
+                        value: e.target.value,
+                      })
+                    }
+                    error={submitUserError?.website}
+                    required
                   />
                 </FormGroup>
 
                 <FormGroup>
                   <FormLabel>Sobre</FormLabel>
-                  <TextArea placeholder="Minha bio..." />
+                  <TextArea
+                    id="about"
+                    value={newUser.about}
+                    onChange={(e) =>
+                      handleChangeUser({
+                        field: 'about',
+                        value: e.target.value,
+                      })
+                    }
+                    error={submitUserError?.about}
+                    placeholder="Minha bio..."
+                  />
                 </FormGroup>
               </div>
             </Form>
@@ -125,8 +261,14 @@ function UserForm({ isEdit }: UserFormProps) {
       <AlertModal
         show={showSuccessMemssage}
         variant="success"
-        onClose={() => setShowSuccessMenssage(false)}
+        onClose={() => router.push('/users')}
         description="Usuário Criado com Sucesso!"
+      />
+      <AlertModal
+        show={showErrorMemssage}
+        variant="danger"
+        onClose={() => setShowErrorMenssage(false)}
+        description="Falha ao criar usuário, por favor tente novamente em instantes"
       />
       <QuestionModal
         show={showQuestionMemssage}

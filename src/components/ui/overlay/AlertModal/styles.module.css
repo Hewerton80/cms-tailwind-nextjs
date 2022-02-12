@@ -8,7 +8,7 @@
   @apply text-lg text-center;
 }
 .root p {
-  @apply text-sm;
+  @apply text-sm text-center;
 }
 
 .root.success h4 {

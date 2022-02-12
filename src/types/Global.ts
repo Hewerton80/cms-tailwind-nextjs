@@ -10,6 +10,10 @@ export type Variant =
   | 'light'
 
 export type Callback = () => void
+export interface ISelectOption {
+  text: string
+  value: string
+}
 export interface IPagination {
   totalPages: number
   totalRecords: number
