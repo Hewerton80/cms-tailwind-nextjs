@@ -14,3 +14,7 @@
 .root:not(.error):focus {
   @apply border-info;
 }
+
+.root[type='time']::-webkit-calendar-picker-indicator {
+  background: none;
+}

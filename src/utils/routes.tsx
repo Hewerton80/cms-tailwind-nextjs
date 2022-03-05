@@ -13,6 +13,7 @@ export enum RouteEnum {
   CreateUser = '/users/create',
   Customers = '/customers',
   Posts = '/posts',
+  CreatPosts = '/posts/create',
   Categories = '/categories',
   CreateCategories = '/categories/create',
   Tags = '/tags',

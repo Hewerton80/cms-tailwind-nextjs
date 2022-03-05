@@ -28,6 +28,7 @@ import InputText from '../../components/ui/forms/InputText'
 import Form from '../../components/ui/forms/Form'
 import Select from '../../components/ui/forms/Select'
 import PaginationBar from '../../components/ui/navigation/PaginationBar'
+import { getSlugText } from '../../utils/getSlugText'
 
 function Categories() {
   const { handleSetBreadcrumbs } = useContext(BreadcrumbsContext)
@@ -45,14 +46,7 @@ function Categories() {
     (e: ChangeEvent<HTMLInputElement>) => {
       setName(e.target.value)
       if (!hasChangedSlug) {
-        setSlug(
-          e.target.value
-            .trim()
-            .toLowerCase()
-            .split(' ')
-            .filter((word) => word)
-            .join('-')
-        )
+        setSlug(getSlugText(e.target.value))
       }
     },
     [hasChangedSlug]

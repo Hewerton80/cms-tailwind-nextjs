@@ -21,7 +21,7 @@
 .root.primary:not(:disabled):active {
   background-color: #6b3aa3;
 }
-.root.primary:not(:disabled):active:focus,
+.root.primary:not(:disabled):focus,
 .root.primary:not(:disabled):active {
   /* prettier-ignore */
   box-shadow: 0 0 0 0.2rem theme('colors.primary')80;
@@ -40,7 +40,7 @@
 .root.success:not(:disabled):active {
   background-color: #188e04;
 }
-.root.success:not(:disabled):active:focus,
+.root.success:not(:disabled):focus,
 .root.success:not(:disabled):active {
   /* prettier-ignore */
   box-shadow: 0 0 0 0.2rem theme('colors.success')80;
@@ -60,7 +60,7 @@
 .root.secondary:not(:disabled):active {
   background-color: #565b76;
 }
-.root.secondary:not(:disabled):active:focus,
+.root.secondary:not(:disabled):focus,
 .root.secondary:not(:disabled):active {
   /* prettier-ignore */
   box-shadow: 0 0 0 0.2rem theme('colors.secondary')80;
@@ -79,7 +79,7 @@
 .root.danger:not(:disabled):active {
   background-color: #bd2130;
 }
-.root.danger:not(:disabled):active:focus,
+.root.danger:not(:disabled):focus,
 .root.danger:not(:disabled):active {
   /* prettier-ignore */
   box-shadow: 0 0 0 0.2rem theme('colors.danger')80;
@@ -98,7 +98,7 @@
 .root.warning:not(:disabled):active {
   background-color: #cb7d0a;
 }
-.root.warning:not(:disabled):active:focus,
+.root.warning:not(:disabled):focus,
 .root.warning:not(:disabled):active {
   /* prettier-ignore */
   box-shadow: 0 0 0 0.2rem theme('colors.warning')80;
@@ -117,7 +117,7 @@
 .root.info:not(:disabled):active {
   background-color: #2766a5;
 }
-.root.info:not(:disabled):active:focus,
+.root.info:not(:disabled):focus,
 .root.info:not(:disabled):active {
   /* prettier-ignore */
   box-shadow: 0 0 0 0.2rem theme('colors.info')80;
@@ -136,7 +136,7 @@
 .root.light:not(:disabled):active {
   background-color: #e2e6ea;
 }
-.root.light:not(:disabled):active:focus,
+.root.light:not(:disabled):focus,
 .root.light:not(:disabled):active {
   /* prettier-ignore */
   box-shadow: 0 0 0 0.2rem theme('colors.light')80;
@@ -159,7 +159,7 @@
 .root.dark:not(:disabled):active {
   background-color: #13171c;
 }
-.root.dark:not(:disabled):active:focus,
+.root.dark:not(:disabled):focus,
 .root.dark:not(:disabled):active {
   /* prettier-ignore */
   box-shadow: 0 0 0 0.2rem theme('colors.dark')80;

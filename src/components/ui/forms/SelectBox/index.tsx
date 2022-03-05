@@ -16,7 +16,7 @@ interface SelectBoxProps {
   id?: string
   className?: string
   options: ISelectBoxOptions[]
-  selectedOption?: ISelectBoxOptions
+  selectedOption: ISelectBoxOptions
   placeholder?: string
   error?: string
   onChange?: (value: ISelectBoxOptions) => void
@@ -35,40 +35,44 @@ function SelectBox({
   const [search, setSearch] = useState('')
 
   const [filteredOptions, setFilteredOptions] = useState<ISelectBoxOptions[]>(options)
-  const totalOptios = useMemo(() => {
-    let totalOptiosTmp = [...options]
 
+  const avaliableOptions = useMemo(() => {
+    let avaliableOptionsTmp = [...options]
+    console.log('avaliableOptionsTmp')
     if (selectedOption.value && selectedOption.text) {
-      totalOptiosTmp = totalOptiosTmp.filter((opt) => opt.value !== selectedOption.value)
-      totalOptiosTmp = [selectedOption, ...totalOptiosTmp]
+      avaliableOptionsTmp = avaliableOptionsTmp.filter(
+        (opt) => opt.value !== selectedOption.value
+      )
+      avaliableOptionsTmp = [selectedOption, ...avaliableOptionsTmp]
     }
 
-    totalOptiosTmp = totalOptiosTmp.sort((a, b) => (a.text >= b.text ? 1 : -1))
-    return totalOptiosTmp
+    avaliableOptionsTmp = avaliableOptionsTmp.sort((a, b) => (a.text >= b.text ? 1 : -1))
+    return avaliableOptionsTmp
   }, [options, selectedOption])
 
   useEffect(() => {
     const searchTrimmed = search.trim()
+    console.log('searchTrimmed')
     if (searchTrimmed) {
       setFilteredOptions(() =>
-        totalOptios.filter(({ text }) =>
+        avaliableOptions.filter(({ text }) =>
           text.trim().toLowerCase().includes(searchTrimmed.toLowerCase())
         )
       )
     } else {
-      setFilteredOptions(totalOptios)
+      setFilteredOptions(avaliableOptions)
     }
-  }, [search, totalOptios])
+  }, [search, avaliableOptions])
 
   const selectedValueText = useMemo(() => {
-    const indexValueText = totalOptios.findIndex(
+    const indexValueText = avaliableOptions.findIndex(
       (opt) => opt.value === selectedOption.value
     )
     if (indexValueText >= 0) {
-      return totalOptios[indexValueText].text
+      return avaliableOptions[indexValueText].text
     }
     return selectedOption.text
-  }, [selectedOption, totalOptios])
+  }, [selectedOption, avaliableOptions])
 
   const handleChangeOptions = useCallback(
     (valueDate: ISelectBoxOptions) => {

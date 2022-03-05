@@ -1,15 +1,23 @@
 export enum PostStatusEnum {
-    Draft = 'draft',
-    Published = 'published',
-    Unpublished = 'unpublished',
+  Published = 'published',
+  Draft = 'draft',
+  Unpublished = 'unpublished',
 }
 export enum PostStatusVariantEnum {
-    draft = 'warning',
-    published = 'success',
-    unpublished = 'danger',
+  draft = 'warning',
+  published = 'success',
+  unpublished = 'danger',
 }
 export enum PostStatusPtBrEnum {
-    draft = 'Rascunho',
-    published = 'Publicado',
-    unpublished = 'Despublicado',
+  published = 'Público',
+  draft = 'Rascunho',
+  unpublished = 'Despublicado',
+}
+
+export interface IPost {
+  id?: string
+  title?: string
+  slug?: string
+  content?: string
+  status?: PostStatusEnum
 }

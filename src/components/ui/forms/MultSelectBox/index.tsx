@@ -134,7 +134,7 @@ function MultSelectBox({
                 ref={inputRef}
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                style={{ width: (search.length + 1) * 8 }}
+                style={{ width: (search.length + 1) * 12 }}
               />
             </li>
           </ul>

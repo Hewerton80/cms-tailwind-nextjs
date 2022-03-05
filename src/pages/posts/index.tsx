@@ -38,9 +38,13 @@ function Posts() {
       <CardHeader>
         <CardTitle>Posts</CardTitle>
         <CardActions>
-          <Button className="ml-auto" variant="primary">
-            Criar post
-          </Button>
+          <Link href="/posts/create">
+            <a>
+              <Button className="ml-auto" variant="primary">
+                Criar post
+              </Button>
+            </a>
+          </Link>
         </CardActions>
       </CardHeader>
       <CardBody>
@@ -122,7 +126,13 @@ function Posts() {
         </Table>
       </CardBody>
       <CardFooter>
-        <PaginationBar currentPage={1} totalPages={10} onChangePage={(toPage) => {}} />
+        <PaginationBar
+          currentPage={1}
+          totalPages={10}
+          perPage={25}
+          totalRecords={1}
+          onChangePage={(toPage) => {}}
+        />
       </CardFooter>
     </Card>
   )

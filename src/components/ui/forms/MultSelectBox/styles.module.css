@@ -6,7 +6,7 @@
 }
 .root > span {
   @apply flex items-center text-sm outline-none rounded-sm duration-300
-  min-h-[46px] pb-1.5 px-1.5 text-[#495057];
+  min-h-[46px] pb-1.5 px-[22px] text-[#495057];
   border: 1px solid #f3f3f3;
   color: #495057;
   transition: 0.3s ease all;

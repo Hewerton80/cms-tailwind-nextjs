@@ -1,6 +1,6 @@
 import { types } from '@storybook/addons'
 import { useRouter } from 'next/router'
-import { FormEvent, useCallback, useState } from 'react'
+import { FormEvent, useCallback, useMemo, useState } from 'react'
 import Button from '../../components/ui/forms/Button'
 import Form from '../../components/ui/forms/Form'
 import FormGroup from '../../components/ui/forms/FormGroup'
@@ -64,6 +64,29 @@ function UserForm({ isEdit }: UserFormProps) {
     [newUser, createUser]
   )
 
+  const actionsButtons = useMemo(() => {
+    return (
+      <div className="flex justify-end w-full">
+        <Button
+          variant="light"
+          type="button"
+          onClick={() => setShowQuestionMenssage(true)}
+          disabled={isSubmitingUsers}
+        >
+          Cancelar
+        </Button>
+        <Button
+          className="ml-2"
+          variant="primary"
+          isLoading={isSubmitingUsers}
+          type="submit"
+        >
+          Criar
+        </Button>
+      </div>
+    )
+  }, [isSubmitingUsers])
+
   return (
     <>
       <div className="grid grid-cols-12 gap-6">
@@ -80,12 +103,13 @@ function UserForm({ isEdit }: UserFormProps) {
                     <InputText
                       id="nickname"
                       value={newUser.nickname}
-                      onChange={(e) =>
+                      onChange={(e) => {
                         handleChangeUser({
                           field: 'nickname',
                           value: e.target.value,
                         })
-                      }
+                        console.log(e.target.id)
+                      }}
                       required
                       placeholder="Nome de usuário"
                       error={submitUserError?.nickname}
@@ -189,26 +213,7 @@ function UserForm({ isEdit }: UserFormProps) {
                   </FormGroup>
                 </div>
 
-                <div className="col-span-12">
-                  <div className="flex justify-end">
-                    <Button
-                      variant="light"
-                      type="button"
-                      onClick={() => setShowQuestionMenssage(true)}
-                      disabled={isSubmitingUsers}
-                    >
-                      Cancelar
-                    </Button>
-                    <Button
-                      className="ml-2"
-                      variant="primary"
-                      isLoading={isSubmitingUsers}
-                      type="submit"
-                    >
-                      Criar
-                    </Button>
-                  </div>
-                </div>
+                <div className="hidden lg:flex col-span-12">{actionsButtons}</div>
               </div>
             </Form>
           </CardBody>
@@ -218,41 +223,45 @@ function UserForm({ isEdit }: UserFormProps) {
             <CardTitle>Opcionais</CardTitle>
           </CardHeader>
           <CardBody>
-            <Form onSubmit={(e) => e.preventDefault()}>
-              <div className="flex flex-col space-y-6">
-                <FormGroup>
-                  <FormLabel>Site</FormLabel>
-                  <InputText
-                    id="website"
-                    placeholder="https://www.linkedin.com/in/loren..."
-                    type="url"
-                    value={newUser.website}
-                    onChange={(e) =>
-                      handleChangeUser({
-                        field: 'website',
-                        value: e.target.value,
-                      })
-                    }
-                    error={submitUserError?.website}
-                    required
-                  />
-                </FormGroup>
-
-                <FormGroup>
-                  <FormLabel>Sobre</FormLabel>
-                  <TextArea
-                    id="about"
-                    value={newUser.about}
-                    onChange={(e) =>
-                      handleChangeUser({
-                        field: 'about',
-                        value: e.target.value,
-                      })
-                    }
-                    error={submitUserError?.about}
-                    placeholder="Minha bio..."
-                  />
-                </FormGroup>
+            <Form onSubmit={handleCreateUser}>
+              <div className="grid grid-cols-12 gap-y-6">
+                <div className="col-span-12">
+                  <FormGroup>
+                    <FormLabel>Site</FormLabel>
+                    <InputText
+                      id="website"
+                      placeholder="https://www.linkedin.com/in/loren..."
+                      type="url"
+                      value={newUser.website}
+                      onChange={(e) =>
+                        handleChangeUser({
+                          field: 'website',
+                          value: e.target.value,
+                        })
+                      }
+                      error={submitUserError?.website}
+                      required
+                    />
+                  </FormGroup>
+                </div>
+                <div className="col-span-12">
+                  <FormGroup>
+                    <FormLabel>Sobre</FormLabel>
+                    <TextArea
+                      id="about"
+                      value={newUser.about}
+                      onChange={(e) =>
+                        handleChangeUser({
+                          field: 'about',
+                          value: e.target.value,
+                        })
+                      }
+                      error={submitUserError?.about}
+                      placeholder="Minha bio..."
+                    />
+                  </FormGroup>
+                </div>
+                <div className="flex lg:hidden col-span-12">{actionsButtons}</div>
               </div>
             </Form>
           </CardBody>

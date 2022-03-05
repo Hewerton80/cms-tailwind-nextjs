@@ -98,7 +98,13 @@ function Customers() {
           </Table>
         </CardBody>
         <CardFooter>
-          <PaginationBar currentPage={1} totalPages={10} onChangePage={(toPage) => {}} />
+          <PaginationBar
+            currentPage={1}
+            totalPages={10}
+            perPage={25}
+            totalRecords={1}
+            onChangePage={(toPage) => {}}
+          />
         </CardFooter>
       </Card>
       <Modal show={showModalCustomerForm} onClose={handleCloseModal} size="lg">
