@@ -22,7 +22,8 @@
     "gray": "#76838f",
     "gray-light": "#eaeaf1",
     "gray-lighter": "#f7f8fc",
-    "gray-lightest": "#e4e4f4"
+    "gray-lightest": "#e4e4f4",
+    "gray-border": "#f3f3f3"
   },
   "fontFamily": {
     "sans": "Poppins, Arial, sans-serif"

@@ -40,7 +40,6 @@ function CustomSunEditor({ onChange }: CustomSunEditorProps) {
               'horizontalRule',
               'list',
               'table',
-              'codeView',
             ],
             ['link', 'image', 'video', 'audio', 'codeView'],
           ],

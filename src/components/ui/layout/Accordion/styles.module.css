@@ -1,8 +1,8 @@
 .root {
-  @apply flex flex-col border-2 border-[#f3f3f3];
+  @apply flex flex-col border-2 border-gray-border;
 }
 .root .title {
-  @apply relative cursor-pointer px-4 py-3 border-b-1 border-[#f3f3f3];
+  @apply relative cursor-pointer px-4 py-3 border-b-1 border-gray-border;
 }
 .root .title h5 {
   @apply text-base;
@@ -11,7 +11,6 @@
   @apply absolute right-1 top-1/2 -translate-y-1/2 text-secondary;
 }
 .root .content {
-  /* border: 1px solid #f3f3f3; */
   border-top: none;
   @apply px-4 py-3;
 }

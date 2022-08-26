@@ -4,7 +4,15 @@ import styles from './styles.module.css'
 import ValidationError from '../../feedback/ValidationError'
 
 interface InputTextProps extends InputHTMLAttributes<HTMLInputElement> {
-  type?: 'text' | 'email' | 'password' | 'url' | 'tel' | 'time' | 'datetime-local'
+  type?:
+    | 'text'
+    | 'email'
+    | 'password'
+    | 'url'
+    | 'tel'
+    | 'time'
+    | 'datetime-local'
+    | 'date'
   error?: string
 }
 

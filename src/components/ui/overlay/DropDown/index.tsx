@@ -1,32 +1,69 @@
-import DivWitchClickOutsideEvent, {
-  DivWitchClickOutsideEventProps,
-} from '../DivWitchClickOutsideEvent'
-import cn from 'classnames'
 import styles from './styles.module.css'
+import { Menu } from '@headlessui/react'
+import { Fragment, ReactNode } from 'react'
+import classNames from 'classnames'
+import Link, { LinkProps } from 'next/link'
+import CustomLink from '../../navigation/CustomLink'
 
-interface DropDownProps extends DivWitchClickOutsideEventProps {
-  onClickOption?: (index: number) => void
-  dropDownItens: (string | JSX.Element)[]
+interface DropDownProps extends GlobalProps {}
+interface DropDownItemProps extends GlobalProps, LinkProps {
+  as?: 'a' | 'button'
+  // href?: string
+  leftIcon?: ReactNode
 }
 
-function DropDown({
-  children,
-  className,
-  dropDownItens,
-  onClickOption,
-  ...rest
-}: DropDownProps) {
+export function DropDown({ children, className, ...rest }: DropDownProps) {
   return (
-    <DivWitchClickOutsideEvent className={cn(styles.root, className)} {...rest}>
-      <ul>
-        {dropDownItens.map((text, i) => (
-          <li key={i} role="button" onClick={() => onClickOption?.(i)}>
-            <span>{text}</span>
-          </li>
-        ))}
-      </ul>
-    </DivWitchClickOutsideEvent>
+    <Menu as="div" className={classNames(styles.dropdown, className)} {...rest}>
+      {children}
+    </Menu>
   )
 }
-
-export default DropDown
+export function DropDownToogle({ children, ...rest }: DropDownProps) {
+  return (
+    <Menu.Button as="div" role="button" {...rest}>
+      {children}
+    </Menu.Button>
+  )
+}
+export function DropDownMenu({ children, className, ...rest }: DropDownProps) {
+  return (
+    <Menu.Items
+      as="ul"
+      role="button"
+      className={classNames(styles['dropdown-menu'], className)}
+      {...rest}
+    >
+      {children}
+    </Menu.Items>
+  )
+}
+export function DropDownItem({
+  children,
+  className,
+  href = '#',
+  leftIcon,
+  as = 'a',
+  ...rest
+}: DropDownItemProps) {
+  const classesNamesResult = classNames(styles['dropdown-item'], className)
+  const childrens = (
+    <>
+      {leftIcon && <span className="mr-2">{leftIcon}</span>}
+      {children}
+    </>
+  )
+  return (
+    <Menu.Item as={Fragment}>
+      {as === 'a' ? (
+        <CustomLink href={href} className={classNames(classesNamesResult)} {...rest}>
+          {childrens}
+        </CustomLink>
+      ) : (
+        <button className={classNames(classesNamesResult)} {...rest}>
+          {childrens}
+        </button>
+      )}
+    </Menu.Item>
+  )
+}

@@ -1,6 +1,5 @@
 .root {
-  @apply text-sm outline-none rounded-sm duration-300;
-  border: 1px solid #f3f3f3;
+  @apply text-sm outline-none rounded-sm duration-300 border border-gray-border;
   color: #495057;
   padding: 14px 22px;
   transition: 0.3s ease all;

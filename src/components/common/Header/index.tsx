@@ -1,11 +1,11 @@
 import { HTMLAttributes, useContext, useState } from 'react'
-import cn from 'classnames'
 import Image from 'next/image'
 import { FaBars, FaAngleDown, FaSignOutAlt } from 'react-icons/fa'
 import Avatar from '../../ui/media/Avatar'
-import DropDown from '../../ui/overlay/DropDown'
+import { DropDown, DropDownItem, DropDownMenu } from '../../ui/overlay/DropDown'
 import { ToogleSideBarContext } from '../../../contexts/toogleSideBarContext'
-import styles from './styles.module.css'
+import { Menu } from '@headlessui/react'
+import classNames from 'classnames'
 
 interface HeaderProps extends HTMLAttributes<HTMLElement> {}
 
@@ -16,38 +16,51 @@ function Header({ className, ...rest }: HeaderProps) {
   const { handleToogleSideBar } = useContext(ToogleSideBarContext)
 
   return (
-    <header className={cn(styles.root, className)} {...rest}>
-      <div className={styles.header_inner}>
-        <div className={cn(showSideBar && styles.show)}>
-          <span className={cn(styles.logo_wrapper, showSideBar && styles.show)}>
+    <header
+      className={classNames('flex h-20 w-full px-7 bg-primary z-10', className)}
+      {...rest}
+    >
+      <div className="flex items-center justify-between w-full h-full">
+        <div
+          className={classNames(
+            'flex items-center h-full',
+            showSideBar ? 'w-auto md:w-60 px-0 md:px-5' : 'w-auto px-0'
+          )}
+        >
+          <span className={classNames('hidden', showSideBar && 'md:block')}>
             <Image src="/images/logo.svg" alt="logo" width={126} height={40} />
           </span>
           <span
-            className={cn(styles.navbar_toggler)}
+            className="flex ml-auto cursor-pointer w-5 h-7"
             role="button"
             onClick={handleToogleSideBar}
           >
-            <FaBars />
+            <FaBars className="m-auto text-white text-xl" />
           </span>
         </div>
 
-        <div>
-          <div role="button" onClick={() => !showDropDown && setShowDropDown(true)}>
-            <Avatar src="/images/face5.jpg" />
-            <p>Fulano de tal</p>
-            <FaAngleDown />
-            {showDropDown && (
-              <DropDown
-                onClickOutside={() => setShowDropDown(false)}
-                onClickOption={() => console.log('logout')}
-                dropDownItens={[
-                  <span key="logout">
-                    <FaSignOutAlt /> Log out
-                  </span>,
-                ]}
-              />
-            )}
-          </div>
+        <div className="flex h-full items-center ml-auto">
+          <DropDown>
+            <Menu.Button as="div" role="button">
+              <div
+                className={classNames('flex items-center', 'cursor-pointer')}
+                role="button"
+                onClick={() => !showDropDown && setShowDropDown(true)}
+              >
+                <Avatar src="/images/face5.jpg" />
+                <p className="ml-4 text-sm font-bold text-white">Fulano de tal</p>
+                <FaAngleDown className="text-white ml-1" />
+              </div>
+            </Menu.Button>
+            <DropDownMenu>
+              <DropDownItem href="#" as="button" leftIcon={<FaSignOutAlt />}>
+                Log out
+              </DropDownItem>
+              <DropDownItem href="#" leftIcon={<FaSignOutAlt />}>
+                Log out
+              </DropDownItem>
+            </DropDownMenu>
+          </DropDown>
         </div>
       </div>
     </header>

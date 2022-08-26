@@ -6,8 +6,7 @@
 }
 .root > span {
   @apply flex items-center text-sm outline-none rounded-sm duration-300 
-  h-[46px] px-[22px] text-[#495057];
-  border: 1px solid #f3f3f3;
+  h-[46px] px-[22px] text-[#495057] border border-gray-border;
   transition: 0.3s ease all;
 }
 .root > span:not(:disabled) {
@@ -17,8 +16,7 @@
   @apply border-info;
 }
 .root > div {
-  @apply flex flex-col absolute w-full h-[inherit] bg-white z-50;
-  border: 1px solid #f3f3f3;
+  @apply flex flex-col absolute w-full h-[inherit] bg-white z-50 border border-gray-border;
   border-top: 0;
 }
 .root > div > span {

@@ -20,4 +20,7 @@ export interface IPost {
   slug?: string
   content?: string
   status?: PostStatusEnum
+  publishad_at?: string
+  publishad_at_date?: string
+  publishad_at_time?: string
 }

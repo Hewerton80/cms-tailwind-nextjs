@@ -16,8 +16,9 @@ module.exports = {
       // => @media (min-width: 1536px) { ... }
     },
     fontFamily: assets.fontFamily,
-    colors: assets.colors,
+
     extend: {
+      colors: assets.colors,
       minWidth: {
         screen: '100vw',
       },

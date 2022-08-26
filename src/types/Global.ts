@@ -30,3 +30,8 @@ export interface IPaginationRecords<T = any> {
   total: number
   totalPages: number
 }
+
+export interface File extends Blob {
+  lastModified: number
+  name: string
+}
