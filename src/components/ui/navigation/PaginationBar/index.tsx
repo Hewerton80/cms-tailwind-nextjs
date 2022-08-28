@@ -76,7 +76,11 @@ function PaginationBar({
           <ul className="flex">
             <li>
               <Button
-                className={'border-r-0 '}
+                className={cn(
+                  'border-l-0',
+                  'dark:bg-dark-card dark:border-white/10 dark:text-light',
+                  'dark:hover:bg-dark-hover'
+                )}
                 onClick={() => handleChangePage(currentPage - 1)}
                 disabled={currentPage === 1 || disabled}
               >
@@ -89,7 +93,11 @@ function PaginationBar({
                 className={cn(currentPage === page + 1 && styles.active)}
               >
                 <Button
-                  className={i > 0 ? 'border-l-0 ' : ''}
+                  className={cn(
+                    i > 0 && 'border-l-0',
+                    'dark:bg-dark-card dark:border-white/10 dark:text-light',
+                    'dark:hover:bg-dark-hover'
+                  )}
                   disabled={disabled}
                   onClick={() => i + 1 !== currentPage && handleChangePage(page + 1)}
                 >
@@ -99,7 +107,11 @@ function PaginationBar({
             ))}
             <li>
               <Button
-                className={'border-l-0 '}
+                className={cn(
+                  'border-l-0',
+                  'dark:bg-dark-card dark:border-white/10 dark:text-light',
+                  'dark:hover:bg-dark-hover'
+                )}
                 onClick={() => handleChangePage(currentPage + 1)}
                 disabled={currentPage === totalPages || disabled}
               >

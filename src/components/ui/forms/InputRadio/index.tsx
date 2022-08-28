@@ -13,7 +13,7 @@ function InputRadio({ text, className, ...rest }: InputRadioProps) {
         <input type="radio" {...rest} />
         <span />
       </span>
-      {text && <p>{text}</p>}
+      {text && <p className="dark:text-light">{text}</p>}
     </label>
   )
 }
