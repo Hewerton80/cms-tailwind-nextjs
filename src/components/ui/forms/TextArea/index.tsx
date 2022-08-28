@@ -10,7 +10,15 @@ interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
 function TextArea({ className, error, ...rest }: TextAreaProps) {
   return (
     <>
-      <textarea className={cn(styles.root, error && styles.error, className)} {...rest} />
+      <textarea
+        className={cn(
+          styles.root,
+          'dark:border-white/10 dark:text-light',
+          error && styles.error,
+          className
+        )}
+        {...rest}
+      />
       {error && <ValidationError>{error}</ValidationError>}
     </>
   )

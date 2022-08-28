@@ -1,4 +1,4 @@
-import { HTMLAttributes, useContext, useState } from 'react'
+import { HTMLAttributes, useContext, useEffect, useState } from 'react'
 import Image from 'next/image'
 import { FaBars, FaAngleDown, FaSignOutAlt } from 'react-icons/fa'
 import Avatar from '../../ui/media/Avatar'
@@ -6,18 +6,44 @@ import { DropDown, DropDownItem, DropDownMenu } from '../../ui/overlay/DropDown'
 import { ToogleSideBarContext } from '../../../contexts/toogleSideBarContext'
 import { Menu } from '@headlessui/react'
 import classNames from 'classnames'
+import ThemeSwitch from '../../ui/forms/ThemeSwitch'
 
 interface HeaderProps extends HTMLAttributes<HTMLElement> {}
 
 function Header({ className, ...rest }: HeaderProps) {
   const { showSideBar } = useContext(ToogleSideBarContext)
   const [showDropDown, setShowDropDown] = useState(false)
+  const [theme, setTheme] = useState<'light' | 'dark'>('light')
 
   const { handleToogleSideBar } = useContext(ToogleSideBarContext)
 
+  useEffect(() => {
+    if (localStorage.getItem('theme') === 'dark') {
+      setTheme('dark')
+    }
+    localStorage.setItem('theme', 'dark')
+  }, [])
+
+  useEffect(() => {
+    // const isDarkModeByOperatingSystemPreference = window.matchMedia(
+    //   '(prefers-color-scheme: dark)'
+    // ).matches
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark')
+      localStorage.setItem('theme', 'dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+      localStorage.setItem('theme', 'light')
+    }
+  }, [theme])
+
   return (
     <header
-      className={classNames('flex h-20 w-full px-7 bg-primary z-10', className)}
+      className={classNames(
+        'flex h-20 w-full px-7 bg-primary z-10',
+        'dark:bg-dark-card dark:border-white/10',
+        className
+      )}
       {...rest}
     >
       <div className="flex items-center justify-between w-full h-full">
@@ -39,7 +65,12 @@ function Header({ className, ...rest }: HeaderProps) {
           </span>
         </div>
 
-        <div className="flex h-full items-center ml-auto">
+        <div className="flex h-full items-center ml-auto space-x-2">
+          <ThemeSwitch
+            id="theme-ThemeSwitch"
+            checked={theme === 'dark'}
+            onChange={(e) => setTheme(e.target.checked ? 'dark' : 'light')}
+          />
           <DropDown>
             <Menu.Button as="div" role="button">
               <div

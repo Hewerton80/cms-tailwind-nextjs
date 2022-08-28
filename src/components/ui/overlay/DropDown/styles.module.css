@@ -4,7 +4,7 @@
 }
 .dropdown-menu {
   @apply absolute w-40 bg-white shadow-md border
-   border-gray-border flex flex-col py-2 outline-none;
+   border-gray-border flex flex-col py-2 outline-none text-dark;
    top: calc(100% + 4px);
 }
 .dropdown-item {

@@ -1,7 +1,8 @@
 .root {
-  @apply text-sm outline-none rounded-sm duration-300 border border-gray-border;
+  @apply text-sm outline-none rounded-sm duration-300 border border-gray-border 
+  bg-transparent text-[#495057] px-[22px] py-[14px];
   color: #495057;
-  padding: 14px 22px;
+  /* padding: 14px 22px; */
   transition: 0.3s ease all;
 }
 .root.error {

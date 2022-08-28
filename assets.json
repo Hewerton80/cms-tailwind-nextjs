@@ -8,6 +8,8 @@
   },
   "colors": {
     "body": "#f3f4f9",
+    "dark-body": "#1a1a3c",
+    "dark-card": "#2a2a4a",
     "primary": "#844fc1",
     "secondary": "#6c7293",
     "success": "#21bf06",

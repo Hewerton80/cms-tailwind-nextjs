@@ -24,7 +24,7 @@ function InputText(
     <>
       <input
         ref={ref}
-        className={cn(styles.root, error && styles.error, className)}
+        className={cn(styles.root, 'dark:border-white/10 dark:text-light', className)}
         type={type}
         {...rest}
       />

@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import { useContext, useEffect } from 'react'
-import { Card, CardBody, CardTitle } from '../components/ui/layout/Card'
+import { Card, CardBody, CardHeader, CardTitle } from '../components/ui/layout/Card'
 import { BreadcrumbsContext } from '../contexts/breadcrumbsContext'
 import { RouteEnum } from '../utils/routes'
 
@@ -14,9 +14,15 @@ const Home: NextPage = () => {
 
   return (
     <Card className="w-full">
-      <CardTitle>Home</CardTitle>
+      <CardHeader>
+        <CardTitle>Home page</CardTitle>
+      </CardHeader>
       <CardBody>
-        <h1 className="first-letter:text-9xl">Home</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur odio nemo vitae
+          dolores repellendus totam maxime et officiis iste quasi error officia, molestias
+          tempore placeat, ratione provident veritatis atque? Vel.
+        </p>
       </CardBody>
     </Card>
   )

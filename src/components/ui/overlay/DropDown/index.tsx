@@ -31,7 +31,11 @@ export function DropDownMenu({ children, className, ...rest }: DropDownProps) {
     <Menu.Items
       as="ul"
       role="button"
-      className={classNames(styles['dropdown-menu'], className)}
+      className={classNames(
+        styles['dropdown-menu'],
+        'dark:bg-dark-card dark:border-dark-card ',
+        className
+      )}
       {...rest}
     >
       {children}
@@ -46,7 +50,12 @@ export function DropDownItem({
   as = 'a',
   ...rest
 }: DropDownItemProps) {
-  const classesNamesResult = classNames(styles['dropdown-item'], className)
+  const classesNamesResult = classNames(
+    styles['dropdown-item'],
+    'dark:text-secondary',
+    'dark:hover:bg-slate-700',
+    className
+  )
   const childrens = (
     <>
       {leftIcon && <span className="mr-2">{leftIcon}</span>}
