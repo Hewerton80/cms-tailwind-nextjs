@@ -1,4 +1,4 @@
-import Table from '../../components/ui/dataDisplay/Table'
+import Table, { Tbody, Td, Th, Thead, Tr } from '../../components/ui/dataDisplay/Table'
 import {
   Card,
   CardActions,
@@ -49,30 +49,30 @@ function Posts() {
       </CardHeader>
       <CardBody>
         <Table>
-          <thead>
-            <tr>
-              <th>Título</th>
-              <th>Categoria(s)</th>
-              <th>Autor</th>
-              <th>(Vizualizações / Likes / Favoritos)</th>
-              <th>Data</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
+          <Thead>
+            <Tr>
+              <Th>Título</Th>
+              <Th>Categoria(s)</Th>
+              <Th>Autor</Th>
+              <Th>(Vizualizações / Likes / Favoritos)</Th>
+              <Th>Data</Th>
+              <Th></Th>
+            </Tr>
+          </Thead>
+          <Tbody>
             {Array.from(Array(5).keys()).map((i) => {
               const status = Object.values(PostStatusEnum)[getRandomIntInclusive(0, 2)]
 
               return (
-                <tr key={i}>
-                  <td>
+                <Tr key={i}>
+                  <Td>
                     <Link href="#">
                       <a className="hover:underline">
                         Como centralizar um elemento com html e css
                       </a>
                     </Link>
-                  </td>
-                  <td>
+                  </Td>
+                  <Td>
                     {categories
                       .map((cat, i) => (
                         <Fragment key={'cat' + i}>
@@ -85,24 +85,24 @@ function Posts() {
                         </Fragment>
                       ))
                       .filter(() => getRandomIntInclusive(0, 3))}
-                  </td>
+                  </Td>
 
-                  <td>
+                  <Td>
                     <Link href="#">
                       <a className="hover:underline">Fulano@email.com.br</a>
                     </Link>
-                  </td>
-                  <td>
+                  </Td>
+                  <Td>
                     {String(getRandomIntInclusive(3, 150)).padStart(2, '0')}
                     {' / '}
                     {String(getRandomIntInclusive(3, 20)).padStart(2, '0')}
                     {' / '}
                     {String(getRandomIntInclusive(3, 20)).padStart(2, '0')}
-                  </td>
-                  {/* <td>
+                  </Td>
+                  {/* <Td>
                       
-                    </td> */}
-                  <td>
+                    </Td> */}
+                  <Td>
                     <span className="flex flex-col ">
                       <Badge className="mb-1" variant={PostStatusVariantEnum[status]}>
                         {PostStatusPtBrEnum[status]}
@@ -111,18 +111,18 @@ function Posts() {
                         .plus({ days: -1 * getRandomIntInclusive(0, 365) })
                         .toFormat('ff')}
                     </span>
-                  </td>
-                  <td>
+                  </Td>
+                  <Td>
                     <div className="flex items-center justify-end">
                       <IconButton icon={<FaPen />} />
                       <IconButton className="ml-2" icon={<FaRegEye />} />
                       <IconButton variant="danger" className="ml-2" icon={<FaTrash />} />
                     </div>
-                  </td>
-                </tr>
+                  </Td>
+                </Tr>
               )
             })}
-          </tbody>
+          </Tbody>
         </Table>
       </CardBody>
       <CardFooter>

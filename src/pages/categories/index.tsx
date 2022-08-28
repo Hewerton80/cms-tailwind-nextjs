@@ -1,4 +1,4 @@
-import Table from '../../components/ui/dataDisplay/Table'
+import Table, { Tbody, Td, Th, Thead, Tr } from '../../components/ui/dataDisplay/Table'
 import {
   Card,
   CardActions,
@@ -96,25 +96,25 @@ function Categories() {
           <div className="flex flex-col">
             <div className="flex justify-end"></div>
             <Table>
-              <thead>
-                <tr>
-                  <th>Nome</th>
-                  <th>Slug</th>
-                  <th>Posts</th>
-                  <th>Exibir no menu</th>
-                  <th>status</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
+              <Thead>
+                <Tr>
+                  <Th>Nome</Th>
+                  <Th>Slug</Th>
+                  <Th>Posts</Th>
+                  <Th>Exibir no menu</Th>
+                  <Th>status</Th>
+                  <Th></Th>
+                </Tr>
+              </Thead>
+              <Tbody>
                 {getRange(25).map((i) => {
                   const categoryIndex = getRandomIntInclusive(0, categories.length - 1)
                   return (
-                    <tr key={i}>
-                      <td>{categories[categoryIndex]}</td>
-                      <td>{categorySlugs[categoryIndex]}</td>
-                      <td>{getRandomIntInclusive(0, 20)}</td>
-                      <td>
+                    <Tr key={i}>
+                      <Td>{categories[categoryIndex]}</Td>
+                      <Td>{categorySlugs[categoryIndex]}</Td>
+                      <Td>{getRandomIntInclusive(0, 20)}</Td>
+                      <Td>
                         <span className="text-lg">
                           {getRandomIntInclusive(0, 1) ? (
                             <FaCheck className="text-info" />
@@ -122,8 +122,8 @@ function Categories() {
                             <FaTimes className="text-secondary" />
                           )}
                         </span>
-                      </td>
-                      <td>
+                      </Td>
+                      <Td>
                         <span className="text-lg">
                           {getRandomIntInclusive(0, 1) ? (
                             <FaEye className="text-info" />
@@ -131,8 +131,8 @@ function Categories() {
                             <FaEyeSlash className="text-secondary" />
                           )}
                         </span>
-                      </td>
-                      <td>
+                      </Td>
+                      <Td>
                         <div className="flex items-center justify-end">
                           <Link href="#">
                             <a>
@@ -145,11 +145,11 @@ function Categories() {
                             </a>
                           </Link>
                         </div>
-                      </td>
-                    </tr>
+                      </Td>
+                    </Tr>
                   )
                 })}
-              </tbody>
+              </Tbody>
             </Table>
           </div>
         </CardBody>

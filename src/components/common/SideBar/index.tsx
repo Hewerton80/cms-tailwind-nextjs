@@ -52,7 +52,7 @@ function SideBar({ className, ...rest }: SideBarProps) {
                       'flex items-center w-full h-full justify-start',
                       showSideBar ? 'md:justify-start' : 'md:justify-center',
                       'py-3.5 pr-3.5 pl-[9.6px]',
-                      'text-secondary text-sm'
+                      'text-secondary dark:text-light text-sm'
                       // showSideBar && styles.expanded
                     )}
                     onClick={handleToogleSidebar}

@@ -1,4 +1,4 @@
-import Table, { Td, Th, Tr } from '../../components/ui/dataDisplay/Table'
+import Table, { Tbody, Td, Th, Thead, Tr } from '../../components/ui/dataDisplay/Table'
 import {
   Card,
   CardActions,
@@ -54,15 +54,15 @@ function Customers() {
         </CardHeader>
         <CardBody>
           <Table>
-            <thead>
+            <Thead>
               <Tr>
                 <Th></Th>
                 <Th>(Vizualizações / Likes / Favoritos)</Th>
                 <Th>Cadastro em</Th>
                 <Th></Th>
               </Tr>
-            </thead>
-            <tbody>
+            </Thead>
+            <Tbody>
               {Array.from(Array(5).keys()).map((i) => (
                 <Tr key={i}>
                   <Td className="py-1">
@@ -94,7 +94,7 @@ function Customers() {
                   </Td>
                 </Tr>
               ))}
-            </tbody>
+            </Tbody>
           </Table>
         </CardBody>
         <CardFooter>
