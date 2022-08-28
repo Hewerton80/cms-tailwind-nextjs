@@ -5,10 +5,13 @@ import {
   VscGroupByRefType,
   VscTag,
   VscHome,
+  VscDebugStackframeDot,
 } from 'react-icons/vsc'
 
 export enum RouteEnum {
   Home = '/',
+  UiElements = '/ui-elements',
+  Buttons = '/buttons',
   Adms = '/users',
   CreateUser = '/users/create',
   Customers = '/customers',
@@ -19,13 +22,22 @@ export enum RouteEnum {
   Tags = '/tags',
 }
 
-interface IMenu {
+export interface IMenu {
   title: string
   url: string
-  icon: JSX.Element
+  icon?: JSX.Element
+  submenu?: IMenu[]
 }
 
 export const menu: IMenu[] = [
+  {
+    title: 'UI Elements',
+    url: RouteEnum.UiElements,
+    icon: <VscHome className="text-xl" />,
+    submenu: [
+      { title: 'Buttons', url: RouteEnum.Buttons, icon: <VscDebugStackframeDot /> },
+    ],
+  },
   {
     title: 'Home',
     url: RouteEnum.Home,
