@@ -53,7 +53,7 @@ export function DropDownItem({
   const classesNamesResult = classNames(
     styles['dropdown-item'],
     'dark:text-secondary',
-    'dark:hover:bg-slate-700',
+    'dark:hover:bg-dark-hover',
     className
   )
   const childrens = (

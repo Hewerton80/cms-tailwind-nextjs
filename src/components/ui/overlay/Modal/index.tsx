@@ -53,7 +53,7 @@ export function Modal({
 export function ModalTitle({ children, className, ...rest }: CardProps) {
   return (
     <div className={cn('flex px-7 pt-6', className)} {...rest}>
-      <h5 className="text-black">{children}</h5>
+      <h5 className="text-black dark:text-light">{children}</h5>
     </div>
   )
 }

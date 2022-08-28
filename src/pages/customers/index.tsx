@@ -1,4 +1,4 @@
-import Table from '../../components/ui/dataDisplay/Table'
+import Table, { Td, Th, Tr } from '../../components/ui/dataDisplay/Table'
 import {
   Card,
   CardActions,
@@ -55,44 +55,44 @@ function Customers() {
         <CardBody>
           <Table>
             <thead>
-              <tr>
-                <th></th>
-                <th>(Vizualizações / Likes / Favoritos)</th>
-                <th>Cadastro em</th>
-                <th></th>
-              </tr>
+              <Tr>
+                <Th></Th>
+                <Th>(Vizualizações / Likes / Favoritos)</Th>
+                <Th>Cadastro em</Th>
+                <Th></Th>
+              </Tr>
             </thead>
             <tbody>
               {Array.from(Array(5).keys()).map((i) => (
-                <tr key={i}>
-                  <td className="py-1">
+                <Tr key={i}>
+                  <Td className="py-1">
                     <AvatarGroup
                       src={`/images/face${getRandomIntInclusive(4, 7)}.jpg`}
                       userName="Fulano da Silva "
                       userEmail="Fulano@email.com.br"
                     />
-                  </td>
+                  </Td>
 
-                  <td>
+                  <Td>
                     {String(getRandomIntInclusive(3, 150)).padStart(2, '0')}
                     {' / '}
                     {String(getRandomIntInclusive(3, 20)).padStart(2, '0')}
                     {' / '}
                     {String(getRandomIntInclusive(3, 20)).padStart(2, '0')}
-                  </td>
-                  <td>
+                  </Td>
+                  <Td>
                     {DateTime.now()
                       .plus({ days: -1 * getRandomIntInclusive(0, 365) })
                       .toFormat('ff')}
-                  </td>
-                  <td>
+                  </Td>
+                  <Td>
                     <div className="flex items-center justify-end">
                       <IconButton icon={<FaPen />} />
                       <IconButton className="ml-2" icon={<FaRegEye />} />
                       <IconButton variant="danger" className="ml-2" icon={<FaTrash />} />
                     </div>
-                  </td>
-                </tr>
+                  </Td>
+                </Tr>
               ))}
             </tbody>
           </Table>

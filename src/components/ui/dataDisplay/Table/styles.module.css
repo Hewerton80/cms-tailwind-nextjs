@@ -1,5 +1,5 @@
 .root {
-  @apply flex w-full text-black overflow-x-auto;
+  @apply flex w-full overflow-x-auto;
 }
 .root table {
   @apply w-full;

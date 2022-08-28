@@ -8,7 +8,7 @@
 @layer base {
   html,
   body {
-    @apply font-sans m-0 p-0 bg-body dark:bg-dark-body text-dark dark:text-white;
+    @apply font-sans m-0 p-0 bg-body dark:bg-dark-body text-dark dark:text-light;
   }
   body.hidden_scroll {
     @apply overflow-y-hidden;

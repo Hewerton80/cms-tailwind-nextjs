@@ -11,8 +11,8 @@ function AvatarGroup({ userName, userEmail, className, ...rest }: AvatarGroupPro
     <div className={cn('flex items-center', className)}>
       <Avatar {...rest} />
       <span className="flex flex-col ml-3 text-sm ">
-        <span className="text-black ">{userName}</span>
-        <span className="text-dark text-xs">{userEmail}</span>
+        <span className="text-black dark:text-white">{userName}</span>
+        <span className="text-dark dark:text-light text-xs">{userEmail}</span>
       </span>
     </div>
   )
