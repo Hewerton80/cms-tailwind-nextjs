@@ -11,7 +11,7 @@ import {
 export enum RouteEnum {
   Home = '/',
   UiElements = '/ui-elements',
-  Buttons = '/buttons',
+  Buttons = '/ui-elements/buttons',
   Adms = '/users',
   CreateUser = '/users/create',
   Customers = '/customers',

@@ -1,11 +1,15 @@
 .root {
-  @apply flex items-center justify-center text-sm px-6 h-11 w-fit cursor-pointer border-0;
-  border-radius: 3px;
-  transition: 0.3s ease all;
+  @apply flex items-center justify-center text-sm px-6 h-11 w-fit cursor-pointer border-0
+  ease-linear duration-300 rounded-[3px];
 }
 .root:disabled {
-  @apply cursor-default;
-  opacity: 0.65;
+  @apply cursor-default opacity-[0.65];
+}
+
+.root:not(:disabled):focus,
+.root:not(:disabled):active {
+  @apply ring-4;
+
 }
 
 /* primary */
@@ -13,18 +17,15 @@
   @apply bg-primary text-white;
 }
 .root.primary:not(:disabled):hover {
-  background-color: #6b3aa3;
-  /* prettier-ignore */
-  box-shadow: 0 2px 2px 0 theme('colors.primary')33,
-    0 3px 1px -2px theme('colors.primary')33, 0 1px 5px 0 theme('colors.primary')33;
+  @apply bg-active-primary shadow-sm shadow-primary;
 }
 .root.primary:not(:disabled):active {
-  background-color: #6b3aa3;
+  @apply bg-active-primary
 }
 .root.primary:not(:disabled):focus,
 .root.primary:not(:disabled):active {
-  /* prettier-ignore */
-  box-shadow: 0 0 0 0.2rem theme('colors.primary')80;
+  @apply ring-primary/40;
+
 }
 
 /* success */
@@ -32,18 +33,15 @@
   @apply bg-success text-white;
 }
 .root.success:not(:disabled):hover {
-  background-color: #188e04;
-  /* prettier-ignore */
-  box-shadow: 0 2px 2px 0 theme('colors.success')33,
-    0 3px 1px -2px theme('colors.success')33, 0 1px 5px 0 theme('colors.success')33;
+  @apply bg-active-success shadow-sm shadow-success;
 }
 .root.success:not(:disabled):active {
-  background-color: #188e04;
+   @apply bg-active-success;
 }
 .root.success:not(:disabled):focus,
 .root.success:not(:disabled):active {
-  /* prettier-ignore */
-  box-shadow: 0 0 0 0.2rem theme('colors.success')80;
+  @apply ring-success/40;
+
 }
 
 /* secondary */
@@ -51,38 +49,31 @@
   @apply bg-secondary text-white;
 }
 .root.secondary:not(:disabled):hover {
-  background-color: #565b76;
-  /* prettier-ignore */
-  box-shadow: 0 2px 2px 0 theme('colors.secondary')33,
-    0 3px 1px -2px theme('colors.secondary')33,
-    0 1px 5px 0 theme('colors.secondary')33;
+  @apply bg-active-secondary shadow-sm shadow-secondary;
+
 }
 .root.secondary:not(:disabled):active {
-  background-color: #565b76;
+  @apply bg-active-secondary;
 }
 .root.secondary:not(:disabled):focus,
 .root.secondary:not(:disabled):active {
-  /* prettier-ignore */
-  box-shadow: 0 0 0 0.2rem theme('colors.secondary')80;
+  @apply ring-secondary/40;
+
 }
 
 /* danger */
 .root.danger {
-  @apply bg-danger text-white;
+  @apply bg-danger text-white ;
 }
 .root.danger:not(:disabled):hover {
-  background-color: #bd2130;
-  /* prettier-ignore */
-  box-shadow: 0 2px 2px 0 theme('colors.danger')33,
-    0 3px 1px -2px theme('colors.danger')33, 0 1px 5px 0 theme('colors.danger')33;
+  @apply bg-active-danger shadow-sm shadow-danger;
 }
 .root.danger:not(:disabled):active {
-  background-color: #bd2130;
+  @apply bg-active-danger;
 }
 .root.danger:not(:disabled):focus,
 .root.danger:not(:disabled):active {
-  /* prettier-ignore */
-  box-shadow: 0 0 0 0.2rem theme('colors.danger')80;
+  @apply ring-danger/40;
 }
 
 /* warning */
@@ -90,18 +81,15 @@
   @apply bg-warning text-white;
 }
 .root.warning:not(:disabled):hover {
-  background-color: #cb7d0a;
-  /* prettier-ignore */
-  box-shadow: 0 2px 2px 0 theme('colors.warning')33,
-    0 3px 1px -2px theme('colors.warning')33, 0 1px 5px 0 theme('colors.warning')33;
+  @apply bg-active-warning shadow-sm shadow-warning;
 }
 .root.warning:not(:disabled):active {
-  background-color: #cb7d0a;
+  @apply bg-active-warning;
 }
 .root.warning:not(:disabled):focus,
 .root.warning:not(:disabled):active {
-  /* prettier-ignore */
-  box-shadow: 0 0 0 0.2rem theme('colors.warning')80;
+  @apply ring-warning/40;
+
 }
 
 /* info */
@@ -109,18 +97,15 @@
   @apply bg-info text-white;
 }
 .root.info:not(:disabled):hover {
-  background-color: #2766a5;
-  /* prettier-ignore */
-  box-shadow: 0 2px 2px 0 theme('colors.info')33,
-    0 3px 1px -2px theme('colors.info')33, 0 1px 5px 0 theme('colors.info')33;
+  @apply bg-active-info;
+  @apply shadow-sm shadow-info;
 }
 .root.info:not(:disabled):active {
-  background-color: #2766a5;
+  @apply bg-active-info;
 }
 .root.info:not(:disabled):focus,
 .root.info:not(:disabled):active {
-  /* prettier-ignore */
-  box-shadow: 0 0 0 0.2rem theme('colors.info')80;
+  @apply ring-info/40;
 }
 
 /* light */
@@ -128,22 +113,18 @@
   @apply bg-light text-dark;
 }
 .root.light:not(:disabled):hover {
-  background-color: #e2e6ea;
-  /* prettier-ignore */
-  box-shadow: 0 2px 2px 0 theme('colors.light')33,
-    0 3px 1px -2px theme('colors.light')33, 0 1px 5px 0 theme('colors.light')33;
+  @apply bg-active-light shadow-sm shadow-light;
 }
 .root.light:not(:disabled):active {
-  background-color: #e2e6ea;
+  @apply bg-active-light;
 }
 .root.light:not(:disabled):focus,
 .root.light:not(:disabled):active {
-  /* prettier-ignore */
-  box-shadow: 0 0 0 0.2rem theme('colors.light')80;
+  @apply ring-light/40;
+
 }
 .root.light > svg {
   @apply text-dark;
-  color: theme('colors.dark') !important;
 }
 
 /* dark */
@@ -151,16 +132,12 @@
   @apply bg-dark text-white;
 }
 .root.dark:not(:disabled):hover {
-  background-color: #13171c;
-  /* prettier-ignore */
-  box-shadow: 0 2px 2px 0 theme('colors.dark')33,
-    0 3px 1px -2px theme('colors.dark')33, 0 1px 5px 0 theme('colors.dark')33;
+  @apply bg-active-dark shadow-sm shadow-dark;
 }
 .root.dark:not(:disabled):active {
-  background-color: #13171c;
+  @apply bg-active-dark;
 }
 .root.dark:not(:disabled):focus,
 .root.dark:not(:disabled):active {
-  /* prettier-ignore */
-  box-shadow: 0 0 0 0.2rem theme('colors.dark')80;
+  @apply ring-dark/40;
 }
