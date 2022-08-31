@@ -30,7 +30,7 @@ function ButtonsPage() {
           <div className="flex flex-wrap -ml-2 -mt-2">
             {Object.keys(buttonVariants).map((variant) => (
               <Button
-                key={variant + 'simple'}
+                key={variant + 'disbled'}
                 variant={variant as variantType}
                 className="ml-2 mt-2"
                 disabled
@@ -49,7 +49,7 @@ function ButtonsPage() {
           <div className="flex flex-wrap -ml-2 -mt-2">
             {Object.keys(buttonVariants).map((variant) => (
               <Button
-                key={variant + 'simple'}
+                key={variant + 'rounded'}
                 variant={variant as variantType}
                 className="ml-2 mt-2"
                 rounded
@@ -68,10 +68,29 @@ function ButtonsPage() {
           <div className="flex flex-wrap -ml-2 -mt-2">
             {Object.keys(buttonVariants).map((variant) => (
               <Button
-                key={variant + 'simple'}
+                key={variant + 'load'}
                 variant={variant as variantType}
                 className="ml-2 mt-2"
                 isLoading
+              >
+                {variant}
+              </Button>
+            ))}
+          </div>
+        </CardBody>
+      </Card>
+      <Card className="col-span-12 md:col-span-6">
+        <CardHeader>
+          <CardTitle>Outlined Buttons</CardTitle>
+        </CardHeader>
+        <CardBody>
+          <div className="flex flex-wrap -ml-2 -mt-2">
+            {Object.keys(buttonVariants).map((variant) => (
+              <Button
+                key={variant + 'outlined'}
+                variant={variant as variantType}
+                className="ml-2 mt-2"
+                outlined
               >
                 {variant}
               </Button>
