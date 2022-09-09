@@ -21,7 +21,7 @@ export function DropDown({ children, className, ...rest }: DropDownProps) {
 }
 export function DropDownToogle({ children, ...rest }: DropDownProps) {
   return (
-    <Menu.Button as="div" role="button" {...rest}>
+    <Menu.Button as={Fragment} {...rest}>
       {children}
     </Menu.Button>
   )

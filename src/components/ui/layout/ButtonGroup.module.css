@@ -1,0 +1,43 @@
+.btn-group {
+    @apply flex;
+}
+
+.btn-group button:not(:first-child):not(:last-child) {
+    border-radius: 0 !important;
+    border-radius: 0 !important;
+}
+.btn-group:not(.vertical) button:first-child {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}
+.btn-group:not(.vertical) button:last-child {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+}
+.btn-group:not(.vertical) button  + button {
+    border-left: 0 !important;
+}
+
+.btn-group.vertical {
+    @apply flex-col;
+}
+
+.btn-group.vertical button {
+    width: 100% !important;
+}
+
+.btn-group.vertical button:not(:first-child):not(:last-child) {
+    border-radius: 0 !important;
+    border-radius: 0 !important;
+}
+.btn-group.vertical button:first-child {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}
+.btn-group.vertical button:last-child {
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+}
+.btn-group.vertical button + button {
+    border-top: 0 !important;
+}

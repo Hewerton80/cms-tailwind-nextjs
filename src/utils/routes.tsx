@@ -6,6 +6,7 @@ import {
   VscTag,
   VscHome,
   VscDebugStackframeDot,
+  VscPackage,
 } from 'react-icons/vsc'
 
 export enum RouteEnum {
@@ -33,7 +34,7 @@ export const menu: IMenu[] = [
   {
     title: 'UI Elements',
     url: RouteEnum.UiElements,
-    icon: <VscHome className="text-xl" />,
+    icon: <VscPackage className="text-xl" />,
     submenu: [
       { title: 'Buttons', url: RouteEnum.Buttons, icon: <VscDebugStackframeDot /> },
     ],

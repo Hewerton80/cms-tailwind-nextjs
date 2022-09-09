@@ -11,7 +11,7 @@ import ThemeSwitch from '../../ui/forms/ThemeSwitch'
 interface HeaderProps extends HTMLAttributes<HTMLElement> {}
 
 function Header({ className, ...rest }: HeaderProps) {
-  const { showSideBar } = useContext(ToogleSideBarContext)
+  const { menuIsExpanded, handleToogleOnlyIcons } = useContext(ToogleSideBarContext)
   const [showDropDown, setShowDropDown] = useState(false)
   const [theme, setTheme] = useState<'light' | 'dark'>('light')
 
@@ -50,16 +50,23 @@ function Header({ className, ...rest }: HeaderProps) {
         <div
           className={classNames(
             'flex items-center h-full',
-            showSideBar ? 'w-auto md:w-60 px-0 md:px-5' : 'w-auto px-0'
+            menuIsExpanded ? 'w-auto md:w-60 px-0 md:px-5' : 'w-auto px-0'
           )}
         >
-          <span className={classNames('hidden', showSideBar && 'md:block')}>
+          <span className={classNames('hidden', menuIsExpanded && 'md:block')}>
             <Image src="/images/logo.svg" alt="logo" width={126} height={40} />
           </span>
           <span
-            className="flex ml-auto cursor-pointer w-5 h-7"
+            className="flex md:hidden ml-auto cursor-pointer w-5 h-7"
             role="button"
             onClick={handleToogleSideBar}
+          >
+            <FaBars className="m-auto text-white text-xl" />
+          </span>
+          <span
+            className="hidden md:flex ml-auto cursor-pointer w-5 h-7"
+            role="button"
+            onClick={handleToogleOnlyIcons}
           >
             <FaBars className="m-auto text-white text-xl" />
           </span>
