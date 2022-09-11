@@ -6,9 +6,9 @@ module.exports = {
     // '../**/*.stories.@(js|jsx|ts|tsx)',
   ],
   addons: [
-    '@storybook/addon-links',
+    // '@storybook/addon-links',
     '@storybook/addon-essentials',
-    '@storybook/addon-actions',
+    // '@storybook/addon-actions',
     // '@storybook/preset-scss',
     {
       name: '@storybook/addon-postcss',
@@ -16,16 +16,16 @@ module.exports = {
         postcssLoaderOptions: {
           implementation: require('postcss'),
         },
-        cssLoaderOptions: {
-          modules: true,
-        },
+        // cssLoaderOptions: {
+        //   modules: true,
+        // },
       },
     },
   ],
-  framework: '@storybook/react',
-  core: {
-    builder: 'webpack5',
-  },
+  // framework: '@storybook/react',
+  // core: {
+  //   builder: 'webpack5',
+  // },
   // webpackFinal: (config) => {
   //   /**
   //    * Add support for alias-imports

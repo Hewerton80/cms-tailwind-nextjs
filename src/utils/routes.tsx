@@ -13,14 +13,15 @@ export enum RouteEnum {
   Home = '/',
   UiElements = '/ui-elements',
   Buttons = '/ui-elements/buttons',
-  Adms = '/users',
-  CreateUser = '/users/create',
-  Customers = '/customers',
-  Posts = '/posts',
-  CreatPosts = '/posts/create',
-  Categories = '/categories',
-  CreateCategories = '/categories/create',
-  Tags = '/tags',
+  Alerts = '/ui-elements/alerts',
+  // Adms = '/users',
+  // CreateUser = '/users/create',
+  // Customers = '/customers',
+  // Posts = '/posts',
+  // CreatPosts = '/posts/create',
+  // Categories = '/categories',
+  // CreateCategories = '/categories/create',
+  // Tags = '/tags',
 }
 
 export interface IMenu {
@@ -41,6 +42,7 @@ export const menu: IMenu[] = [
     url: RouteEnum.UiElements,
     icon: <VscPackage className="text-xl" />,
     submenu: [
+      { title: 'Alerts', url: RouteEnum.Alerts, icon: <VscDebugStackframeDot /> },
       { title: 'Buttons', url: RouteEnum.Buttons, icon: <VscDebugStackframeDot /> },
     ],
   },

@@ -20,7 +20,7 @@ interface IconButtonProps extends ButtonPropsOmited {
 function IconButton({ icon, className, size = 'md', ...rest }: IconButtonProps) {
   return (
     <Button
-      className={cn('rounded-full px-0 py-0', sizeButton[size], className)}
+      className={cn('rounded-full !px-0 !py-0', sizeButton[size], className)}
       {...rest}
     >
       <span className="!text-lg">{icon}</span>
