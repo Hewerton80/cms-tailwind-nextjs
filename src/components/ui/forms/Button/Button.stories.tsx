@@ -33,59 +33,59 @@ const Template: ComponentStory<typeof Button> = (args) => (
 export const Primary = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 
-Primary.args = {
-  variant: 'primary',
-  children: 'primary',
-}
+// Primary.args = {
+//   variant: 'primary',
+//   children: 'primary',
+// }
 
-export const Secondary = Template.bind({})
+// export const Secondary = Template.bind({})
 
-Secondary.args = {
-  variant: 'secondary',
-  children: 'secondary',
-}
+// Secondary.args = {
+//   variant: 'secondary',
+//   children: 'secondary',
+// }
 
-export const Success = Template.bind({})
+// export const Success = Template.bind({})
 
-Success.args = {
-  variant: 'success',
-  children: 'success',
-}
+// Success.args = {
+//   variant: 'success',
+//   children: 'success',
+// }
 
-export const Warning = Template.bind({})
+// export const Warning = Template.bind({})
 
-Warning.args = {
-  variant: 'warning',
-  children: 'warning',
-}
+// Warning.args = {
+//   variant: 'warning',
+//   children: 'warning',
+// }
 
-export const Info = Template.bind({})
+// export const Info = Template.bind({})
 
-Info.args = {
-  variant: 'info',
-  children: 'info',
-}
+// Info.args = {
+//   variant: 'info',
+//   children: 'info',
+// }
 
-export const Danger = Template.bind({})
+// export const Danger = Template.bind({})
 
-Danger.args = {
-  variant: 'danger',
-  children: 'danger',
-}
+// Danger.args = {
+//   variant: 'danger',
+//   children: 'danger',
+// }
 
-export const Light = Template.bind({})
+// export const Light = Template.bind({})
 
-Light.args = {
-  variant: 'light',
-  children: 'light',
-}
+// Light.args = {
+//   variant: 'light',
+//   children: 'light',
+// }
 
-export const Dark = Template.bind({})
+// export const Dark = Template.bind({})
 
-Dark.args = {
-  variant: 'dark',
-  children: 'dark',
-}
+// Dark.args = {
+//   variant: 'dark',
+//   children: 'dark',
+// }
 
 export const ClickExample = () => {
   const [count, setCount] = useState(0)
