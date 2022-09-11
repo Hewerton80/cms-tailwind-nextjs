@@ -47,7 +47,7 @@ function Customers() {
         <CardHeader>
           <CardTitle>Assinantes</CardTitle>
           <CardActions>
-            <Button variant="primary" onClick={handleShowModal}>
+            <Button variantColor="primary" onClick={handleShowModal}>
               Adicionar assinante
             </Button>
           </CardActions>
@@ -89,7 +89,11 @@ function Customers() {
                     <div className="flex items-center justify-end">
                       <IconButton icon={<FaPen />} />
                       <IconButton className="ml-2" icon={<FaRegEye />} />
-                      <IconButton variant="danger" className="ml-2" icon={<FaTrash />} />
+                      <IconButton
+                        variantColor="danger"
+                        className="ml-2"
+                        icon={<FaTrash />}
+                      />
                     </div>
                   </Td>
                 </Tr>
@@ -139,10 +143,10 @@ function Customers() {
               </div>
             </div>
             <div className="flex justify-end">
-              <Button type="button" variant="light" onClick={handleCloseModal}>
+              <Button type="button" variantColor="light" onClick={handleCloseModal}>
                 Cancelar
               </Button>
-              <Button type="submit" variant="primary" className="ml-2">
+              <Button type="submit" variantColor="primary" className="ml-2">
                 Criar
               </Button>
             </div>

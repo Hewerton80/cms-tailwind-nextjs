@@ -32,6 +32,11 @@ export interface IMenu {
 
 export const menu: IMenu[] = [
   {
+    title: 'Home',
+    url: RouteEnum.Home,
+    icon: <VscHome className="text-xl" />,
+  },
+  {
     title: 'UI Elements',
     url: RouteEnum.UiElements,
     icon: <VscPackage className="text-xl" />,
@@ -39,34 +44,29 @@ export const menu: IMenu[] = [
       { title: 'Buttons', url: RouteEnum.Buttons, icon: <VscDebugStackframeDot /> },
     ],
   },
-  {
-    title: 'Home',
-    url: RouteEnum.Home,
-    icon: <VscHome className="text-xl" />,
-  },
-  {
-    title: 'Administratores',
-    url: RouteEnum.Adms,
-    icon: <VscOrganization className="text-xl" />,
-  },
-  {
-    title: 'Assinantes',
-    url: RouteEnum.Customers,
-    icon: <VscPerson className="text-xl" />,
-  },
-  {
-    title: 'Posts',
-    url: RouteEnum.Posts,
-    icon: <VscBook className="text-xl" />,
-  },
-  {
-    title: 'Categorias',
-    url: RouteEnum.Categories,
-    icon: <VscGroupByRefType className="text-xl" />,
-  },
-  {
-    title: 'Tags',
-    url: RouteEnum.Tags,
-    icon: <VscTag className="text-xl" />,
-  },
+  // {
+  //   title: 'Administratores',
+  //   url: RouteEnum.Adms,
+  //   icon: <VscOrganization className="text-xl" />,
+  // },
+  // {
+  //   title: 'Assinantes',
+  //   url: RouteEnum.Customers,
+  //   icon: <VscPerson className="text-xl" />,
+  // },
+  // {
+  //   title: 'Posts',
+  //   url: RouteEnum.Posts,
+  //   icon: <VscBook className="text-xl" />,
+  // },
+  // {
+  //   title: 'Categorias',
+  //   url: RouteEnum.Categories,
+  //   icon: <VscGroupByRefType className="text-xl" />,
+  // },
+  // {
+  //   title: 'Tags',
+  //   url: RouteEnum.Tags,
+  //   icon: <VscTag className="text-xl" />,
+  // },
 ]

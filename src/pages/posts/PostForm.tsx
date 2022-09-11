@@ -75,7 +75,7 @@ function PostForm({ isEdit }: PostFormProps) {
     return (
       <div className="flex justify-end w-full">
         <Button
-          variant="light"
+          variantColor="light"
           type="button"
           // onClick={() => setShowQuestionMenssage(true)}
           // disabled={isSubmitingUsers}
@@ -84,7 +84,7 @@ function PostForm({ isEdit }: PostFormProps) {
         </Button>
         <Button
           className="ml-2"
-          variant="primary"
+          variantColor="primary"
           // isLoading={isSubmitingUsers}
           type="submit"
         >

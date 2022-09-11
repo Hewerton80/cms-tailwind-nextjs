@@ -1,11 +1,15 @@
+import { Fragment, ReactNode } from 'react'
 import styles from './styles.module.css'
 import { Menu } from '@headlessui/react'
-import { Fragment, ReactNode } from 'react'
 import classNames from 'classnames'
-import Link, { LinkProps } from 'next/link'
+import { LinkProps } from 'next/link'
 import CustomLink from '../../navigation/CustomLink'
+import Button, { ButtonProps } from '../../forms/Button'
+import { IoMdArrowDropdown } from 'react-icons/io'
 
 interface DropDownProps extends GlobalProps {}
+
+interface DropDownToogleProps extends GlobalProps, ButtonProps {}
 interface DropDownItemProps extends GlobalProps, LinkProps {
   as?: 'a' | 'button'
   // href?: string
@@ -19,18 +23,30 @@ export function DropDown({ children, className, ...rest }: DropDownProps) {
     </Menu>
   )
 }
-export function DropDownToogle({ children, ...rest }: DropDownProps) {
+// eslint-disable-next-line react/display-name
+export function DropDownToogle({ children, ...rest }: DropDownToogleProps) {
   return (
-    <Menu.Button as={Fragment} {...rest}>
+    <Menu.Button as={Button} type="button" rightIcon={<IoMdArrowDropdown />} {...rest}>
       {children}
     </Menu.Button>
   )
 }
 export function DropDownMenu({ children, className, ...rest }: DropDownProps) {
+  // const ulRef = useRef<HTMLUListElement>(null)
+  // useEffect(() => {
+  //   const handleScroll = (e: Event) => {
+  //     console.log(ulRef.current?.getBoundingClientRect())
+  //   }
+  //   document.addEventListener('scroll', handleScroll)
+  //   return () => {
+  //     document.removeEventListener('scroll', handleScroll)
+  //   }
+  // }, [])
+
   return (
     <Menu.Items
+      // ref={ulRef}
       as="ul"
-      role="button"
       className={classNames(
         styles['dropdown-menu'],
         'dark:bg-dark-card dark:border-dark-card ',

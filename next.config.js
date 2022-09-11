@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   pageExtensions: ['tsx'],
   async redirects() {
     return [

@@ -40,7 +40,7 @@ function Posts() {
         <CardActions>
           <Link href="/posts/create">
             <a>
-              <Button className="ml-auto" variant="primary">
+              <Button className="ml-auto" variantColor="primary">
                 Criar post
               </Button>
             </a>
@@ -116,7 +116,11 @@ function Posts() {
                     <div className="flex items-center justify-end">
                       <IconButton icon={<FaPen />} />
                       <IconButton className="ml-2" icon={<FaRegEye />} />
-                      <IconButton variant="danger" className="ml-2" icon={<FaTrash />} />
+                      <IconButton
+                        variantColor="danger"
+                        className="ml-2"
+                        icon={<FaTrash />}
+                      />
                     </div>
                   </Td>
                 </Tr>

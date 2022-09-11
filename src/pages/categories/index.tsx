@@ -87,7 +87,7 @@ function Categories() {
         <CardHeader>
           <CardTitle>Categorias</CardTitle>
           <CardActions>
-            <Button variant="primary" onClick={handleShowModal}>
+            <Button variantColor="primary" onClick={handleShowModal}>
               Adicionar categoria
             </Button>
           </CardActions>
@@ -268,10 +268,10 @@ function Categories() {
               </div>
             </div>
             <div className="flex justify-end">
-              <Button type="button" variant="light" onClick={handleCloseModal}>
+              <Button type="button" variantColor="light" onClick={handleCloseModal}>
                 Cancelar
               </Button>
-              <Button type="submit" variant="primary" className="ml-2">
+              <Button type="submit" variantColor="primary" className="ml-2">
                 Criar
               </Button>
             </div>

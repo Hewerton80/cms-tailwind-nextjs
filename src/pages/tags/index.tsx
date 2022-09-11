@@ -49,7 +49,7 @@ function Tags() {
         <CardHeader>
           <CardTitle>Tags</CardTitle>
           <CardActions>
-            <Button className="ml-auto" variant="primary" onClick={handleShowModal}>
+            <Button className="ml-auto" variantColor="primary" onClick={handleShowModal}>
               Criar tag
             </Button>
           </CardActions>
@@ -123,10 +123,10 @@ function Tags() {
               </div>
             </div>
             <div className="flex justify-end">
-              <Button type="button" variant="light" onClick={handleCloseModal}>
+              <Button type="button" variantColor="light" onClick={handleCloseModal}>
                 Cancelar
               </Button>
-              <Button type="submit" variant="primary" className="ml-2">
+              <Button type="submit" variantColor="primary" className="ml-2">
                 Criar
               </Button>
             </div>

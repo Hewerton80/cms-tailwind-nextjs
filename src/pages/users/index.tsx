@@ -73,7 +73,7 @@ const Users: NextPage = () => {
         <CardActions>
           <Link href={RouteEnum.CreateUser}>
             <a className="ml-auto">
-              <Button variant="primary">Adicionar usuário</Button>
+              <Button variantColor="primary">Adicionar usuário</Button>
             </a>
           </Link>
         </CardActions>
@@ -126,7 +126,7 @@ const Users: NextPage = () => {
                         <IconButton icon={<FaPen />} />
                         <IconButton className="ml-2" icon={<FaRegEye />} />
                         <IconButton
-                          variant="danger"
+                          variantColor="danger"
                           className="ml-2"
                           icon={<FaTrash />}
                         />

@@ -1,190 +1,251 @@
-import Button, { buttonVariants, variantType } from '../../components/ui/forms/Button'
+import Button, {
+  buttonVariants,
+  variantColorType,
+} from '../../components/ui/forms/Button'
 import { Card, CardBody, CardHeader, CardTitle } from '../../components/ui/layout/Card'
 import { FiUpload } from 'react-icons/fi'
-import { AiTwotoneEdit } from 'react-icons/ai'
+import { AiTwotoneEdit, AiOutlineUserSwitch } from 'react-icons/ai'
 import { ButtonGroup } from '../../components/ui/layout'
+import {
+  DropDown,
+  DropDownItem,
+  DropDownMenu,
+  DropDownToogle,
+} from '../../components/ui/overlay/DropDown'
+import IconButton from '../../components/ui/forms/IconButton'
 
+const classNameCard = 'col-span-12 h-full md:col-span-6'
 function ButtonsPage() {
   return (
     <div className="grid grid-cols-12 gap-4 pb-8">
-      <Card className="col-span-12 h-fullrow-auto md:col-span-6">
+      <Card className={classNameCard}>
         <CardHeader>
           <CardTitle>Single Color Buttons</CardTitle>
         </CardHeader>
         <CardBody>
           <div className="flex flex-wrap -ml-2 -mt-2">
-            {Object.keys(buttonVariants).map((variant) => (
+            {Object.keys(buttonVariants).map((variantColor) => (
               <Button
-                key={variant + 'simple'}
-                variant={variant as variantType}
+                key={variantColor + 'simple'}
+                variantColor={variantColor as variantColorType}
                 className="ml-2 mt-2"
               >
-                {variant}
+                {variantColor}
               </Button>
             ))}
           </div>
         </CardBody>
       </Card>
-      <Card className="col-span-12 h-full md:col-span-6">
+      <Card className={classNameCard}>
         <CardHeader>
           <CardTitle>Disabled Buttons</CardTitle>
         </CardHeader>
         <CardBody>
           <div className="flex flex-wrap -ml-2 -mt-2">
-            {Object.keys(buttonVariants).map((variant) => (
+            {Object.keys(buttonVariants).map((variantColor) => (
               <Button
-                key={variant + 'disbled'}
-                variant={variant as variantType}
+                key={variantColor + 'disbled'}
+                variantColor={variantColor as variantColorType}
                 className="ml-2 mt-2"
                 disabled
               >
-                {variant}
+                {variantColor}
               </Button>
             ))}
           </div>
         </CardBody>
       </Card>
-      <Card className="col-span-12 h-full md:col-span-6">
+      <Card className={classNameCard}>
         <CardHeader>
           <CardTitle>Rounded Buttons</CardTitle>
         </CardHeader>
         <CardBody>
           <div className="flex flex-wrap -ml-2 -mt-2">
-            {Object.keys(buttonVariants).map((variant) => (
+            {Object.keys(buttonVariants).map((variantColor) => (
               <Button
-                key={variant + 'rounded'}
-                variant={variant as variantType}
+                key={variantColor + 'rounded'}
+                variantColor={variantColor as variantColorType}
                 className="ml-2 mt-2"
                 rounded
               >
-                {variant}
+                {variantColor}
               </Button>
             ))}
           </div>
         </CardBody>
       </Card>
-      <Card className="col-span-12 h-full md:col-span-6">
+      <Card className={classNameCard}>
         <CardHeader>
           <CardTitle>Load Buttons</CardTitle>
         </CardHeader>
         <CardBody>
           <div className="flex flex-wrap -ml-2 -mt-2">
-            {Object.keys(buttonVariants).map((variant) => (
+            {Object.keys(buttonVariants).map((variantColor) => (
               <Button
-                key={variant + 'load'}
-                variant={variant as variantType}
+                key={variantColor + 'load'}
+                variantColor={variantColor as variantColorType}
                 className="ml-2 mt-2"
                 isLoading
               >
-                {variant}
+                {variantColor}
               </Button>
             ))}
           </div>
         </CardBody>
       </Card>
-      <Card className="col-span-12 h-full md:col-span-6">
+      <Card className={classNameCard}>
         <CardHeader>
           <CardTitle>Outlined Buttons</CardTitle>
         </CardHeader>
         <CardBody>
           <div className="flex flex-wrap -ml-2 -mt-2">
-            {Object.keys(buttonVariants).map((variant) => (
+            {Object.keys(buttonVariants).map((variantColor) => (
               <Button
-                key={variant + 'outlined'}
-                variant={variant as variantType}
+                key={variantColor + 'outlined'}
+                variantColor={variantColor as variantColorType}
                 className="ml-2 mt-2"
-                outlined
+                variantStyle="outlined"
               >
-                {variant}
+                {variantColor}
               </Button>
             ))}
           </div>
         </CardBody>
       </Card>
-      <Card className="col-span-12 h-full md:col-span-6">
+      <Card className={classNameCard}>
+        <CardHeader>
+          <CardTitle>Texted Buttons</CardTitle>
+        </CardHeader>
+        <CardBody>
+          <div className="flex flex-wrap -ml-2 -mt-2">
+            {Object.keys(buttonVariants).map((variantColor) => (
+              <Button
+                key={variantColor + 'texted'}
+                variantColor={variantColor as variantColorType}
+                className="ml-2 mt-2"
+                variantStyle="texted"
+              >
+                {variantColor}
+              </Button>
+            ))}
+          </div>
+        </CardBody>
+      </Card>
+      <Card className={classNameCard}>
         <CardHeader>
           <CardTitle>Button Size</CardTitle>
         </CardHeader>
         <CardBody>
           <div className="flex flex-col space-y-2">
-            <Button variant="danger" size="lg">
+            <Button variantColor="danger" size="lg">
               size lg
             </Button>
-            <Button variant="success" size="md">
+            <Button variantColor="success" size="md">
               size md
             </Button>
-            <Button variant="primary" size="sm">
+            <Button variantColor="primary" size="sm">
               size sm
             </Button>
           </div>
         </CardBody>
       </Card>
-      <Card className="col-span-12 h-full md:col-span-6">
+      <Card className={classNameCard}>
         <CardHeader>
           <CardTitle>Button Group</CardTitle>
         </CardHeader>
         <CardBody>
           <div className="flex flex-wrap gap-2">
-            <ButtonGroup>
-              <Button variant="primary">Left</Button>
-              <Button variant="primary">Middle</Button>
-              <Button variant="primary">Right</Button>
-            </ButtonGroup>
-            <ButtonGroup>
-              <Button variant="primary" outlined>
-                Left
-              </Button>
-              <Button variant="primary" outlined>
-                Middle
-              </Button>
-              <Button variant="primary" outlined>
-                Right
-              </Button>
-            </ButtonGroup>
             <ButtonGroup vertical>
-              <Button variant="primary" outlined>
-                Left
+              <Button variantColor="primary" variantStyle="outlined">
+                Top
               </Button>
-              <Button variant="primary" outlined>
+              <Button variantColor="primary" variantStyle="outlined">
                 Middle
               </Button>
-              <Button variant="primary" outlined>
+              <Button variantColor="primary" variantStyle="outlined">
+                Bottom
+              </Button>
+            </ButtonGroup>
+            <ButtonGroup>
+              <Button variantColor="primary">Left</Button>
+              <Button variantColor="primary">Middle</Button>
+              <Button variantColor="primary">Right</Button>
+            </ButtonGroup>
+            <ButtonGroup>
+              <Button variantColor="primary" variantStyle="outlined">
+                Left
+              </Button>
+              <Button variantColor="primary" variantStyle="outlined">
+                Middle
+              </Button>
+              <Button variantColor="primary" variantStyle="outlined">
                 Right
               </Button>
             </ButtonGroup>
           </div>
         </CardBody>
       </Card>
-      <Card className="col-span-12 h-full md:col-span-6">
+      <Card className={classNameCard}>
+        <CardHeader>
+          <CardTitle>Dropdown buttons</CardTitle>
+        </CardHeader>
+        <CardBody>
+          <div className="flex flex-wrap gap-2">
+            <DropDown>
+              <DropDownToogle>DropDown</DropDownToogle>
+
+              <DropDownMenu>
+                <DropDownItem href="#">DropDown link</DropDownItem>
+                <DropDownItem href="#" as="button">
+                  DropDown link
+                </DropDownItem>
+              </DropDownMenu>
+            </DropDown>
+          </div>
+        </CardBody>
+      </Card>
+      <Card className={classNameCard}>
         <CardHeader>
           <CardTitle>Block Buttons</CardTitle>
         </CardHeader>
         <CardBody>
           <div className="flex flex-col space-y-2">
-            <Button variant="danger" full>
+            <Button variantColor="danger" full>
               Block Buttons
             </Button>
-            <Button variant="success" full>
+            <Button variantColor="success" full>
               Block Buttons
             </Button>
-            <Button variant="primary" full>
+            <Button variantColor="primary" full>
               Block Buttons
             </Button>
           </div>
         </CardBody>
       </Card>
-      <Card className="col-span-12 h-full md:col-span-6">
+      <Card className={classNameCard}>
         <CardHeader>
           <CardTitle>Button With Text And Icon</CardTitle>
         </CardHeader>
         <CardBody>
           <div className="flex flex-wrap gap-2">
-            <Button variant="danger" leftIcon={<FiUpload />}>
+            <Button variantColor="danger" leftIcon={<FiUpload />}>
               Uploads
             </Button>
-            <Button variant="success" rightIcon={<AiTwotoneEdit />}>
+            <Button variantColor="success" rightIcon={<AiTwotoneEdit />}>
               Edit
             </Button>
+          </div>
+        </CardBody>
+      </Card>
+      <Card className={classNameCard}>
+        <CardHeader>
+          <CardTitle>Icon Buttons</CardTitle>
+        </CardHeader>
+        <CardBody>
+          <div className="flex flex-wrap gap-2">
+            <IconButton variantColor="danger" icon={<AiOutlineUserSwitch />} size="sm" />
+            <IconButton variantColor="success" icon={<AiTwotoneEdit />} size="md" />
+            <IconButton variantColor="info" icon={<FiUpload />} size="lg" />
           </div>
         </CardBody>
       </Card>

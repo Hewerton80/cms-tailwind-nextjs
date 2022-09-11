@@ -68,7 +68,7 @@ function UserForm({ isEdit }: UserFormProps) {
     return (
       <div className="flex justify-end w-full">
         <Button
-          variant="light"
+          variantColor="light"
           type="button"
           onClick={() => setShowQuestionMenssage(true)}
           disabled={isSubmitingUsers}
@@ -77,7 +77,7 @@ function UserForm({ isEdit }: UserFormProps) {
         </Button>
         <Button
           className="ml-2"
-          variant="primary"
+          variantColor="primary"
           isLoading={isSubmitingUsers}
           type="submit"
         >

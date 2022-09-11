@@ -27,10 +27,10 @@ function QuestionModal({
           <IoAlertCircleOutline className="text-warning" />
           <h4>{description}</h4>
           <div className="flex space-x-2">
-            <Button variant="light" type="button" onClick={() => onClose?.()}>
+            <Button variantColor="light" type="button" onClick={() => onClose?.()}>
               {textCancelButton || 'Não, cancelar'}
             </Button>
-            <Button variant="warning" type="button" onClick={onConfirm}>
+            <Button variantColor="warning" type="button" onClick={onConfirm}>
               {textConfirmButton || 'Sim'}
             </Button>
           </div>

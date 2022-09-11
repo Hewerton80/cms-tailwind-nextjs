@@ -1,14 +1,29 @@
 import Button, { ButtonProps } from '../Button'
 import cn from 'classnames'
 
-interface IconButtonProps extends ButtonProps {
-  icon?: JSX.Element
+type ButtonPropsOmited = Omit<
+  ButtonProps,
+  'leftIcon' | 'rightIcon' | 'children' | 'full' | 'variantStyle' | 'size'
+>
+
+const sizeButton = {
+  sm: '!h-8 !w-8',
+  md: '!h-11 !w-11',
+  lg: '!h-12 !w-12',
 }
 
-function IconButton({ icon, className, ...rest }: IconButtonProps) {
+interface IconButtonProps extends ButtonPropsOmited {
+  icon?: JSX.Element
+  size?: keyof typeof sizeButton
+}
+
+function IconButton({ icon, className, size = 'md', ...rest }: IconButtonProps) {
   return (
-    <Button className={cn('h-10 w-10 rounded-full p-0.5', className)} {...rest}>
-      {icon}
+    <Button
+      className={cn('rounded-full px-0 py-0', sizeButton[size], className)}
+      {...rest}
+    >
+      <span className="!text-lg">{icon}</span>
     </Button>
   )
 }

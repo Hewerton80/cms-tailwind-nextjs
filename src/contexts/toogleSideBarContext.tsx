@@ -58,13 +58,14 @@ export function ToogleSideBarContextProvider({ children }: IToogleSideBarContext
   )
 
   const handleShowPrevIconWitchTextOnMouseLeave = useCallback(() => {
-    if (showIconWitchText) {
+    console.log('showIconWitchText', showIconWitchText)
+    if (!showIconWitchText) {
       setShowPrevIconWitchTextOnMouseLeave(true)
     }
   }, [showIconWitchText])
 
   const handleClosePrevIconWitchTextOnMouseLeave = useCallback(() => {
-    if (showIconWitchText) {
+    if (!showIconWitchText) {
       setShowPrevIconWitchTextOnMouseLeave(false)
     }
   }, [showIconWitchText])
