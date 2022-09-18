@@ -107,13 +107,13 @@ function SideBar({ className, ...rest }: SideBarProps) {
           'flex items-start md:items-center overflow-hidden',
           'fixed md:static z-20',
           '-translate-x-60 translate-y-[-35px] md:translate-x-0 md:translate-y-0',
-          'pt-8 pb-14 w-60 h-max-[100vh] md:ml-2 md:h-auto',
+          'pt-8 pb-14 !w-60 h-max-[100vh] md:ml-2 !h-[calc(100vh-80px)] md:!h-auto',
           'ease-linear duration-300 transition-[width translate]',
-          !menuIsExpanded ? 'md:w-[68px]' : 'md:px-5',
+          !menuIsExpanded ? 'md:!w-[68px]' : 'md:!px-5',
           showSideBar && 'translate-x-0',
           className
         )}
-        style={{ height: 'calc(100vh - 80px)' }}
+        // style={{ height: 'calc(100vh - 80px)' }}
         onMouseOver={handleShowPrevIconWitchTextOnMouseLeave}
         onMouseLeave={handleClosePrevIconWitchTextOnMouseLeave}
         {...rest}

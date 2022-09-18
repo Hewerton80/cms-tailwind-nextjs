@@ -1,12 +1,18 @@
 import { HTMLAttributes } from 'react'
 import cn from 'classnames'
-import styles from './styles.module.css'
+
 export interface CardProps extends HTMLAttributes<HTMLDivElement> {}
 
 export function Card({ children, className, ...rest }: CardProps) {
   return (
     <div
-      className={cn(styles.card, 'dark:bg-dark-card dark:border-dark-card', className)}
+      className={cn(
+        'flex flex-col',
+        'w-full',
+        'bg-white rounded-md border-gray-lightest border-1 h-fit',
+        'dark:bg-dark-card dark:border-dark-card',
+        className
+      )}
       {...rest}
     >
       {' '}
@@ -17,7 +23,10 @@ export function Card({ children, className, ...rest }: CardProps) {
 
 export function CardHeader({ children, className, ...rest }: CardProps) {
   return (
-    <div className={cn(styles.card_header, className)} {...rest}>
+    <div
+      className={cn('flex items-center justify-between', 'px-7 pt-6', className)}
+      {...rest}
+    >
       {children}
     </div>
   )
@@ -25,7 +34,7 @@ export function CardHeader({ children, className, ...rest }: CardProps) {
 
 export function CardActions({ children, className, ...rest }: CardProps) {
   return (
-    <div className={cn(styles.card_actions, className)} {...rest}>
+    <div className={cn('flex items-center', className)} {...rest}>
       {children}
     </div>
   )
@@ -33,7 +42,7 @@ export function CardActions({ children, className, ...rest }: CardProps) {
 
 export function CardBody({ children, className, ...rest }: CardProps) {
   return (
-    <div className={cn(styles.card_body, className)} {...rest}>
+    <div className={cn('flex flex-col px-7 py-6', className)} {...rest}>
       {children}
     </div>
   )
@@ -41,15 +50,15 @@ export function CardBody({ children, className, ...rest }: CardProps) {
 
 export function CardTitle({ children, className, ...rest }: CardProps) {
   return (
-    <div className={cn(styles.card_title, className)} {...rest}>
-      <h4 className="dark:text-light">{children}</h4>
+    <div className={cn('flex', className)} {...rest}>
+      <h4 className="font-medium text-black dark:text-light">{children}</h4>
     </div>
   )
 }
 
 export function CardFooter({ children, className, ...rest }: CardProps) {
   return (
-    <div className={cn(styles.card_footer, className)} {...rest}>
+    <div className={cn('flex px-7 pb-6', className)} {...rest}>
       {children}
     </div>
   )

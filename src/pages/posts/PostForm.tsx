@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import { ChangeEvent, useCallback, useMemo, useState } from 'react'
-import Button from '../../components/ui/forms/Button'
+import { Button } from '../../components/ui/forms/Button'
 import CustomSunEditor from '../../components/ui/forms/CustomSunEditor'
 import Form from '../../components/ui/forms/Form'
 import FormGroup from '../../components/ui/forms/FormGroup'

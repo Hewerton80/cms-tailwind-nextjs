@@ -19,7 +19,7 @@ import { Modal, ModalContent, ModalTitle } from '../../components/ui/overlay/Mod
 import SelectBox, { ISelectBoxOptions } from '../../components/ui/forms/SelectBox'
 import FormGroup from '../../components/ui/forms/FormGroup'
 import Switch from '../../components/ui/forms/Switch'
-import Button from '../../components/ui/forms/Button'
+import { Button } from '../../components/ui/forms/Button'
 import FormLabel from '../../components/ui/forms/FormLabel'
 import MultSelectBox from '../../components/ui/forms/MultSelectBox'
 import InputRadio from '../../components/ui/forms/InputRadio'

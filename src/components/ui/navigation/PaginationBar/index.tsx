@@ -1,5 +1,5 @@
 import { HTMLAttributes, useCallback, useMemo } from 'react'
-import Button from '../../forms/Button'
+import { Button } from '../../forms/Button'
 import cn from 'classnames'
 import styles from './styles.module.css'
 import { getRange } from '../../../../utils/getRange'

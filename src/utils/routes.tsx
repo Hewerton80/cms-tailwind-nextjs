@@ -17,7 +17,7 @@ export enum RouteEnum {
   // Adms = '/users',
   // CreateUser = '/users/create',
   // Customers = '/customers',
-  // Posts = '/posts',
+  Posts = '/posts',
   // CreatPosts = '/posts/create',
   // Categories = '/categories',
   // CreateCategories = '/categories/create',
@@ -56,11 +56,11 @@ export const menu: IMenu[] = [
   //   url: RouteEnum.Customers,
   //   icon: <VscPerson className="text-xl" />,
   // },
-  // {
-  //   title: 'Posts',
-  //   url: RouteEnum.Posts,
-  //   icon: <VscBook className="text-xl" />,
-  // },
+  {
+    title: 'Posts',
+    url: RouteEnum.Posts,
+    icon: <VscBook className="text-xl" />,
+  },
   // {
   //   title: 'Categorias',
   //   url: RouteEnum.Categories,

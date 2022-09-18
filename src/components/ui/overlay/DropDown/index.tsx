@@ -1,10 +1,9 @@
 import { Fragment, ReactNode } from 'react'
-import styles from './styles.module.css'
 import { Menu } from '@headlessui/react'
 import classNames from 'classnames'
 import { LinkProps } from 'next/link'
 import CustomLink from '../../navigation/CustomLink'
-import Button, { ButtonProps } from '../../forms/Button'
+import { Button, ButtonProps } from '../../forms/Button'
 import { IoMdArrowDropdown } from 'react-icons/io'
 
 interface DropDownProps extends GlobalProps {}
@@ -18,7 +17,7 @@ interface DropDownItemProps extends GlobalProps, LinkProps {
 
 export function DropDown({ children, className, ...rest }: DropDownProps) {
   return (
-    <Menu as="div" className={classNames(styles.dropdown, className)} {...rest}>
+    <Menu as="div" className={classNames('relative z-10', className)} {...rest}>
       {children}
     </Menu>
   )
@@ -48,10 +47,12 @@ export function DropDownMenu({ children, className, ...rest }: DropDownProps) {
       // ref={ulRef}
       as="ul"
       className={classNames(
-        styles['dropdown-menu'],
+        'absolute min-w-[160px] bg-white shadow-md border top-[calc(100%+4px)]',
+        'border-gray-border flex flex-col py-2 outline-none text-dark',
         'dark:bg-dark-card dark:border-dark-card ',
         className
       )}
+      // style={{ top: 'calc(100% + 4px)' }}
       {...rest}
     >
       {children}
@@ -67,7 +68,8 @@ export function DropDownItem({
   ...rest
 }: DropDownItemProps) {
   const classesNamesResult = classNames(
-    styles['dropdown-item'],
+    'flex w-full items-center py-1 px-6 hover:bg-gray-light duration-300',
+    'h-full text-black text-sm whitespace-nowrap',
     'dark:text-secondary',
     'dark:hover:bg-dark-hover',
     className

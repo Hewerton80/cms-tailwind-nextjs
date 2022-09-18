@@ -1,7 +1,7 @@
 import { types } from '@storybook/addons'
 import { useRouter } from 'next/router'
 import { FormEvent, useCallback, useMemo, useState } from 'react'
-import Button from '../../components/ui/forms/Button'
+import { Button } from '../../components/ui/forms/Button'
 import Form from '../../components/ui/forms/Form'
 import FormGroup from '../../components/ui/forms/FormGroup'
 import FormLabel from '../../components/ui/forms/FormLabel'

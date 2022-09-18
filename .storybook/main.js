@@ -6,25 +6,41 @@ module.exports = {
     // '../**/*.stories.@(js|jsx|ts|tsx)',
   ],
   addons: [
-    // '@storybook/addon-links',
+    '@storybook/addon-links',
     '@storybook/addon-essentials',
-    // '@storybook/addon-actions',
-    // '@storybook/preset-scss',
+    'storybook-css-modules',
+    'storybook-tailwind-dark-mode',
     {
       name: '@storybook/addon-postcss',
       options: {
         postcssLoaderOptions: {
           implementation: require('postcss'),
         },
-        // cssLoaderOptions: {
-        //   modules: true,
-        // },
       },
     },
   ],
-  // framework: '@storybook/react',
-  // core: {
-  //   builder: 'webpack5',
+  framework: '@storybook/react',
+  core: {
+    builder: 'webpack5',
+  },
+  // module: {
+  //   rules: [
+  //     {
+  //       test: /\.scss$/,
+  //       loaders: [
+  //         require.resolve('style-loader'),
+  //         {
+  //           loader: require.resolve('css-loader'),
+  //           options: {
+  //             importLoaders: 1,
+  //             modules: true,
+  //             localIdentName: '[name]__[local]___[hash:base64:5]',
+  //           },
+  //         },
+  //         // require.resolve("sass-loader"),
+  //       ],
+  //     },
+  //   ],
   // },
   // webpackFinal: (config) => {
   //   /**

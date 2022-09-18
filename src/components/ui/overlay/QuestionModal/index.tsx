@@ -2,7 +2,7 @@ import { Modal, ModalContent, ModalProps } from '../Modal'
 import styles from './styles.module.css'
 import cn from 'classnames'
 import { IoAlertCircleOutline } from 'react-icons/io5'
-import Button from '../../forms/Button'
+import { Button } from '../../forms/Button'
 import { Callback } from '../../../../types/Global'
 
 interface QuestionModalProps extends ModalProps {

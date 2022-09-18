@@ -6,7 +6,7 @@ import {
   IoCheckmarkCircleOutline,
   IoCloseCircleOutline,
 } from 'react-icons/io5'
-import Button from '../../forms/Button'
+import { Button } from '../../forms/Button'
 
 const variants = {
   success: {

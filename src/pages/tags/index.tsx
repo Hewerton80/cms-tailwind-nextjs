@@ -10,7 +10,7 @@ import {
 import { getRandomIntInclusive } from '../../utils/getRamdomInt'
 import { DateTime } from 'luxon'
 import Link from 'next/link'
-import Button from '../../components/ui/forms/Button'
+import { Button } from '../../components/ui/forms/Button'
 import IconButton from '../../components/ui/forms/IconButton'
 import { FaPen, FaRegEye } from 'react-icons/fa'
 import { useCallback, useContext, useEffect, useState } from 'react'

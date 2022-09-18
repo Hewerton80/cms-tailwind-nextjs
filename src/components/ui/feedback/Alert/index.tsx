@@ -27,7 +27,7 @@ export const alertVariants = {
 
 export type alertVariants = keyof typeof alertVariants
 
-interface AlertProps extends HTMLAttributes<HTMLDivElement> {
+interface AlertProps extends GlobalProps {
   variant: alertVariants
 }
 

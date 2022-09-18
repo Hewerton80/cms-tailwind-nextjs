@@ -1,8 +1,6 @@
 import Alert, { alertVariants } from '../../components/ui/feedback/Alert'
 import { Card, CardBody, CardHeader, CardTitle } from '../../components/ui/layout/Card'
 
-const classNameCard = 'col-span-12 h-full md:col-span-12'
-
 const lorem = `Lorem ipsum dolor sit amet consectetur adipisicing elit.
 Exercitationem`
 

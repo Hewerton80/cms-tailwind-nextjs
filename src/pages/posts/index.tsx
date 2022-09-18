@@ -17,7 +17,7 @@ import {
 } from '../../types/Post'
 import Badge from '../../components/ui/dataDisplay/Badge'
 import { Fragment, useContext, useEffect } from 'react'
-import Button from '../../components/ui/forms/Button'
+import { Button } from '../../components/ui/forms/Button'
 import IconButton from '../../components/ui/forms/IconButton'
 import { FaPen, FaRegEye, FaTrash } from 'react-icons/fa'
 import { BreadcrumbsContext } from '../../contexts/breadcrumbsContext'

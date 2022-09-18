@@ -91,62 +91,65 @@ export interface ButtonProps extends GlobalProps {
   onClick?: () => void
 }
 
-function Button(
-  {
-    children,
-    className,
-    leftIcon,
-    rightIcon,
-    isLoading = false,
-    variantColor = 'info',
-    size = 'md',
-    variantStyle = 'contained',
-    rounded,
-    full,
-    disabled,
-    ...rest
-  }: ButtonProps,
-  ref: any
-) {
-  const isDisabled = disabled || isLoading
-  const isTexted = variantStyle === 'texted'
-  const isContained = variantStyle === 'contained'
-  const isOutlined = variantStyle === 'outlined'
+// eslint-disable-next-line react/display-name
+export const Button = forwardRef(
+  (
+    {
+      children,
+      className,
+      leftIcon,
+      rightIcon,
+      isLoading = false,
+      variantColor = 'info',
+      size = 'md',
+      variantStyle = 'contained',
+      rounded,
+      full,
+      disabled,
+      ...rest
+    }: ButtonProps,
+    ref: any
+  ) => {
+    const isDisabled = disabled || isLoading
+    const isTexted = variantStyle === 'texted'
+    const isContained = variantStyle === 'contained'
+    const isOutlined = variantStyle === 'outlined'
 
-  return (
-    <button
-      disabled={isDisabled}
-      className={cn(
-        'relative flex items-center justify-center',
-        'text-sm cursor-pointer ease-linear duration-200',
-        'disabled:cursor-default disabled:opacity-[0.65]',
-        buttonVariants[variantColor].root,
-        isContained && buttonVariants[variantColor].contained,
-        isTexted
-          ? cn(buttonVariants[variantColor].texted, 'hover:underline')
-          : cn(sizeButton[size], 'border'),
-        isOutlined && buttonVariants[variantColor].outline,
-        !isDisabled && !isTexted && 'focus:ring-4 active:ring-4',
-        !isDisabled && !isTexted && buttonVariants[variantColor].hover,
-        !isDisabled && !isTexted && buttonVariants[variantColor].active,
-        rounded ? 'rounded-[50px]' : 'rounded-[3px]',
-        full ? 'w-full' : 'w-fit',
-        className
-      )}
-      ref={ref}
-      {...rest}
-    >
-      {isLoading ? (
-        <Spinner size={18} />
-      ) : (
-        <>
-          {leftIcon && <span className="mr-4 text-lg">{leftIcon}</span>}
-          {children}
-          {rightIcon && <span className="ml-4 text-lg">{rightIcon}</span>}
-        </>
-      )}
-    </button>
-  )
-}
+    return (
+      <button
+        disabled={isDisabled}
+        className={cn(
+          'relative flex items-center justify-center',
+          'text-sm cursor-pointer ease-linear duration-200',
+          'disabled:cursor-default disabled:opacity-[0.65]',
+          buttonVariants[variantColor].root,
+          isContained && buttonVariants[variantColor].contained,
+          isTexted
+            ? cn(buttonVariants[variantColor].texted, 'hover:underline')
+            : cn(sizeButton[size], 'border'),
+          isOutlined && buttonVariants[variantColor].outline,
+          !isDisabled && !isTexted && 'focus:ring-4 active:ring-4',
+          !isDisabled && !isTexted && buttonVariants[variantColor].hover,
+          !isDisabled && !isTexted && buttonVariants[variantColor].active,
+          rounded ? 'rounded-[50px]' : 'rounded-[3px]',
+          full ? 'w-full' : 'w-fit',
+          className
+        )}
+        ref={ref}
+        {...rest}
+      >
+        {isLoading ? (
+          <Spinner size={18} className="" />
+        ) : (
+          <>
+            {leftIcon && <span className="mr-4 text-lg">{leftIcon}</span>}
+            {children}
+            {rightIcon && <span className="ml-4 text-lg">{rightIcon}</span>}
+          </>
+        )}
+      </button>
+    )
+  }
+)
 
-export default forwardRef(Button)
+// export  forwardRef(Button)
