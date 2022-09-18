@@ -2,7 +2,7 @@ import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import { Button } from '.'
-import { ButtonGroup } from '../../layout'
+import { ButtonGroup } from '../../layout/ButtonGroup'
 import {
   DropDown,
   DropDownItem,

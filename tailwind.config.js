@@ -1,7 +1,6 @@
 const assets = require('./assets.json')
 module.exports = {
   content: ['./src/pages/**/*.{js,ts,jsx,tsx}', './src/components/**/*.{js,ts,jsx,tsx}'],
-  purge: ['./src/**/*.{js,ts,jsx,tsx}'],
   important: true,
   darkMode: 'class',
   theme: {

@@ -1,21 +1,6 @@
-import {
-  Button,
-  buttonVariants,
-  variantColorType,
-} from '../../components/ui/forms/Button'
 import { Card, CardBody, CardHeader, CardTitle } from '../../components/ui/layout/Card'
-import { FiUpload } from 'react-icons/fi'
-import { AiTwotoneEdit, AiOutlineUserSwitch } from 'react-icons/ai'
-import { ButtonGroup } from '../../components/ui/layout'
+
 import {
-  DropDown,
-  DropDownItem,
-  DropDownMenu,
-  DropDownToogle,
-} from '../../components/ui/overlay/DropDown'
-import IconButton from '../../components/ui/forms/IconButton'
-import {
-  BlockButtons,
   ButtonWithTextAndIcon,
   DisabledButtons,
   DropdownButtons,
@@ -28,8 +13,21 @@ import {
   SizeButtons,
   TextedButtons,
 } from '../../components/ui/forms/Button/Button.stories'
+import { RouteEnum } from '../../utils/routes'
+import { useContext, useEffect } from 'react'
+import { BreadcrumbsContext } from '../../contexts/breadcrumbsContext'
 
 function ButtonsPage() {
+  const { handleSetBreadcrumbs } = useContext(BreadcrumbsContext)
+
+  useEffect(() => {
+    handleSetBreadcrumbs([
+      { path: '#', text: 'UI Elements' },
+      { path: RouteEnum.Buttons, text: 'Buttons' },
+    ])
+    return () => handleSetBreadcrumbs([])
+  }, [handleSetBreadcrumbs])
+
   const cardButtonsPage = [
     { cardTitle: 'Single Color Buttons', storybookComponent: <SingleColorButtons /> },
     { cardTitle: 'Outlined Buttons', storybookComponent: <OutlinedButtons /> },

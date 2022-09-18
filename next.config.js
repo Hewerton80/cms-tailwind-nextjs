@@ -9,13 +9,13 @@ module.exports = {
       { source: '/login', destination: '/', permanent: true },
     ]
   },
-  remotePatterns: [
-    {
-      protocol: 'https',
-      hostname: '**',
-    },
-  ],
+
   images: {
-    domains: ['technext.github.io'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**.github.io',
+      },
+    ],
   },
 }

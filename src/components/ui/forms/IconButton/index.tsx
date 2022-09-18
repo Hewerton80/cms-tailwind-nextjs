@@ -7,9 +7,9 @@ type ButtonPropsOmited = Omit<
 >
 
 const sizeButton = {
-  sm: '!h-8 !w-8',
-  md: '!h-11 !w-11',
-  lg: '!h-12 !w-12',
+  sm: { dimensions: '!h-8 !w-8', textIcon: '!text-base' },
+  md: { dimensions: '!h-11 !w-11', textIcon: '!text-lg' },
+  lg: { dimensions: '!h-12 !w-12', textIcon: '!text-xl' },
 }
 
 interface IconButtonProps extends ButtonPropsOmited {
@@ -20,10 +20,10 @@ interface IconButtonProps extends ButtonPropsOmited {
 function IconButton({ icon, className, size = 'md', ...rest }: IconButtonProps) {
   return (
     <Button
-      className={cn('rounded-full !px-0 !py-0', sizeButton[size], className)}
+      className={cn('rounded-full !px-0 !py-0', sizeButton[size].dimensions, className)}
       {...rest}
     >
-      <span className="!text-lg">{icon}</span>
+      <span className={sizeButton[size].textIcon}>{icon}</span>
     </Button>
   )
 }

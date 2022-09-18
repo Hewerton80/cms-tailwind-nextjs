@@ -3,9 +3,8 @@ import Link from 'next/link'
 import { IBreadcrumbsLink } from '../../../../contexts/breadcrumbsContext'
 import styles from './styles.module.css'
 
-interface BreadcrumbsProps {
+interface BreadcrumbsProps extends GlobalProps {
   links: IBreadcrumbsLink[]
-  className?: string
 }
 
 function Breadcrumbs({ className, links, ...rest }: BreadcrumbsProps) {

@@ -12,16 +12,19 @@ import {
 export enum RouteEnum {
   Home = '/',
   UiElements = '/ui-elements',
-  Buttons = '/ui-elements/buttons',
   Alerts = '/ui-elements/alerts',
-  // Adms = '/users',
-  // CreateUser = '/users/create',
-  // Customers = '/customers',
+  Badges = '/ui-elements/badges',
+  Breadcrumbs = '/ui-elements/breadcrumbs',
+  Buttons = '/ui-elements/buttons',
+  Tables = '/ui-elements/tables',
+  Adms = '/users',
+  CreateUser = '/users/create',
+  Customers = '/customers',
   Posts = '/posts',
-  // CreatPosts = '/posts/create',
-  // Categories = '/categories',
-  // CreateCategories = '/categories/create',
-  // Tags = '/tags',
+  CreatPosts = '/posts/create',
+  Categories = '/categories',
+  CreateCategories = '/categories/create',
+  Tags = '/tags',
 }
 
 export interface IMenu {
@@ -43,7 +46,14 @@ export const menu: IMenu[] = [
     icon: <VscPackage className="text-xl" />,
     submenu: [
       { title: 'Alerts', url: RouteEnum.Alerts, icon: <VscDebugStackframeDot /> },
+      { title: 'Badges', url: RouteEnum.Badges, icon: <VscDebugStackframeDot /> },
+      {
+        title: 'Breadcrumbs',
+        url: RouteEnum.Breadcrumbs,
+        icon: <VscDebugStackframeDot />,
+      },
       { title: 'Buttons', url: RouteEnum.Buttons, icon: <VscDebugStackframeDot /> },
+      { title: 'Tables', url: RouteEnum.Tables, icon: <VscDebugStackframeDot /> },
     ],
   },
   // {
