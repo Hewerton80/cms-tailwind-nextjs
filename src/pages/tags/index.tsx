@@ -17,7 +17,7 @@ import { useCallback, useContext, useEffect, useState } from 'react'
 import { BreadcrumbsContext } from '../../contexts/breadcrumbsContext'
 import { RouteEnum } from '../../utils/routes'
 import { getRange } from '../../utils/getRange'
-import { Modal, ModalContent, ModalTitle } from '../../components/ui/overlay/Modal'
+import { Modal, ModalBody, ModalTitle } from '../../components/ui/overlay/Modal'
 import Form from '../../components/ui/forms/Form'
 import FormGroup from '../../components/ui/forms/FormGroup'
 import InputText from '../../components/ui/forms/InputText'
@@ -112,7 +112,7 @@ function Tags() {
 
       <Modal show={showModalTagForm} onClose={handleCloseModal} size="md">
         <ModalTitle>Adicionar tag </ModalTitle>
-        <ModalContent>
+        <ModalBody>
           <Form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
             <div className="flex flex-col space-y-6">
               <div className="flex w-full">
@@ -131,7 +131,7 @@ function Tags() {
               </Button>
             </div>
           </Form>
-        </ModalContent>
+        </ModalBody>
       </Modal>
     </>
   )

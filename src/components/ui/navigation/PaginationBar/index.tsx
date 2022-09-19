@@ -1,9 +1,9 @@
 import { HTMLAttributes, useCallback, useMemo } from 'react'
 import { Button } from '../../forms/Button'
 import cn from 'classnames'
-import styles from './styles.module.css'
 import { getRange } from '../../../../utils/getRange'
 import { getBodyElement } from '../../../../utils/getBodyElement'
+import { ButtonGroup } from '../../layout/ButtonGroup'
 
 interface PaginationBarProps extends HTMLAttributes<HTMLDivElement> {
   currentPage: number
@@ -69,57 +69,41 @@ function PaginationBar({
   }
 
   return (
-    <div className={cn(styles.root, className)} {...rest}>
-      <span>{paginationLabel}</span>
+    <div className={cn('flex items-start justify-between w-full', className)} {...rest}>
+      <span className="text-sm">{paginationLabel}</span>
       {totalPages > 0 && (
-        <>
-          <ul className="flex">
-            <li>
-              <Button
-                className={cn(
-                  'border-l-0',
-                  'dark:bg-dark-card dark:border-white/10 dark:text-light',
-                  'dark:hover:bg-dark-hover'
-                )}
-                onClick={() => handleChangePage(currentPage - 1)}
-                disabled={currentPage === 1 || disabled}
-              >
-                {'<'}
-              </Button>
-            </li>
-            {arrayPagesItens.map((page, i) => (
-              <li
-                key={i + 'page'}
-                className={cn(currentPage === page + 1 && styles.active)}
-              >
-                <Button
-                  className={cn(
-                    i > 0 && 'border-l-0',
-                    'dark:bg-dark-card dark:border-white/10 dark:text-light',
-                    'dark:hover:bg-dark-hover'
-                  )}
-                  disabled={disabled}
-                  onClick={() => i + 1 !== currentPage && handleChangePage(page + 1)}
-                >
-                  {page + 1}
-                </Button>
-              </li>
-            ))}
-            <li>
-              <Button
-                className={cn(
-                  'border-l-0',
-                  'dark:bg-dark-card dark:border-white/10 dark:text-light',
-                  'dark:hover:bg-dark-hover'
-                )}
-                onClick={() => handleChangePage(currentPage + 1)}
-                disabled={currentPage === totalPages || disabled}
-              >
-                {'>'}
-              </Button>
-            </li>
-          </ul>
-        </>
+        <ButtonGroup>
+          <Button
+            variantColor="primary"
+            variantStyle="outlined"
+            size="sm"
+            onClick={() => handleChangePage(currentPage - 1)}
+            disabled={currentPage === 1 || disabled}
+          >
+            {'<'}
+          </Button>
+          {arrayPagesItens.map((page, i) => (
+            <Button
+              key={i + 'page'}
+              variantColor="primary"
+              variantStyle={currentPage === page + 1 ? 'contained' : 'outlined'}
+              size="sm"
+              disabled={disabled}
+              onClick={() => i + 1 !== currentPage && handleChangePage(page + 1)}
+            >
+              {page + 1}
+            </Button>
+          ))}
+          <Button
+            variantColor="primary"
+            variantStyle="outlined"
+            size="sm"
+            onClick={() => handleChangePage(currentPage + 1)}
+            disabled={currentPage === totalPages || disabled}
+          >
+            {'>'}
+          </Button>
+        </ButtonGroup>
       )}
     </div>
   )

@@ -1,4 +1,4 @@
-import { Modal, ModalContent, ModalProps } from '../Modal'
+import { Modal, ModalBody, ModalProps } from '../Modal'
 import styles from './styles.module.css'
 import cn from 'classnames'
 import {
@@ -38,7 +38,7 @@ function AlertModal({
 }: AlertModalProps) {
   return (
     <Modal onClose={onClose} size="md" {...rest}>
-      <ModalContent>
+      <ModalBody>
         <div className={cn(styles.root, styles[variant])}>
           {variants[variant].icon}
           <h4>{variants[variant].text}</h4>
@@ -47,7 +47,7 @@ function AlertModal({
             {textButton || 'Ok'}
           </Button>
         </div>
-      </ModalContent>
+      </ModalBody>
     </Modal>
   )
 }

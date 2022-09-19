@@ -15,7 +15,7 @@ import { FaCheck, FaEye, FaEyeSlash, FaPen, FaRegEye, FaTimes } from 'react-icon
 import { BreadcrumbsContext } from '../../contexts/breadcrumbsContext'
 import { RouteEnum } from '../../utils/routes'
 import { getRange } from '../../utils/getRange'
-import { Modal, ModalContent, ModalTitle } from '../../components/ui/overlay/Modal'
+import { Modal, ModalBody, ModalTitle } from '../../components/ui/overlay/Modal'
 import SelectBox, { ISelectBoxOptions } from '../../components/ui/forms/SelectBox'
 import FormGroup from '../../components/ui/forms/FormGroup'
 import Switch from '../../components/ui/forms/Switch'
@@ -166,7 +166,7 @@ function Categories() {
 
       <Modal show={showModalCategoryForm} onClose={handleCloseModal} size="lg">
         <ModalTitle>Adicionar categoria </ModalTitle>
-        <ModalContent>
+        <ModalBody>
           <Form className="flex flex-col space-y-6" onSubmit={(e) => e.preventDefault()}>
             <div className="grid grid-cols-12 gap-6">
               <div className="col-span-12 sm:col-span-6">
@@ -276,7 +276,7 @@ function Categories() {
               </Button>
             </div>
           </Form>
-        </ModalContent>
+        </ModalBody>
       </Modal>
     </>
   )

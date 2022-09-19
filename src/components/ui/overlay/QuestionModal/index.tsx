@@ -1,4 +1,4 @@
-import { Modal, ModalContent, ModalProps } from '../Modal'
+import { Modal, ModalBody, ModalProps } from '../Modal'
 import styles from './styles.module.css'
 import cn from 'classnames'
 import { IoAlertCircleOutline } from 'react-icons/io5'
@@ -22,7 +22,7 @@ function QuestionModal({
 }: QuestionModalProps) {
   return (
     <Modal onClose={onClose} size="md" {...rest}>
-      <ModalContent>
+      <ModalBody>
         <div className={cn(styles.root)}>
           <IoAlertCircleOutline className="text-warning" />
           <h4>{description}</h4>
@@ -35,7 +35,7 @@ function QuestionModal({
             </Button>
           </div>
         </div>
-      </ModalContent>
+      </ModalBody>
     </Modal>
   )
 }

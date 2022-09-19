@@ -16,7 +16,7 @@ import { RouteEnum } from '../../utils/routes'
 import { BreadcrumbsContext } from '../../contexts/breadcrumbsContext'
 import AvatarGroup from '../../components/ui/media/AvatarGroup'
 import { Button } from '../../components/ui/forms/Button'
-import { Modal, ModalContent, ModalTitle } from '../../components/ui/overlay/Modal'
+import { Modal, ModalBody, ModalTitle } from '../../components/ui/overlay/Modal'
 import Form from '../../components/ui/forms/Form'
 import FormGroup from '../../components/ui/forms/FormGroup'
 import FormLabel from '../../components/ui/forms/FormLabel'
@@ -113,7 +113,7 @@ function Customers() {
       </Card>
       <Modal show={showModalCustomerForm} onClose={handleCloseModal} size="lg">
         <ModalTitle>Adicionar assinante </ModalTitle>
-        <ModalContent>
+        <ModalBody>
           <Form className="flex flex-col space-y-6" onSubmit={(e) => e.preventDefault()}>
             <div className="grid grid-cols-12 gap-6">
               <div className="col-span-12 md:col-span-6">
@@ -151,7 +151,7 @@ function Customers() {
               </Button>
             </div>
           </Form>
-        </ModalContent>
+        </ModalBody>
       </Modal>
     </>
   )
