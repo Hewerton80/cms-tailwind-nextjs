@@ -3,7 +3,7 @@ import cn from 'classnames'
 
 const variantColorCard = {
   default: {
-    root: 'text-black dark:text-light',
+    root: 'text-black dark:text-light bg-white dark:bg-dark-card',
   },
   primary: {
     root: 'text-white bg-primary',
@@ -118,7 +118,7 @@ export function CardBody({ children, className, ...rest }: CardProps) {
 export function CardTitle({ children, className, ...rest }: CardProps) {
   return (
     <div className={cn('flex', className)} {...rest}>
-      <h4 className="font-bold text-lg">{children}</h4>
+      <h4 className="text-lg">{children}</h4>
     </div>
   )
 }
