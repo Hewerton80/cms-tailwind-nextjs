@@ -20,19 +20,6 @@ quas tempore eum alias sapiente pariatur consequatur ratione,
 assumenda dolore maiores magnam? In, cupiditate!
 `
 
-// success: {
-//   text: 'Sucesso!',
-//   icon: <IoCheckmarkCircleOutline className="text-success" />,
-// },
-// info: {
-//   text: 'Info!',
-//   icon: <IoAlertCircleOutline className="text-info" />,
-// },
-// danger: {
-//   text: 'Erro!',
-//   icon: <IoCloseCircleOutline className="text-danger" />,
-// },
-
 export const SuccessModal = () => {
   const [showModal, setShowModal] = useState(false)
 

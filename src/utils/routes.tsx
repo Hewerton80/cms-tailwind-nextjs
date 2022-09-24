@@ -7,10 +7,13 @@ import {
   VscHome,
   VscDebugStackframeDot,
   VscPackage,
+  VscOutput,
 } from 'react-icons/vsc'
 
 export enum RouteEnum {
   Home = '/',
+  FormElements = '/form-elements',
+  InputText = '/form-elements/input-text',
   UiElements = '/ui-elements',
   Alerts = '/ui-elements/alerts',
   Badges = '/ui-elements/badges',
@@ -42,6 +45,14 @@ export const menu: IMenu[] = [
     title: 'Home',
     url: RouteEnum.Home,
     icon: <VscHome className="text-xl" />,
+  },
+  {
+    title: 'Form Elements',
+    url: RouteEnum.FormElements,
+    icon: <VscOutput className="text-xl" />,
+    submenu: [
+      { title: 'InputText', url: RouteEnum.InputText, icon: <VscDebugStackframeDot /> },
+    ],
   },
   {
     title: 'UI Elements',

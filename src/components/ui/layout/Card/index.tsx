@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import cn from 'classnames'
-
+import { HTMLAttributes } from 'react'
 const variantColorCard = {
   default: {
     root: 'text-black dark:text-light bg-white dark:bg-dark-card',
@@ -38,7 +38,7 @@ const variantFooterCard = {
   right: 'justify-end',
 }
 
-export interface CardProps extends GlobalProps {
+export interface CardProps extends HTMLAttributes<HTMLDivElement> {
   variant?: keyof typeof variantColorCard
 }
 

@@ -11,6 +11,7 @@
     "dark-body": "#1a1a3c",
     "dark-card": "#2a2a4a",
     "dark-screen": "#0000004c",
+    "input": "#495057",
     "primary": "#844fc1",
     "active-primary": "#6b3aa3",
     "secondary": "#6c7293",
@@ -35,7 +36,7 @@
     "gray-light": "#eaeaf1",
     "gray-lighter": "#f7f8fc",
     "gray-lightest": "#e4e4f4",
-    "gray-border": "#f3f3f3"
+    "gray-border": "#CED4DA"
   },
   "fontFamily": {
     "sans": "Poppins, Arial, sans-serif"

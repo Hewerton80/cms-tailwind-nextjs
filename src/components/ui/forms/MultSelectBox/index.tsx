@@ -6,7 +6,7 @@ import InputText from '../InputText'
 import { IoClose } from 'react-icons/io5'
 import { List, ListItem } from '../../dataDisplay/List'
 import Badge from '../../dataDisplay/Badge'
-import ValidationError from '../../feedback/ValidationError'
+import ValidationMessage from '../../feedback/ValidationMessage'
 
 export interface IMultSelectBoxOptions {
   value: string
@@ -158,7 +158,7 @@ function MultSelectBox({
           </DivWitchClickOutsideEvent>
         )}
       </div>
-      {error && <ValidationError>{error}</ValidationError>}
+      {error && <ValidationMessage>{error}</ValidationMessage>}
     </>
   )
 }

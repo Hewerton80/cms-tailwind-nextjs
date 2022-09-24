@@ -5,7 +5,7 @@ import DivWitchClickOutsideEvent from '../../overlay/DivWitchClickOutsideEvent'
 import InputText from '../InputText'
 import { FaCaretDown } from 'react-icons/fa'
 import { List, ListItem } from '../../dataDisplay/List'
-import ValidationError from '../../feedback/ValidationError'
+import ValidationMessage from '../../feedback/ValidationMessage'
 
 export interface ISelectBoxOptions {
   value: string
@@ -122,7 +122,7 @@ function SelectBox({
         )}
         <FaCaretDown className={cn(isFocused && 'rotate-180')} />
       </div>
-      {error && <ValidationError>{error}</ValidationError>}
+      {error && <ValidationMessage>{error}</ValidationMessage>}
     </>
   )
 }

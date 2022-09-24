@@ -1,25 +1,31 @@
 import { TextareaHTMLAttributes } from 'react'
 import cn from 'classnames'
 import styles from './styles.module.css'
-import ValidationError from '../../feedback/ValidationError'
+import ValidationMessage from '../../feedback/ValidationMessage'
+import {
+  formTextElementStyle,
+  IStateValidationsProps,
+  statesValidations,
+} from '../formShared'
 
-interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
-  error?: string
-}
+interface TextAreaProps extends FormTextElement, IStateValidationsProps {}
 
-function TextArea({ className, error, ...rest }: TextAreaProps) {
+function TextArea({ className, feedbackText, state = 'danger', ...rest }: TextAreaProps) {
   return (
     <>
       <textarea
         className={cn(
-          styles.root,
-          'dark:border-white/10 dark:text-light',
-          error && styles.error,
+          formTextElementStyle,
+          'h-auto',
+          feedbackText && statesValidations[state].input,
           className
         )}
         {...rest}
       />
-      {error && <ValidationError>{error}</ValidationError>}
+      {feedbackText && (
+        <ValidationMessage state={state}>{feedbackText}</ValidationMessage>
+      )}
+      {/* <textarea name="" id="" cols="30" rows="10"></textarea> */}
     </>
   )
 }

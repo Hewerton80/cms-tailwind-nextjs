@@ -6,7 +6,7 @@
 }
 .root > span {
   @apply flex items-center text-sm outline-none rounded-sm duration-300 
-  h-[46px] px-[22px] text-[#495057] border border-gray-border;
+  h-[46px] px-[22px] text-input border border-gray-border;
   transition: 0.3s ease all;
 }
 .root > span:not(:disabled) {

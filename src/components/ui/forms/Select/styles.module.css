@@ -1,5 +1,5 @@
 .root {
-  @apply text-sm outline-none rounded-sm duration-300 h-[46px] text-[#495057] px-[22px]
+  @apply text-sm outline-none rounded-sm duration-300 h-[46px] text-input px-[22px]
   border bg-transparent border-gray-border;
   transition: 0.3s ease all;
 }

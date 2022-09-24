@@ -33,7 +33,9 @@ export const SmallModal = () => {
 
   return (
     <>
-      <Button onClick={handleShowModal}>Show Small Modal</Button>
+      <Button onClick={handleShowModal} variantColor="primary">
+        Show Small Modal
+      </Button>
       <Modal show={showModal} onClose={handleCloseModal} size="sm">
         <ModalTitle>Modal Title</ModalTitle>
         <ModalBody>
@@ -65,7 +67,9 @@ export const MediumModal = () => {
 
   return (
     <>
-      <Button onClick={handleShowModal}>Show Medium Modal</Button>
+      <Button onClick={handleShowModal} variantColor="primary">
+        Show Medium Modal
+      </Button>
       <Modal show={showModal} onClose={handleCloseModal} size="md">
         <ModalTitle>Modal Title</ModalTitle>
         <ModalBody>
@@ -97,7 +101,9 @@ export const LargeModal = () => {
 
   return (
     <>
-      <Button onClick={handleShowModal}>Show Large Modal</Button>
+      <Button onClick={handleShowModal} variantColor="primary">
+        Show Large Modal
+      </Button>
       <Modal show={showModal} onClose={handleCloseModal} size="lg">
         <ModalTitle>Modal Title</ModalTitle>
         <ModalBody>

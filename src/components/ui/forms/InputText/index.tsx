@@ -1,9 +1,19 @@
-import { forwardRef, InputHTMLAttributes } from 'react'
+import {
+  forwardRef,
+  CSSProperties,
+  ChangeEventHandler,
+  KeyboardEventHandler,
+} from 'react'
 import cn from 'classnames'
-import styles from './styles.module.css'
-import ValidationError from '../../feedback/ValidationError'
+import ValidationMessage from '../../feedback/ValidationMessage'
+import { Callback } from '../../../../types/Global'
+import {
+  IStateValidationsProps,
+  statesValidations,
+  formTextElementStyle,
+} from '../formShared'
 
-interface InputTextProps extends InputHTMLAttributes<HTMLInputElement> {
+interface InputTextProps extends FormTextElement, IStateValidationsProps {
   type?:
     | 'text'
     | 'email'
@@ -13,24 +23,32 @@ interface InputTextProps extends InputHTMLAttributes<HTMLInputElement> {
     | 'time'
     | 'datetime-local'
     | 'date'
-  error?: string
 }
 
-function InputText(
-  { className, type = 'text', error, ...rest }: InputTextProps,
-  ref: any
-) {
-  return (
-    <>
-      <input
-        ref={ref}
-        className={cn(styles.root, 'dark:border-white/10 dark:text-light', className)}
-        type={type}
-        {...rest}
-      />
-      {error && <ValidationError>{error}</ValidationError>}
-    </>
-  )
-}
+// eslint-disable-next-line react/display-name
+const InputText = forwardRef(
+  (
+    { className, type = 'text', state = 'danger', feedbackText, ...rest }: InputTextProps,
+    ref: any
+  ) => {
+    return (
+      <>
+        <input
+          ref={ref}
+          className={cn(
+            feedbackText && statesValidations[state].input,
+            formTextElementStyle,
+            className
+          )}
+          type={type}
+          {...rest}
+        />
+        {feedbackText && (
+          <ValidationMessage state={state}>{feedbackText}</ValidationMessage>
+        )}
+      </>
+    )
+  }
+)
 
-export default forwardRef(InputText)
+export default InputText

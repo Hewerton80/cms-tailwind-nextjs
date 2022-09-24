@@ -1,7 +1,7 @@
 import { SelectHTMLAttributes, useEffect, useRef } from 'react'
 import cn from 'classnames'
 import styles from './styles.module.css'
-import ValidationError from '../../feedback/ValidationError'
+import ValidationMessage from '../../feedback/ValidationMessage'
 
 interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   error?: string
@@ -31,7 +31,7 @@ function Select({ className, error, ...rest }: SelectProps) {
         ref={selectRef}
         {...rest}
       />
-      {error && <ValidationError>{error}</ValidationError>}
+      {error && <ValidationMessage>{error}</ValidationMessage>}
     </>
   )
 }
