@@ -1,37 +1,70 @@
-import { SelectHTMLAttributes, useEffect, useRef } from 'react'
+import { ChangeEvent, useRef } from 'react'
 import cn from 'classnames'
-import styles from './styles.module.css'
 import ValidationMessage from '../../feedback/ValidationMessage'
+import {
+  formTextElementStyle,
+  IStateValidationsProps,
+  statesValidations,
+} from '../shared/formShared'
+import { Callback } from '../../../../types/Global'
 
-interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
+interface ISelectOrpion {
+  value: string
+  text: string
+  selected?: boolean
+}
+interface SelectProps extends GlobalProps, IStateValidationsProps {
+  options?: ISelectOrpion[]
+  required?: boolean
+  defaultValue?: string
+  placeholder?: string
+  autoFocus?: boolean
+  disabled?: boolean
+  readOnly?: boolean
+  onFocus?: Callback
+  onBlur?: Callback
   error?: string
+  feedbackText?: string
+  value?: string | ReadonlyArray<string> | number | undefined
+  onChange?: (e: ChangeEvent<HTMLSelectElement>) => void
 }
 
-function Select({ className, error, ...rest }: SelectProps) {
+function Select({
+  className,
+  state = 'danger',
+  feedbackText,
+  options,
+  ...rest
+}: SelectProps) {
   const selectRef = useRef<HTMLSelectElement>(null)
-
-  useEffect(() => {
-    if (selectRef?.current) {
-      const options = selectRef.current.querySelectorAll('option')
-      options.forEach((option) => {
-        option?.classList?.add('dark:bg-dark-card', 'dark:text-light')
-      })
-    }
-  }, [])
 
   return (
     <>
       <select
         className={cn(
-          styles.root,
-          error && styles.error,
-          'dark:border-white/10 dark:text-light',
+          formTextElementStyle,
+          '!py-0',
+          feedbackText && statesValidations[state].input,
+          // 'dark:border-white/10 dark:text-light',
           className
         )}
         ref={selectRef}
         {...rest}
-      />
-      {error && <ValidationMessage>{error}</ValidationMessage>}
+      >
+        {options?.map((option) => (
+          <option
+            className="dark:text-light dark:bg-dark-card"
+            key={option.value}
+            value={option.value}
+            selected={option?.selected}
+          >
+            {option.text}
+          </option>
+        ))}
+      </select>
+      {feedbackText && (
+        <ValidationMessage state={state}>{feedbackText}</ValidationMessage>
+      )}
     </>
   )
 }

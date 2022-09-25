@@ -13,7 +13,9 @@ import {
 export enum RouteEnum {
   Home = '/',
   FormElements = '/form-elements',
+  Autocomplite = '/form-elements/autocomplite',
   InputText = '/form-elements/input-text',
+  Select = '/form-elements/select',
   UiElements = '/ui-elements',
   Alerts = '/ui-elements/alerts',
   Badges = '/ui-elements/badges',
@@ -51,7 +53,13 @@ export const menu: IMenu[] = [
     url: RouteEnum.FormElements,
     icon: <VscOutput className="text-xl" />,
     submenu: [
+      {
+        title: 'Autocomplite',
+        url: RouteEnum.Autocomplite,
+        icon: <VscDebugStackframeDot />,
+      },
       { title: 'InputText', url: RouteEnum.InputText, icon: <VscDebugStackframeDot /> },
+      { title: 'Select', url: RouteEnum.Select, icon: <VscDebugStackframeDot /> },
     ],
   },
   {

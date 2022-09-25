@@ -2,7 +2,8 @@ import { useContext, useEffect } from 'react'
 import {
   ActiveAndDisabled,
   Validations,
-} from '../../components/ui/forms/InputText/InputText.stories'
+  // Validations,
+} from '../../components/ui/forms/AutoComplite/AutoComplite.stories'
 import { BreadcrumbsContext } from '../../contexts/breadcrumbsContext'
 import { RouteEnum } from '../../utils/routes'
 
@@ -12,7 +13,7 @@ function InputTextPage() {
   useEffect(() => {
     handleSetBreadcrumbs([
       { path: '#', text: 'Form Elements' },
-      { path: RouteEnum.Select, text: 'Select' },
+      { path: RouteEnum.Autocomplite, text: 'Autocomplite' },
     ])
     return () => handleSetBreadcrumbs([])
   }, [handleSetBreadcrumbs])

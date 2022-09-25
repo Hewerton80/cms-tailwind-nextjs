@@ -1,0 +1,76 @@
+.root :global(.auto-complite__control) {
+  @apply border-gray-border dark:border-white/10 h-[46px] bg-transparent;
+}
+:global(.dark) .root :global(.auto-complite__control) {
+  @apply border-white/10;
+}
+.root.success :global(.auto-complite__control) {
+  @apply !border-success;
+}
+.root.warning :global(.auto-complite__control) {
+  @apply !border-warning;
+}
+.root.danger :global(.auto-complite__control) {
+  @apply !border-danger;
+}
+.root :global(.auto-complite__control--is-focused) {
+  @apply border-info ring-4 ring-info/40;
+}
+.root.success :global(.auto-complite__control--is-focused) {
+  @apply border-success ring-4 ring-success/40;
+}
+.root.warning :global(.auto-complite__control--is-focused) {
+  @apply border-warning ring-4 ring-warning/40;
+}
+.root.danger :global(.auto-complite__control--is-focused) {
+  @apply border-danger ring-4 ring-danger/40;
+}
+
+.root :global(.auto-complite__value-container) {
+  @apply px-[22px];
+}
+.root :global(.auto-complite__input-container) {
+  @apply m-0;
+}
+
+.root :global(.auto-complite__placeholder) {
+  @apply m-0 !text-sm;
+}
+
+.root :global(.auto-complite__single-value) {
+  @apply m-0 !text-input !text-sm;
+}
+:global(.dark) .root :global(.auto-complite__single-value) {
+  @apply !text-light;
+}
+
+.root :global(.auto-complite__input) {
+  @apply m-0 !text-input !text-sm;
+}
+:global(.dark) .root :global(.auto-complite__input) {
+  @apply !text-light;
+}
+
+.root :global(.auto-complite__menu) {
+  @apply my-0 border-1 border-gray-lightest shadow-md;
+}
+:global(.dark) .root :global(.auto-complite__menu) {
+  @apply border-white/10 bg-dark-card;
+}
+
+.root :global(.auto-complite__option) {
+  @apply p-1.5 text-sm text-dark leading-[1.8];
+}
+:global(.dark) .root :global(.auto-complite__option) {
+  @apply text-light;
+}
+
+.root :global(.auto-complite__option--is-focused) {
+  @apply bg-info/60 text-light;
+}
+.root :global(.auto-complite__option--is-selected) {
+  @apply bg-info text-light;
+}
+.root :global(.auto-complite__indicator-separator) {
+  @apply hidden;
+}

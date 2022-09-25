@@ -1,19 +1,14 @@
-import {
-  forwardRef,
-  CSSProperties,
-  ChangeEventHandler,
-  KeyboardEventHandler,
-} from 'react'
+import { ChangeEvent, forwardRef, KeyboardEventHandler } from 'react'
 import cn from 'classnames'
 import ValidationMessage from '../../feedback/ValidationMessage'
-import { Callback } from '../../../../types/Global'
 import {
-  IStateValidationsProps,
   statesValidations,
   formTextElementStyle,
-} from '../formShared'
+  IStateValidationsProps,
+} from '../shared/formShared'
+import { Callback } from '../../../../types/Global'
 
-interface InputTextProps extends FormTextElement, IStateValidationsProps {
+interface InputTextProps extends GlobalProps, IStateValidationsProps {
   type?:
     | 'text'
     | 'email'
@@ -23,6 +18,20 @@ interface InputTextProps extends FormTextElement, IStateValidationsProps {
     | 'time'
     | 'datetime-local'
     | 'date'
+  required?: boolean
+  value?: string
+  defaultValue?: string
+  placeholder?: string
+  autoFocus?: boolean
+  disabled?: boolean
+  readOnly?: boolean
+  onFocus?: Callback
+  onBlur?: Callback
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void
+  onKeyUp?: KeyboardEventHandler<HTMLInputElement>
+  maxLength?: number
+  error?: string
+  feedbackText?: string
 }
 
 // eslint-disable-next-line react/display-name

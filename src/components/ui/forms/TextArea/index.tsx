@@ -1,14 +1,28 @@
-import { TextareaHTMLAttributes } from 'react'
+import { ChangeEvent, KeyboardEventHandler, TextareaHTMLAttributes } from 'react'
 import cn from 'classnames'
-import styles from './styles.module.css'
 import ValidationMessage from '../../feedback/ValidationMessage'
 import {
   formTextElementStyle,
   IStateValidationsProps,
   statesValidations,
-} from '../formShared'
+} from '../shared/formShared'
+import { Callback } from '../../../../types/Global'
 
-interface TextAreaProps extends FormTextElement, IStateValidationsProps {}
+interface TextAreaProps extends GlobalProps, IStateValidationsProps {
+  required?: boolean
+  value?: string
+  defaultValue?: string
+  placeholder?: string
+  autoFocus?: boolean
+  disabled?: boolean
+  readOnly?: boolean
+  onFocus?: Callback
+  onBlur?: Callback
+  onChange?: (e: ChangeEvent<HTMLTextAreaElement>) => void
+  maxLength?: number
+  error?: string
+  feedbackText?: string
+}
 
 function TextArea({ className, feedbackText, state = 'danger', ...rest }: TextAreaProps) {
   return (
@@ -25,7 +39,6 @@ function TextArea({ className, feedbackText, state = 'danger', ...rest }: TextAr
       {feedbackText && (
         <ValidationMessage state={state}>{feedbackText}</ValidationMessage>
       )}
-      {/* <textarea name="" id="" cols="30" rows="10"></textarea> */}
     </>
   )
 }

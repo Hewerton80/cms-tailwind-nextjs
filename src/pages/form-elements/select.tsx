@@ -2,7 +2,7 @@ import { useContext, useEffect } from 'react'
 import {
   ActiveAndDisabled,
   Validations,
-} from '../../components/ui/forms/InputText/InputText.stories'
+} from '../../components/ui/forms/Select/Select.stories'
 import { BreadcrumbsContext } from '../../contexts/breadcrumbsContext'
 import { RouteEnum } from '../../utils/routes'
 

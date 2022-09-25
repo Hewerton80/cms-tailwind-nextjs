@@ -1,5 +1,5 @@
 import cn from 'classnames'
-import { IStateValidationsProps, statesValidations } from '../../forms/formShared'
+import { IStateValidationsProps, statesValidations } from '../../forms/shared/formShared'
 
 interface ValidationMessageProps extends GlobalProps, IStateValidationsProps {}
 

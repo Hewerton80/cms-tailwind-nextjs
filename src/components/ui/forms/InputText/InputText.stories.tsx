@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ComponentMeta } from '@storybook/react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 
 import InputText from '.'
 import FormGroup from '../FormGroup'
