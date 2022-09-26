@@ -20,7 +20,7 @@ interface AutoCompliteProps extends GlobalProps, IStateValidationsProps {
   isDisabled?: boolean
   isLoading?: boolean
   defaultValue?: IAutoCompliteOption
-  // isSearchable?: boolean
+  inputValue?: string
   name?: string
   placeholder?: string
   feedbackText?: string
@@ -59,6 +59,7 @@ function AutoComplite({
         options={options}
         // isClearable
         isSearchable
+        menuShouldBlockScroll
         // menuIsOpen
         // styles={styles}
         {...rest}

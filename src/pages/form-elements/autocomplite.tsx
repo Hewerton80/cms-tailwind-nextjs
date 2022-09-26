@@ -1,6 +1,7 @@
 import { useContext, useEffect } from 'react'
 import {
   ActiveAndDisabled,
+  Async,
   Validations,
   // Validations,
 } from '../../components/ui/forms/AutoComplite/AutoComplite.stories'
@@ -22,6 +23,7 @@ function InputTextPage() {
     <div className="flex flex-col gap-4">
       <ActiveAndDisabled />
       <Validations />
+      <Async />
     </div>
   )
 }

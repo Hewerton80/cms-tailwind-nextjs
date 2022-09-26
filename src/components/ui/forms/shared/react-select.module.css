@@ -66,7 +66,7 @@
 }
 
 .root :global(.auto-complite__option--is-focused) {
-  @apply bg-info/60 text-light;
+  @apply bg-info/80 text-light;
 }
 .root :global(.auto-complite__option--is-selected) {
   @apply bg-info text-light;

@@ -35,7 +35,7 @@ export const ActiveAndDisabled = () => {
   ]
 
   return (
-    <Card className="pb-28">
+    <Card>
       <CardHeader>
         <CardTitle>Active And Disabled</CardTitle>
       </CardHeader>
@@ -86,7 +86,7 @@ export const Validations = () => {
     { value: 'JS', text: 'JAVASCRIPT' },
   ]
   return (
-    <Card className="pb-28">
+    <Card>
       <CardHeader>
         <CardTitle>Active And Disabled</CardTitle>
       </CardHeader>
