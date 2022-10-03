@@ -1,17 +1,17 @@
 import classNames from 'classnames'
-import ReactSelect, { PropsValue, SingleValue } from 'react-select'
+import ReactSelect, { PropsValue, MultiValue, ActionMeta } from 'react-select'
 import style from '../shared/react-select.module.css'
 import { IStateValidationsProps } from '../shared/formShared'
 import ValidationMessage from '../../feedback/ValidationMessage'
 import Spinner from '../../feedback/Spinner'
 import assets from '../../../../../assets.json'
-export interface IAutoCompliteOption {
+export interface IMultSelectOption {
   value: string
   label: string
 }
-interface AutoCompliteProps extends GlobalProps, IStateValidationsProps {
-  options: IAutoCompliteOption[]
-  value?: PropsValue<IAutoCompliteOption>
+interface MultSelectProps extends GlobalProps, IStateValidationsProps {
+  options: IMultSelectOption[]
+  value?: PropsValue<IMultSelectOption>
   isDisabled?: boolean
   isLoading?: boolean
   inputValue?: string
@@ -19,16 +19,20 @@ interface AutoCompliteProps extends GlobalProps, IStateValidationsProps {
   placeholder?: string
   feedbackText?: string
   onInputChange?: (newValue: string) => void
-  onChange?: (newValue: SingleValue<IAutoCompliteOption>) => void
+  onChange?: (
+    newValue: MultiValue<IMultSelectOption>,
+    actionMeta: ActionMeta<IMultSelectOption>
+  ) => void
   autoFocus?: boolean
 }
 
-function AutoComplite({
+function MultSelect({
+  options,
   className,
   state = 'danger',
   feedbackText,
   ...rest
-}: AutoCompliteProps) {
+}: MultSelectProps) {
   return (
     <>
       <ReactSelect
@@ -42,7 +46,10 @@ function AutoComplite({
           className
         )}
         classNamePrefix="auto-complite"
+        options={options}
+        isMulti
         isSearchable
+        isClearable={false}
         loadingMessage={() => (
           <div className="flex w-full justify-center">
             <Spinner color={assets.colors.info} />
@@ -56,4 +63,4 @@ function AutoComplite({
     </>
   )
 }
-export default AutoComplite
+export default MultSelect

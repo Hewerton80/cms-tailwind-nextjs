@@ -1,31 +1,31 @@
 import { useContext, useEffect } from 'react'
 import {
-  ActiveAndDisabled,
+  SimpleExample,
+  WitchDefaultOptions,
   Async,
-  Validations,
   // Validations,
-} from '../../components/ui/forms/AutoComplite/AutoComplite.stories'
+} from '../../components/ui/forms/MultSelect/MultSelect.stories'
 import { BreadcrumbsContext } from '../../contexts/breadcrumbsContext'
 import { RouteEnum } from '../../utils/routes'
 
-function AutocomplitePage() {
+function MultSelect() {
   const { handleSetBreadcrumbs } = useContext(BreadcrumbsContext)
 
   useEffect(() => {
     handleSetBreadcrumbs([
       { path: '#', text: 'Form Elements' },
-      { path: RouteEnum.Autocomplite, text: 'Autocomplite' },
+      { path: RouteEnum.MultSelect, text: 'MultSelect' },
     ])
     return () => handleSetBreadcrumbs([])
   }, [handleSetBreadcrumbs])
 
   return (
     <div className="flex flex-col gap-4">
-      <ActiveAndDisabled />
-      <Validations />
+      <SimpleExample />
+      <WitchDefaultOptions />
       <Async />
     </div>
   )
 }
 
-export default AutocomplitePage
+export default MultSelect

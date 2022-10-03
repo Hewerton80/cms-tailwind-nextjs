@@ -1,5 +1,5 @@
 .root :global(.auto-complite__control) {
-  @apply border-gray-border dark:border-white/10 h-[46px] bg-transparent;
+  @apply border-gray-border dark:border-white/10 min-h-[46px] bg-transparent;
 }
 :global(.dark) .root :global(.auto-complite__control) {
   @apply border-white/10;
@@ -73,4 +73,13 @@
 }
 .root :global(.auto-complite__indicator-separator) {
   @apply hidden;
+}
+.root :global(.auto-complite__multi-value) {
+  @apply bg-info text-white text-sm py-1.5 px-2 rounded;
+}
+.root :global(.auto-complite__multi-value__label) {
+  @apply text-white p-0;
+}
+.root :global(.auto-complite__multi-value__remove):hover {
+  @apply bg-active-info text-white;
 }
