@@ -64,6 +64,7 @@ export const WitchDefaultOptions = () => {
 
   useEffect(() => {
     setProfiles([profilesOptions[1], profilesOptions[2]])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
@@ -87,73 +88,6 @@ export const WitchDefaultOptions = () => {
     </Card>
   )
 }
-
-// export const Validations = () => {
-//   const [profile, s] = useState<IMultSelectOption | null>(null)
-//   const [gender, setGender] = useState<IMultSelectOption | null>(null)
-//   const [tech, setTech] = useState<IMultSelectOption | null>(null)
-
-//   const profileOptions = [
-//     { value: 'admin', label: 'Admin' },
-//     { value: 'blogger', label: 'Blogger' },
-//     { value: 'customer', label: 'Customer' },
-//   ]
-//   const genderOptions = [
-//     { value: 'M', label: 'Masculine' },
-//     { value: 'F', label: 'Feminine' },
-//     { value: 'O', label: 'Other' },
-//   ]
-//   const techOptions = [
-//     { value: 'html', label: 'HTML' },
-//     { value: 'css', label: 'CSS' },
-//     { value: 'JS', label: 'JAVASCRIPT' },
-//   ]
-
-//   return (
-//     <Card>
-//       <CardHeader>
-//         <CardTitle>Active And Disabled</CardTitle>
-//       </CardHeader>
-//       <CardBody>
-//         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pb-28">
-//           <FormGroup>
-//             <FormLabel required>Profile:</FormLabel>
-//             <MultSelect
-//               value={profile}
-//               options={profileOptions}
-//               onChange={setProfile}
-//               placeholder="Select profile..."
-//               state="success"
-//               feedbackText="Looks good!"
-//             />
-//           </FormGroup>
-//           <FormGroup>
-//             <FormLabel required>Gender:</FormLabel>
-//             <MultSelect
-//               value={gender}
-//               options={genderOptions}
-//               onChange={setGender}
-//               placeholder="Select gender..."
-//               state="warning"
-//               feedbackText="this is requied"
-//             />
-//           </FormGroup>
-//           <FormGroup>
-//             <FormLabel required>Tech:</FormLabel>
-//             <MultSelect
-//               value={tech}
-//               options={techOptions}
-//               onChange={setTech}
-//               placeholder="Select tech..."
-//               state="danger"
-//               feedbackText="this is requied"
-//             />
-//           </FormGroup>
-//         </div>
-//       </CardBody>
-//     </Card>
-//   )
-// }
 
 export interface cardImage {
   id: number

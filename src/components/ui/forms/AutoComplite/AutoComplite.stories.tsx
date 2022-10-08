@@ -218,7 +218,7 @@ export const Async = () => {
           <FormGroup>
             <FormLabel required>YU-GI-OH CARD:</FormLabel>
             <AutoComplite
-              // value={card}
+              value={cardValue}
               inputValue={inputText}
               options={cardOptions}
               onChange={handleSelectOptions}
