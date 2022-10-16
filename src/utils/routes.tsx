@@ -27,6 +27,7 @@ export enum RouteEnum {
   Modals = '/ui-elements/modals',
   Cards = '/ui-elements/cards',
   Tabs = '/ui-elements/tabs',
+  Tooltips = '/ui-elements/tooltips',
   Adms = '/users',
   CreateUser = '/users/create',
   Customers = '/customers',
@@ -87,6 +88,7 @@ export const menu: IMenu[] = [
       { title: 'Pagination', url: RouteEnum.Pagination, icon: <VscDebugStackframeDot /> },
       { title: 'Tables', url: RouteEnum.Tables, icon: <VscDebugStackframeDot /> },
       { title: 'Tabs', url: RouteEnum.Tabs, icon: <VscDebugStackframeDot /> },
+      { title: 'Tooltips', url: RouteEnum.Tooltips, icon: <VscDebugStackframeDot /> },
     ],
   },
   // {

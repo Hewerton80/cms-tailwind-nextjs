@@ -3,7 +3,7 @@ import cn from 'classnames'
 
 type ButtonPropsOmited = Omit<
   ButtonProps,
-  'leftIcon' | 'rightIcon' | 'children' | 'full' | 'variantStyle' | 'size'
+  'leftIcon' | 'rightIcon' | 'children' | 'full' | 'variantStyle' | 'size' | 'rounded'
 >
 
 const sizeButton = {

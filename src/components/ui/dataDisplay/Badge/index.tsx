@@ -1,6 +1,6 @@
 import cn from 'classnames'
 
-const badgesVariantes = {
+export const badgesVariants = {
   primary: 'bg-primary text-white',
   success: 'bg-success text-white',
   secondary: 'bg-secondary text-white',
@@ -10,7 +10,7 @@ const badgesVariantes = {
   dark: 'bg-dark text-white',
 }
 interface BadgeProps extends GlobalProps {
-  variant?: keyof typeof badgesVariantes
+  variant?: keyof typeof badgesVariants
 }
 
 function Badge({ children, variant = 'success', className }: BadgeProps) {
@@ -19,7 +19,7 @@ function Badge({ children, variant = 'success', className }: BadgeProps) {
       className={cn(
         'flex items-center justify-center',
         'w-fit text-xs py-1.5 px-2 rounded',
-        badgesVariantes[variant],
+        badgesVariants[variant],
         className
       )}
     >

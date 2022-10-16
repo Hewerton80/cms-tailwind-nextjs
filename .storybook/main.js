@@ -10,6 +10,7 @@ module.exports = {
     '@storybook/addon-essentials',
     'storybook-css-modules',
     'storybook-tailwind-dark-mode',
+    // 'storybook-dark-mode',
     {
       name: '@storybook/addon-postcss',
       options: {

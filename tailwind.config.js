@@ -20,6 +20,9 @@ module.exports = {
 
     extend: {
       colors: assets.colors,
+      width: {
+        inherit: 'inherit',
+      },
       minWidth: {
         screen: '100vw',
       },
